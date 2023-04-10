@@ -9,7 +9,7 @@
 #include <source_location>
 #include <functional>
 
-#include "..\\utility\\Logger.h"
+#include "../utility/Logger.h"
 #include <concepts>
 
 namespace m0st4fa {
@@ -110,18 +110,22 @@ namespace m0st4fa {
 		return os;
 	}
 
-	typedef unsigned FSMFlag;
+	typedef unsigned FlagsType;
 	typedef unsigned long long IndexType;
 
 
 	// ENUMS
+
+	// the mode of simulation.
 	enum class FSM_MODE {
 		MM_WHOLE_STRING = 0,
 		MM_LONGEST_PREFIX,
 		MM_LONGEST_SUBSTRING,
+		MM_NONE,
 		MM_FSM_MODE_MAX,
 	};
 
+	// the type of the FSM.
 	enum class FSMType {
 		MT_EPSILON_NFA = 0,
 		MT_NON_EPSILON_NFA,
@@ -129,13 +133,14 @@ namespace m0st4fa {
 		MT_MACHINE_TYPE_MAX,
 	};
 
+	// flags to customize the behavior of the FSM.
 	enum FSM_FLAG {
 		//FF_CASE_INSENSITIVE,
 		//FF_CASE_SENSITIVE,
 		FF_FLAG_NONE = 0b0000000,
 		FF_FLAG_MAX
 	};
-	
+
 	using FSMTableType = std::vector<std::vector<FSMStateSetType>>;
 
 	template <typename TableT = FSMTableType>
@@ -185,7 +190,7 @@ namespace m0st4fa {
 		// private instance data members
 		FSMStateSetType m_FinalStates{};
 		FSMType m_MachineType;
-		FSMFlag m_Flags;
+		FlagsType m_Flags;
 
 	protected:
 
@@ -224,7 +229,7 @@ namespace m0st4fa {
 
 	public:
 		FiniteStateMachine() = default;
-		FiniteStateMachine(const FSMStateSetType& fStates, const TransFuncT& tranFn, FSMType machineType ,FSMFlag flags) :
+		FiniteStateMachine(const FSMStateSetType& fStates, const TransFuncT& tranFn, FSMType machineType ,FlagsType flags) :
 			m_FinalStates { fStates }, m_TransitionFunc{ tranFn }, m_MachineType {machineType}, m_Flags{flags}
 			{
 			
@@ -256,7 +261,7 @@ namespace m0st4fa {
 		}
 
 		const FSMStateSetType& getFinalStates() const { return m_FinalStates; };
-		FSMFlag getFlags() const { return m_Flags; };
+		FlagsType getFlags() const { return m_Flags; };
 		FSMType getMachineType() const { return m_MachineType; };
 	};
 
@@ -300,8 +305,7 @@ namespace m0st4fa {
 	template<typename T = FSMStateType>
 	struct Substring {
 		std::vector<T> matchedStates;
-		size_t startIndex = 0;
-		size_t endIndex = 0;
+		Indecies indecies;
 
 		auto begin() const {
 			return matchedStates.begin();

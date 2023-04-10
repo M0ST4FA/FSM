@@ -13,7 +13,7 @@ namespace m0st4fa {
 	* The transition function must map states and input to sets of states.
 	*/	
 	template <typename TransFuncT, typename InputT = std::string_view>
-	class NonDeterFiniteAutomatan : FiniteStateMachine<TransFuncT, InputT> {
+	class NonDeterFiniteAutomatan : public FiniteStateMachine<TransFuncT, InputT> {
 		using Base = FiniteStateMachine<TransFuncT, InputT>;
 		using SubstringType = Substring<FSMStateSetType>;
 
@@ -38,7 +38,7 @@ namespace m0st4fa {
 
 	public:
 		NonDeterFiniteAutomatan() = default;
-		NonDeterFiniteAutomatan(const FSMStateSetType& fStates, const TransFuncT& tranFn, FSMType machineType = FSMType::MT_EPSILON_NFA, FSMFlag flags = FSM_FLAG::FF_FLAG_NONE) :
+		NonDeterFiniteAutomatan(const FSMStateSetType& fStates, const TransFuncT& tranFn, FSMType machineType = FSMType::MT_EPSILON_NFA, FlagsType flags = FSM_FLAG::FF_FLAG_NONE) :
 			FiniteStateMachine<TransFuncT, InputT>{ fStates, tranFn, machineType, flags }
 		{
 
@@ -289,8 +289,8 @@ namespace m0st4fa {
 		size_t end = 0;
 
 		if (longest) {
-			start = longest->startIndex;
-			end = longest->endIndex;
+			start = longest->indecies.start;
+			end = longest->indecies.end;
 		}
 
 		// get the final states we've reached

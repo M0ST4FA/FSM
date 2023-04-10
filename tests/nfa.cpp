@@ -2,6 +2,8 @@
 
 #include "./universal.h"
 
+#include "../src/NFA.h"
+
 class NFATest : testing::Test {
 
 	template<typename T>

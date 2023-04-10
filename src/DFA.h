@@ -12,7 +12,7 @@ namespace m0st4fa {
 	* Provides a single function: simulate();
 	*/
 	template <typename TransFuncT, typename InputT = std::string_view>
-	class DeterFiniteAutomatan: protected FiniteStateMachine<TransFuncT, InputT> {
+	class DeterFiniteAutomatan: public FiniteStateMachine<TransFuncT, InputT> {
 		using Base = FiniteStateMachine<TransFuncT, InputT>;
 		using SubstringType = Substring<FSMStateType>;
 
@@ -29,7 +29,7 @@ namespace m0st4fa {
 		
 	public:
 		DeterFiniteAutomatan() = default;
-		DeterFiniteAutomatan(const FSMStateSetType& fStates, const TransFuncT& tranFn, FSMFlag flags = FSM_FLAG::FF_FLAG_NONE) :
+		DeterFiniteAutomatan(const FSMStateSetType& fStates, const TransFuncT& tranFn, FlagsType flags = FSM_FLAG::FF_FLAG_NONE) :
 			FiniteStateMachine<TransFuncT, InputT> {fStates, tranFn, FSMType::MT_DFA, flags}
 		{};
 		DeterFiniteAutomatan& operator=(const DeterFiniteAutomatan& rhs) {
@@ -171,8 +171,8 @@ namespace m0st4fa {
 				}
 			}
 
-			const size_t startIndex = longest->startIndex;
-			const size_t endIndex = longest->endIndex;
+			const size_t startIndex = longest->indecies.start;
+			const size_t endIndex = longest->indecies.end;
 
 			// get the final states we've reached
 			const FSMStateType finalState = matchedStates.back();
