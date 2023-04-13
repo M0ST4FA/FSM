@@ -37,7 +37,7 @@ namespace m0st4fa {
 			return *this;
 		}
 
-		FSMResult simulate(const InputT&, FSM_MODE) const;
+		FSMResult simulate(const InputT&, const FSM_MODE) const;
 		
 	};
 
@@ -267,7 +267,7 @@ namespace m0st4fa {
 	* @brief Simulate the given input string using the given simulation method.
 	*/
 	template<typename TransFuncT, typename InputT>
-	inline FSMResult DeterFiniteAutomatan<TransFuncT, InputT>::simulate(const InputT& input, FSM_MODE mode) const
+	inline FSMResult DeterFiniteAutomatan<TransFuncT, InputT>::simulate(const InputT& input, const FSM_MODE mode) const
 	{
 		switch (mode) {
 		case FSM_MODE::MM_WHOLE_STRING:
@@ -278,8 +278,7 @@ namespace m0st4fa {
 			return this->_simulate_longest_substring(input);
 		default:
 			std::cerr << "Unreachable: simulate() cannot reach this point." << std::endl;
-			// TODO: throw a better exception
-			throw std::runtime_error("The provided mode is erroneous in function DFA::simulate().");
+			throw UnrecognizedSimModeException();
 		}
 
 	}

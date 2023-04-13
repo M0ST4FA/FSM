@@ -139,6 +139,8 @@
     <ClInclude Include="utility\Logger.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="example_dfa.cpp" />
+    <ClCompile Include="example_nfa.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\FiniteStateMachine.cpp" />
     <ClCompile Include="utility\common.cpp" />
