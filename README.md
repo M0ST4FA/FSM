@@ -9,6 +9,16 @@ finite state machine library in C++.
 
 # Documentation
 
+## Exception Types
+
+### `InvalidStateMachineArgumentsException`
+
+- A wrapper over `std::invalid_argument` that is thrown from the constructor of a state machine in case there is at least one invalid argument given to a state machine.
+
+### `UnrecognizedSimModeException`
+
+- A wrapper over `std::runtime_error` that is thrown from any `simulate()` function in case the simulation mode is unrecognized.
+
 ## Utility Data Structures
 
 file: FiniteStateMachine.h
@@ -23,18 +33,37 @@ file: FiniteStateMachine.h
 
 ### `FSMTableType`
 
-- A data structure representing a 2D table of sets of states. Its value is `std::vector<std::vector<FSMStateSetType>>`.
+- A data structure representing a 2D table of sets of states.
+
+  | field | definition                           |
+  | ----- | ------------------------------------ |
+  | table | the actual object holding the table. |
+
+  | method                                                 | definition                                                                                             |
+  | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+  | `FSMStateType&` operator()(state, c)                   | returns `table[state][c]`, and makes sure the vectors are not overflowed (resizing them if necessary). |
+  | `const FSMStateType&` operator()(state, c) const       | returns `table[state][c]`.                                                                             |
+  | `const vector<FSMStateType>&` operator[] (index) const | return `table.at(index).`                                                                              |
+  | `const vector<FSMStateType>&` at(index) const          | return `table.at(index)`.                                                                              |
+
 - `FSMStateSetType` is used as the value of each element of the table rather than `FSMStateType` in order for the table to be general, i.e., able to be used with either a `DFA` or an `NFA`.
 
 ### `TransitionFunction<TableT>`
 
 - A data structure that represents a transition function. It is a function object.
 
+  | field          | definition        |
+  | -------------- | ----------------- |
+  | `TableT` table | the actual table. |
+
+  | method                                              | definition                                                                                             |
+  | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+  | `FSMStateType&` operator()(state, c)                | returns `table[state][c]`, and makes sure the vectors are not overflowed (resizing them if necessary). |
+  | `const FSMStateSetType&` operator()(state, c) const | returns `table[state][c]`.                                                                             |
+  | `const FSMStateType&` operator()(stateSet, c) const | returns `table[state][c]` for every state within `stateSet`.                                           |
+
 - The goal of this data structure is to treat a `TableT` table as a function, i.e., it is just a wrapper around a `TableT` object.
-
-### `TransFn<TableT>`
-
-- is an alias for this data structure.
+- `TransFn<TableT>` is an alias for this data structure.
 
 ### `FSMResult`
 
@@ -165,7 +194,7 @@ public:
   NonDeterFiniteAutomatan() = default;
   NonDeterFiniteAutomatan(const FSMStateSetType& fStates, const TransFuncT& tranFn, FSMType machineType = FSMType::MT_EPSILON_NFA, FSMFlag flags = FSM_FLAG::FF_FLAG_NONE);
 
-  FSMResult simulate(const InputT& input, FSM_MODE mode) const;
+  FSMResult simulate(const InputT& input, const FSM_MODE mode) const;
   }
 
 ```
@@ -196,7 +225,7 @@ public:
 
   DeterFiniteAutomatan& operator=(const DeterFiniteAutomatan& rhs);
 
-  FSMResult simulate(const InputT& input, FSM_MODE mode) const;
+  FSMResult simulate(const InputT& input, const FSM_MODE mode) const;
  };
 ```
 

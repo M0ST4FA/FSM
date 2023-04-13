@@ -12,6 +12,24 @@
 #include "../utility/Logger.h"
 #include <concepts>
 
+// EXCEPTION TYPES
+namespace m0st4fa {
+	
+
+	struct InvalidStateMachineArgumentsException : public std::invalid_argument {
+
+		InvalidStateMachineArgumentsException(const std::string& message) : std::invalid_argument{ message} {};
+
+	};
+
+	struct UnrecognizedSimModeException : public std::runtime_error {
+
+		UnrecognizedSimModeException() : std::runtime_error{ "Unrecognized mode give to `simulate()` function."} {};
+
+	};
+
+}
+
 namespace m0st4fa {
 
 	// TYPE ALIASES
@@ -141,23 +159,56 @@ namespace m0st4fa {
 		FF_FLAG_MAX
 	};
 
-	using FSMTableType = std::vector<std::vector<FSMStateSetType>>;
+	struct FSMTable {
+		using Vec2Type = std::vector<FSMStateSetType>;
+		using Vec1Type = std::vector<Vec2Type>;
 
-	template <typename TableT = FSMTableType>
+		Vec1Type table;
+		
+		template<typename InputT>
+		FSMStateSetType& operator()(const FSMStateType& state, const InputT c) noexcept(true) {
+			
+			if (table.size() <= state)
+				table.resize(state + 1);
+			
+			std::vector<FSMStateSetType>& stateMap = table.at(state);
+
+			if (stateMap.size() <= c)
+				stateMap.resize(c + 1);
+
+			return stateMap.at(c);
+		}
+
+		template<typename InputT>
+		const FSMStateSetType& operator()(const FSMStateType& state, const InputT c) const {
+			return table.at(state).at(c);
+		}
+
+		const Vec2Type& operator[](const FSMStateType& state) const {
+			return table.at(state);
+		}
+
+		const Vec2Type& at(const FSMStateType& state) const {
+			return table.at(state);
+		}
+
+	};
+
+	template <typename TableT = FSMTable>
 	struct TransitionFunction {
-		TableT m_Function;
+		TableT m_Table;
 		
 		TransitionFunction() = default;
-		TransitionFunction(const TableT& function) : m_Function(function) {}
-
-		// TODO: add this overload
-		/*
-			TransitionFunction(std::function<void, const TableT&> function) : m_Function(function(TableT())), m_StateMax{ m_Function.size() }, m_InputMa{ m_Function.at(0).size() } {};
-		*/
+		TransitionFunction(const TableT& table) : m_Table(table) {}
 		
+		template<typename InputT>
+		FSMStateSetType& operator()(const FSMStateType& state, const InputT c) noexcept(true) {
+			return this->m_Table(state, c);
+		}
+
 		template <typename InputT>
 		FSMStateSetType operator()(const FSMStateType state, const InputT input) const {
-			return m_Function.at(state).at(input);
+			return m_Table.at(state).at(input);
 		}
 
 		template <typename InputT>
@@ -165,17 +216,16 @@ namespace m0st4fa {
 			FSMStateSetType res;
 			
 			for (FSMStateType state : stateSet) {
-				FSMStateSetType tmp = m_Function.at(state).at(input);
+				FSMStateSetType tmp = m_Table.at(state).at(input);
 				res.insert(tmp.begin(), tmp.end());
 			}
 				
 			return res;
 		}
 
-
 	};
 
-	template<typename TableT>
+	template<typename TableT = FSMTable>
 	using TransFn = TransitionFunction<TableT>;
 
 	struct FSMResult;
@@ -239,15 +289,15 @@ namespace m0st4fa {
 			  };
 
 			if (fStates.empty()) {
-				const std::string message = "FiniteStateMachine: the set of final states cannot be empty.";
+				const std::string message = "FSM: The set of final states cannot be empty.";
 				m_Logger.log(loggerInfo, message);
-				throw std::invalid_argument(message);
+				throw InvalidStateMachineArgumentsException{ message };
 			};
 
 			if (machineType == FSMType::MT_MACHINE_TYPE_MAX) {
-				const std::string message = R"(FiniteStateMachine: the machine type is invalid.)";
+				const std::string message = R"(FSM: The machine type is invalid.)";
 				m_Logger.log(loggerInfo, message);
-				throw std::invalid_argument(message);
+				throw InvalidStateMachineArgumentsException{ message };
 			};
 		
 		};

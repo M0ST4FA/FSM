@@ -1,9 +1,11 @@
 #pragma once
 
-#include "FiniteStateMachine.h"
 #include <stack>
 #include <ranges>
 #include <functional>
+#include <assert.h>
+
+#include "FiniteStateMachine.h"
 
 namespace m0st4fa {
 
@@ -47,13 +49,13 @@ namespace m0st4fa {
 			if (!(machineType == FSMType::MT_EPSILON_NFA || machineType == FSMType::MT_NON_EPSILON_NFA)) {
 				const std::string message = R"(NonDeterFiniteAutomatan: machineType must be either "MT_EPSILON_NFA" or "MT_NON_EPSILON_NFA")";
 				this->m_Logger.log(LoggerInfo::FATAL_ERROR, message);
-				throw std::invalid_argument(message);
+				throw InvalidStateMachineArgumentsException(message);
 			};
 
 		};
 
 
-		FSMResult simulate(const InputT&, FSM_MODE) const;
+		FSMResult simulate(const InputT&, const FSM_MODE) const;
 
 	};
 
@@ -340,6 +342,10 @@ namespace m0st4fa {
 		return res;
 	}
 	
+	/**
+	* @brief simulate the NFA against `input` according to `mode`.
+	* this function can throw an exception of type `UnrecognizedSimModeException` in case `mode` is not recognized.
+	**/
 	template<typename TransFuncT, typename InputT>
 	inline FSMResult NonDeterFiniteAutomatan<TransFuncT, InputT>::simulate(const InputT& input, FSM_MODE mode) const
 	{
@@ -352,7 +358,7 @@ namespace m0st4fa {
 			return this->_simulate_longest_substring(input);
 		default:
 			this->m_Logger.log(LoggerInfo::ERR_INVALID_ARG, "Unreachable: simulate() cannot reach this point. The provided mode is probably erraneous.");
-			throw std::runtime_error("The provided mode is erroneous in function DFA::simulate().");
+			throw UnrecognizedSimModeException();
 		}
 
 	}
