@@ -1,0 +1,30 @@
+\hypertarget{example__dfa_8cpp}{}\doxysection{examples/example\+\_\+dfa.cpp File Reference}
+\label{example__dfa_8cpp}\index{examples/example\_dfa.cpp@{examples/example\_dfa.cpp}}
+{\ttfamily \#include \"{}../\+DFA.\+h\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{example__dfa_8cpp_ae1c49492960ff61609d2383f939beb73}{example\+\_\+dfa}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{example__dfa_8cpp_ae1c49492960ff61609d2383f939beb73}\label{example__dfa_8cpp_ae1c49492960ff61609d2383f939beb73} 
+\index{example\_dfa.cpp@{example\_dfa.cpp}!example\_dfa@{example\_dfa}}
+\index{example\_dfa@{example\_dfa}!example\_dfa.cpp@{example\_dfa.cpp}}
+\doxysubsubsection{\texorpdfstring{example\_dfa()}{example\_dfa()}}
+{\footnotesize\ttfamily int example\+\_\+dfa (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Let\textquotesingle{}s say we want to make a DFA that matches the regular language of identifiers. In this case, our regex will be\+: \textbackslash{}w+(\textbackslash{}w$\vert$\textbackslash{}d$\vert$\+\_\+)$\ast$ The first step is to build the state machine table (transition function). The next step is to construct the DFA. Now, we can run our DFA against any input string we would like to check whether it is an identifier, and also to get information about it (e.\+g. indecies).
+
+Dead state is always 0 (fixed by the library). Initial state will be 1 (chosen by me). Final states\+: \{2\}
+
+alternatively, you can set {\ttfamily trans\+Function} directly\+: Trans\+Fn$<$$>$ trans\+Function\{ \};
+
+for (char c = \textquotesingle{}a\textquotesingle{}; c \texorpdfstring{$<$}{<}= \textquotesingle{}z\textquotesingle{}; c++) trans\+Function(1, c) = 2; for (char c = \textquotesingle{}A\textquotesingle{}; c \texorpdfstring{$<$}{<}= \textquotesingle{}Z\textquotesingle{}; c++) trans\+Function(1, c) = 2;
+
+set (\textbackslash{}w$\vert$\textbackslash{}d$\vert$\+\_\+)$\ast$ following \textbackslash{}w+ for (char c = \textquotesingle{}a\textquotesingle{}; c \texorpdfstring{$<$}{<}= \textquotesingle{}z\textquotesingle{}; c++) trans\+Function(2, c) = 2; for (char c = \textquotesingle{}A\textquotesingle{}; c \texorpdfstring{$<$}{<}= \textquotesingle{}Z\textquotesingle{}; c++) trans\+Function(2, c) = 2;
+
+for (char c = \textquotesingle{}0\textquotesingle{}; c \texorpdfstring{$<$}{<}= \textquotesingle{}9\textquotesingle{}; c++) trans\+Function(2, c) = 2;
+
+trans\+Function(2, \textquotesingle{}\+\_\+\textquotesingle{}) = 2;

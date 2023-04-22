@@ -2,7 +2,7 @@
 
 #include "./universal.h"
 
-#include "../src/NFA.h"
+#include "../NFA.h"
 
 class NFATest : testing::Test {
 
@@ -34,7 +34,7 @@ class NFATest : testing::Test {
 #include "fsm.h"
 
 using FSMStateSetType = m0st4fa::FSMStateSetType;
-using TableType = m0st4fa::FSMTableType;
+using TableType = m0st4fa::FSMTable;
 using TranFn = m0st4fa::TransFn<TableType>;
 using NFA = m0st4fa::NonDeterFiniteAutomatan<TranFn>;
 using Result = m0st4fa::FSMResult;

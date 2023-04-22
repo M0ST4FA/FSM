@@ -3,9 +3,9 @@
 #include <iostream>
 #include <map>
 
-#include "../src/FiniteStateMachine.h"
-#include "../src/DFA.h"
-#include "../utility/common.h"
+#include "../FiniteStateMachine.h"
+#include "../DFA.h"
+#include "../common.h"
 #include "universal.h"
 
 template<typename FSMType>
@@ -15,7 +15,7 @@ class FSMTests : public testing::Test, public FSMSharedInfo {
 protected:
 	//using FSMStateType = m0st4fa::FSMStateType;
 	using FSMStateSetType = m0st4fa::FSMStateSetType;
-	using TableType = m0st4fa::FSMTableType;
+	using TableType = m0st4fa::FSMTable;
 	using TranFn = m0st4fa::TransFn<TableType>;
 	using DFAType = m0st4fa::DeterFiniteAutomatan<TranFn>;
 	using Result = m0st4fa::FSMResult;
@@ -70,9 +70,8 @@ TYPED_TEST_P(FSMTests, simulate) {
 	using enum m0st4fa::FSM_MODE;
 
 	// Data structures
-	typename TestFixture::TableType table{};
-	this->Base::initTranFn_ab(table);
-	typename TestFixture::TranFn tranFn{ table };
+	typename TestFixture::TranFn tranFn;
+	this->Base::initTranFn_ab(tranFn);
 	TypeParam testFSM{ {4}, tranFn };
 
 	// strings
