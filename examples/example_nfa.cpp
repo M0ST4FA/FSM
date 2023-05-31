@@ -1,4 +1,4 @@
-#include "../NFA.h"
+#include "NFA.h"
 
 extern int example_nfa() {
 

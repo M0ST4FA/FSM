@@ -1,4 +1,4 @@
-#include "../DFA.h"
+#include "DFA.h"
 
 extern int example_dfa() {
 
