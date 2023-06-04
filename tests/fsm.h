@@ -3,9 +3,9 @@
 #include <iostream>
 #include <map>
 
-#include "../FiniteStateMachine.h"
-#include "../DFA.h"
-#include "../common.h"
+#include "FiniteStateMachine.h"
+#include "DFA.h"
+#include "common.h"
 #include "universal.h"
 
 template<typename FSMType>
@@ -57,7 +57,7 @@ public:
 
 };
 
-TYPED_TEST_CASE_P(FSMTests);
+TYPED_TEST_SUITE_P(FSMTests);
 
 template<typename T>
 std::ostream& operator<<(std::ostream& os, const typename FSMTests<T>::Token token) {
@@ -152,4 +152,4 @@ TYPED_TEST_P(FSMTests, simulate2) {
 
 }
 
-REGISTER_TYPED_TEST_CASE_P(FSMTests, simulate, simulate2);
+REGISTER_TYPED_TEST_SUITE_P(FSMTests, simulate, simulate2);

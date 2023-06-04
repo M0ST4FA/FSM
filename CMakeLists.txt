@@ -30,3 +30,6 @@ target_include_directories(fsm PUBLIC
 "./include/"
 )
 target_link_libraries(examples fsm)
+
+# ADD THE TESTS
+add_subdirectory("./tests/")

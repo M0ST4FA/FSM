@@ -1,8 +1,8 @@
 #include "gtest/gtest.h"
 
-#include "./universal.h"
+#include "universal.h"
 
-#include "../NFA.h"
+#include "NFA.h"
 
 class NFATest : testing::Test {
 
@@ -39,4 +39,4 @@ using TranFn = m0st4fa::TransFn<TableType>;
 using NFA = m0st4fa::NonDeterFiniteAutomatan<TranFn>;
 using Result = m0st4fa::FSMResult;
 
-INSTANTIATE_TYPED_TEST_CASE_P(NFATests, FSMTests, NFA);
+INSTANTIATE_TYPED_TEST_SUITE_P(NFATests, FSMTests, NFA);

@@ -4,9 +4,9 @@
 #include <map>
 #include <algorithm>
 
-#include "../DFA.h"
-#include "../common.h"
-#include "../Logger.h"
+#include "DFA.h"
+#include "common.h"
+#include "Logger.h"
 #include "universal.h"
 
 struct FSMSharedInfo {
