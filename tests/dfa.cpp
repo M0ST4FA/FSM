@@ -1,4 +1,5 @@
 #include "fsm.h"
+#include "gtest/gtest.h"
 
 using FSMStateSetType = m0st4fa::FSMStateSetType;
 using TableType = m0st4fa::FSMTable;

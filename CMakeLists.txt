@@ -10,15 +10,21 @@ if (POLICY CMP0141)
 endif()
 
 project(fsm)
+
+# SETUP VARIABLES
+
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
+set(PROJECT_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/include/")
+set(UTILITY_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/utility/include/")
+
 # ADD THE LIBRARY
-add_subdirectory("./utility/")
+add_subdirectory("./utility/")	
 add_library(fsm "./src/FiniteStateMachine.cpp")
 target_include_directories(fsm PUBLIC 
-"./utility/include/" 
-"./include/"
+"${UTILITY_INCLUDE_DIR}" 
+"${PROJECT_INCLUDE_DIR}"
 )
 target_link_libraries(fsm utility)
 
@@ -26,10 +32,26 @@ target_link_libraries(fsm utility)
 file(GLOB EXAMPLE_SRCs "./examples/*.cpp")
 add_executable(examples ${EXAMPLE_SRCs})
 target_include_directories(fsm PUBLIC 
-"./utility/include/" 
-"./include/"
+"${UTILITY_INCLUDE_DIR}" 
+"${PROJECT_INCLUDE_DIR}"
 )
 target_link_libraries(examples fsm)
 
 # ADD THE TESTS
-add_subdirectory("./tests/")
+option(BUILD_TESTS "Whether to build tests or not." NO)
+
+if(${BUILD_TESTS})
+	include("cmake/install_gtest.cmake")
+	add_subdirectory("./tests/")
+endif()
+
+# ADD THE DOCUMENTATION
+option(BUILD_DOCUMENTATION 
+"Whether or not to build the documentation"
+NO
+)
+
+# BUILD THE DOCUMENTATION
+if(${BUILD_DOCUMENTATION})
+	add_subdirectory("./docs/")
+endif()
