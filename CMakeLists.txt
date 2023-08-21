@@ -20,22 +20,20 @@ set(PROJECT_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/include/")
 set(UTILITY_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/utility/include/")
 
 # ADD THE LIBRARY
-add_subdirectory("./utility/")	
+add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/external/utility/")
 add_library(fsm "./src/FiniteStateMachine.cpp")
 target_include_directories(fsm PUBLIC 
 "${UTILITY_INCLUDE_DIR}" 
 "${PROJECT_INCLUDE_DIR}"
 )
-target_link_libraries(fsm utility)
+target_link_libraries(fsm PUBLIC utility)
 
 # ADD THE EXAMPLES
-file(GLOB EXAMPLE_SRCs "./examples/*.cpp")
-add_executable(examples ${EXAMPLE_SRCs})
-target_include_directories(fsm PUBLIC 
-"${UTILITY_INCLUDE_DIR}" 
-"${PROJECT_INCLUDE_DIR}"
-)
-target_link_libraries(examples fsm)
+option(BUILD_EXAMPLES "Whether to build examples or not." NO)
+
+if(${BUILD_EXAMPLES})
+	add_subdirectory("./examples/")
+endif()
 
 # ADD THE TESTS
 option(BUILD_TESTS "Whether to build tests or not." NO)

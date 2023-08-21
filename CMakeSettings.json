@@ -11,7 +11,7 @@
       "ctestCommandArgs": "",
       "variables": [
         {
-          "name": "BUILD_TESTS",
+          "name": "BUILD_EXAMPLES",
           "value": "True",
           "type": "BOOL"
         }
