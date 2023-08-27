@@ -318,20 +318,15 @@ namespace m0st4fa {
 			m_FinalStates { fStates }, m_TransitionFunc{ tranFn }, m_MachineType {machineType}, m_Flags{flags}
 			{
 			
-			LoggerInfo loggerInfo = { 
-				  .level = LOG_LEVEL::LL_ERROR, 
-				  .info = { .errorType = ERROR_TYPE::ET_INVALID_ARGUMENT} 
-			  };
-
 			if (fStates.empty()) {
 				const std::string message = "FSM: The set of final states cannot be empty.";
-				m_Logger.log(loggerInfo, message);
+				m_Logger.log(LoggerInfo::ERROR, message);
 				throw InvalidStateMachineArgumentsException{ message };
 			};
 
 			if (machineType == FSMType::MT_MACHINE_TYPE_MAX) {
 				const std::string message = R"(FSM: The machine type is invalid.)";
-				m_Logger.log(loggerInfo, message);
+				m_Logger.log(LoggerInfo::ERROR, message);
 				throw InvalidStateMachineArgumentsException{ message };
 			};
 		
@@ -368,6 +363,7 @@ namespace m0st4fa {
 		}
 	};
 	struct FSMResult {
+
 		// DATA MEMBERS AND NESTED TYPES
 		bool accepted = false;
 		FSMStateSetType finalState = { FiniteStateMachine<FSMStateType>::START_STATE };

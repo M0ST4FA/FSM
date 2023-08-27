@@ -357,7 +357,7 @@ namespace m0st4fa {
 		case FSM_MODE::MM_LONGEST_SUBSTRING:
 			return this->_simulate_longest_substring(input);
 		default:
-			this->m_Logger.log(LoggerInfo::ERR_INVALID_ARG, "Unreachable: simulate() cannot reach this point. The provided mode is probably erraneous.");
+			this->m_Logger.log(LoggerInfo::ERROR, "Unreachable: simulate() cannot reach this point. The provided mode is probably erraneous.");
 			throw UnrecognizedSimModeException();
 		}
 

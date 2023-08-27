@@ -19,9 +19,33 @@ set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 set(PROJECT_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/include/")
 set(UTILITY_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/utility/include/")
 
+# SETUPT OPTIONS
+option(BUILD_TESTS 
+"Whether to build tests or not." 
+NO)
+
+option(BUILD_DOCUMENTATION 
+"Whether or not to build the documentation"
+NO
+)
+
+option(BUILD_EXAMPLES 
+"Whether to build examples or not." 
+NO)
+
+# BUILD googletest
+if(${BUILD_TESTS})
+	include("cmake/install_gtest.cmake")
+endif()
+
 # ADD THE LIBRARY
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/external/utility/")
-add_library(fsm "./src/FiniteStateMachine.cpp")
+add_library(fsm 
+"${CMAKE_CURRENT_SOURCE_DIR}/src/FiniteStateMachine.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/include/FiniteStateMachine.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/include/DFA.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/include/NFA.h"
+)
 target_include_directories(fsm PUBLIC 
 "${UTILITY_INCLUDE_DIR}" 
 "${PROJECT_INCLUDE_DIR}"
@@ -29,25 +53,14 @@ target_include_directories(fsm PUBLIC
 target_link_libraries(fsm PUBLIC utility)
 
 # ADD THE EXAMPLES
-option(BUILD_EXAMPLES "Whether to build examples or not." NO)
-
 if(${BUILD_EXAMPLES})
 	add_subdirectory("./examples/")
 endif()
 
 # ADD THE TESTS
-option(BUILD_TESTS "Whether to build tests or not." NO)
-
 if(${BUILD_TESTS})
-	include("cmake/install_gtest.cmake")
 	add_subdirectory("./tests/")
 endif()
-
-# ADD THE DOCUMENTATION
-option(BUILD_DOCUMENTATION 
-"Whether or not to build the documentation"
-NO
-)
 
 # BUILD THE DOCUMENTATION
 if(${BUILD_DOCUMENTATION})
