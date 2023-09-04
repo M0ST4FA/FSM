@@ -13,11 +13,11 @@ struct FSMSharedInfo {
 
 protected:
 
-	using FSMStateSetType = m0st4fa::FSMStateSetType;
-	using FSMTableType = m0st4fa::FSMTable;
-	using TranFn = m0st4fa::TransFn<FSMTableType>;
-	using DFAType = m0st4fa::DeterFiniteAutomatan<TranFn>;
-	using Result = m0st4fa::FSMResult;
+	using FSMStateSetType = m0st4fa::fsm::FSMStateSetType;
+	using FSMTableType = m0st4fa::fsm::FSMTable;
+	using TranFn = m0st4fa::fsm::TransFn<FSMTableType>;
+	using DFAType = m0st4fa::fsm::DeterFiniteAutomatan<TranFn>;
+	using Result = m0st4fa::fsm::FSMResult;
 
 	template<typename T = FSMTableType>
 	static constexpr void initTranFn_ab(T& fun) {

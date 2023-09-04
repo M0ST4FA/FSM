@@ -13,7 +13,7 @@
 #include <concepts>
 
 // EXCEPTION TYPES
-namespace m0st4fa {
+namespace m0st4fa::fsm {
 	
 
 	struct InvalidStateMachineArgumentsException : public std::invalid_argument {
@@ -30,7 +30,7 @@ namespace m0st4fa {
 
 }
 
-namespace m0st4fa {
+namespace m0st4fa::fsm {
 
 	// TYPE ALIASES
 	using FSMStateType = unsigned;

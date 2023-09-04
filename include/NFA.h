@@ -7,7 +7,7 @@
 
 #include "FiniteStateMachine.h"
 
-namespace m0st4fa {
+namespace m0st4fa::fsm {
 
 	// DECLARATIONS
 	/**

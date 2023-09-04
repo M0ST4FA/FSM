@@ -1,7 +1,7 @@
 
 #include "FiniteStateMachine.h"
 
-std::ostream& m0st4fa::operator<<(const std::ostream& os, const FSMResult& result)
+std::ostream& m0st4fa::fsm::operator<<(const std::ostream& os, const FSMResult& result)
 {
 	Logger logger;
 	

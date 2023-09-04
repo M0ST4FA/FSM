@@ -7,23 +7,7 @@ if (CMAKE_BUILD_TYPE MATCHES [Dd]ebug)
 				REQUIRED dot
 				OPTIONAL_COMPONENTS mscgen dia)
 
-	# Add the cmake folder so the FindSphinx module is found
-	set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" 
-	${CMAKE_MODULE_PATH})
-
-	find_package(Sphinx REQUIRED)
-
-	set(SPHINX_SOURCE ${CMAKE_CURRENT_SOURCE_DIR})
-	set(SPHINX_BUILD ${CMAKE_CURRENT_BINARY_DIR}/docs/sphinx)
-
-	add_custom_target(Sphinx ALL
-				  COMMAND
-				  ${SPHINX_EXECUTABLE} -b html
-				  ${SPHINX_SOURCE} ${SPHINX_BUILD}
-				  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-				  COMMENT "Generating documentation with Sphinx")
-
-	if (DOXYGEN_FOUND)
+	if (${DOXYGEN_FOUND})
 		
 		# This directory is relative to the binary directory
 		set( DOXYGEN_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/docs/" )
@@ -54,6 +38,7 @@ if (CMAKE_BUILD_TYPE MATCHES [Dd]ebug)
 		"*/utility/*"
 		"*/out/*"
 		"*/examples/*"
+		"*/external/*"
 		)
 
 		doxygen_add_docs(docs ${PROJECT_SOURCE_DIR})
@@ -67,13 +52,30 @@ if (CMAKE_BUILD_TYPE MATCHES [Dd]ebug)
 			"${CMAKE_SOURCE_DIR}/docs/Sphinx/conf.py"
 		)
 
-		# set(DOXYGEN_OUT "${PROJECT_BINARY_DIR}/docs/doxyfile.docs")
-		# add_custom_target( docs-build
-			#COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
-			#WORKING_DIRECTORY ${CURRENT_BINARY_DIR}
-			#COMMENT "Generating API documentation with Doxygen"
-			#VERBATIM )
-
+		set(DOXYGEN_OUT "${PROJECT_BINARY_DIR}/docs/doxyfile.docs")
+		add_custom_target(Doxygen ALL
+			COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
+			WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+			COMMENT "Generating API documentation with Doxygen"
+			)
 	endif()
+
+	# Add the cmake folder so the FindSphinx module is found
+	set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" 
+	${CMAKE_MODULE_PATH})
+
+	find_package(Sphinx REQUIRED)
+
+	set(SPHINX_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/Sphinx)
+	set(SPHINX_BUILD ${CMAKE_BINARY_DIR}/docs/sphinx)
+
+	add_custom_target(Sphinx ALL
+				  COMMAND
+				  ${SPHINX_EXECUTABLE} -b html
+				  ${SPHINX_SOURCE} ${SPHINX_BUILD}
+				  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+				  COMMENT "Generating documentation with Sphinx"
+				  )
+
 
 endif()

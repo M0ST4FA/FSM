@@ -6,19 +6,27 @@
 Welcome to FSM's documentation!
 ===============================
 
+FSM (very original, heh?!) is a C++ library that provides useful classes for working with finite state machines, whether deterministic or non-deterministic. 
+
+Getting started
+---------------
+New to the library? This document explains basic features and usages.
+
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
 
-Docs
-====
+   GettingStarted.rst
 
-.. doxygenclass:: m0st4fa::FiniteStateMachine
-   :members:
+API
+---
+
+.. toctree::
+
+   FSM/FSM
+   FSM/NFA.rst
+   FSM/DFA.rst
 
 Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`

@@ -11,7 +11,7 @@ extern int example_dfa() {
 	**/
 
 	// for convenience (not recommended in real life)
-	using namespace m0st4fa;
+	using namespace m0st4fa::fsm;
 
 	// 1. building the transition function
 

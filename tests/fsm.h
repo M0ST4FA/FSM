@@ -13,12 +13,12 @@ class FSMTests : public testing::Test, public FSMSharedInfo {
 	using Base = FSMSharedInfo;
 
 protected:
-	//using FSMStateType = m0st4fa::FSMStateType;
-	using FSMStateSetType = m0st4fa::FSMStateSetType;
-	using TableType = m0st4fa::FSMTable;
-	using TranFn = m0st4fa::TransFn<TableType>;
-	using DFAType = m0st4fa::DeterFiniteAutomatan<TranFn>;
-	using Result = m0st4fa::FSMResult;
+	//using FSMStateType = m0st4fa::fsm::FSMStateType;
+	using FSMStateSetType = m0st4fa::fsm::FSMStateSetType;
+	using TableType = m0st4fa::fsm::FSMTable;
+	using TranFn = m0st4fa::fsm::TransFn<TableType>;
+	using DFAType = m0st4fa::fsm::DeterFiniteAutomatan<TranFn>;
+	using Result = m0st4fa::fsm::FSMResult;
 
 	void SetUp() override {
 
@@ -67,7 +67,7 @@ std::ostream& operator<<(std::ostream& os, const typename FSMTests<T>::Token tok
 
 TYPED_TEST_P(FSMTests, simulate) {
 
-	using enum m0st4fa::FSM_MODE;
+	using enum m0st4fa::fsm::FSM_MODE;
 
 	// Data structures
 	typename TestFixture::TranFn tranFn;
@@ -119,8 +119,8 @@ TYPED_TEST_P(FSMTests, simulate) {
 
 TYPED_TEST_P(FSMTests, simulate2) {
 
-	using enum m0st4fa::FSM_MODE;
-	using m0st4fa::FSMStateType;
+	using enum m0st4fa::fsm::FSM_MODE;
+	using m0st4fa::fsm::FSMStateType;
 
 	// Data structures
 	typename TestFixture::TableType table{};
