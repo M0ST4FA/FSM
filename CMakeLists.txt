@@ -20,7 +20,7 @@ set(PROJECT_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/include/")
 set(UTILITY_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/utility/include/")
 
 # SETUPT OPTIONS
-option(BUILD_TESTS 
+option(BUILD_TESTING 
 "Whether to build tests or not." 
 NO)
 
@@ -34,7 +34,7 @@ option(BUILD_EXAMPLES
 NO)
 
 # BUILD googletest
-if(${BUILD_TESTS})
+if(${BUILD_TESTING})
 	include("cmake/install_gtest.cmake")
 endif()
 
@@ -58,7 +58,8 @@ if(${BUILD_EXAMPLES})
 endif()
 
 # ADD THE TESTS
-if(${BUILD_TESTS})
+if(${BUILD_TESTING})
+	enable_testing()
 	add_subdirectory("./tests/")
 endif()
 

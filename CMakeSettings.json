@@ -12,14 +12,37 @@
       "variables": [
         {
           "name": "BUILD_EXAMPLES",
+          "value": "False",
+          "type": "BOOL"
+        },
+        {
+          "name": "BUILD_TESTING",
           "value": "True",
           "type": "BOOL"
         },
         {
-          "name": "BUILD_TESTS",
+          "name": "BUILD_DOCUMENTATION",
           "value": "True",
           "type": "BOOL"
         },
+        {
+          "name": "INSTALL_GTEST",
+          "value": "True",
+          "type": "BOOL"
+        }
+      ]
+    },
+    {
+      "name": "x64-Release",
+      "generator": "Ninja",
+      "configurationType": "RelWithDebInfo",
+      "buildRoot": "${projectDir}\\out\\build\\${name}",
+      "installRoot": "${projectDir}\\out\\install\\${name}",
+      "cmakeCommandArgs": "",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "inheritEnvironments": [ "msvc_x64_x64" ],
+      "variables": [
         {
           "name": "BUILD_DOCUMENTATION",
           "value": "True",

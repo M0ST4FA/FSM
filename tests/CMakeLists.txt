@@ -12,6 +12,8 @@ set(PROJECT_SRC_DIR
 "${CMAKE_SOURCE_DIR}/src/"
 )
 
+include(GoogleTest)
+
 # TESTS ----------------------------------
 
 # DFATests
@@ -21,6 +23,9 @@ target_include_directories(DFATests PRIVATE
 "${PROJECT_INCLUDE_DIR}"
 )
 target_link_libraries(DFATests PUBLIC fsm gtest_main)
+gtest_discover_tests(DFATests
+TEST_PREFIX FSMTests
+)
 
 # NFATests
 add_executable(NFATests "nfa.cpp")
@@ -29,3 +34,6 @@ target_include_directories(NFATests PRIVATE
 "${PROJECT_INCLUDE_DIR}"
 )
 target_link_libraries(NFATests PUBLIC fsm gtest_main)
+gtest_discover_tests(NFATests
+TEST_PREFIX FSMTests
+)

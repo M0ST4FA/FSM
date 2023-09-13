@@ -2,14 +2,6 @@
 
 extern int example_dfa() {
 
-	/**
-	* Let's say we want to make a DFA that matches the regular language of identifiers.
-	* In this case, our regex will be: \w+(\w|\d|_)*
-	* The first step is to build the state machine table (transition function).
-	* The next step is to construct the DFA.
-	* Now, we can run our DFA against any input string we would like to check whether it is an identifier, and also to get information about it (e.g. indices).
-	**/
-
 	// for convenience (not recommended in real life)
 	using namespace m0st4fa::fsm;
 
@@ -39,30 +31,8 @@ extern int example_dfa() {
 
 	table(2, '_') = 2;
 
-
 	TransFn<> transFunction{ table }; // remember: `TransFn<>` is just an abstraction, the actual table/function is `table`
-
-	/** alternatively, you can set `transFunction` directly:
-		TransFn<> transFunction{ };
-
-		for (char c = 'a'; c <= 'z'; c++)
-		transFunction(1, c) = 2;
-	for (char c = 'A'; c <= 'Z'; c++)
-		transFunction(1, c) = 2;
-
-	// set (\w|\d|_)* following \w+
-	for (char c = 'a'; c <= 'z'; c++)
-		transFunction(2, c) = 2;
-	for (char c = 'A'; c <= 'Z'; c++)
-		transFunction(2, c) = 2;
-
-	for (char c = '0'; c <= '9'; c++)
-		transFunction(2, c) = 2;
-
-	transFunction(2, '_') = 2;
-
-	**/
-
+	// `TransFn<>` is an abbreviation type alias to `TransitionFunction<>`
 
 	// 2. construct the DFA
 	DeterFiniteAutomatan<TransFn<>> automaton{ {2}, transFunction };
@@ -73,7 +43,7 @@ extern int example_dfa() {
 	std::cout << automaton.simulate("x_y_z", FSM_MODE::MM_LONGEST_PREFIX) << "\n";
 	std::cout << automaton.simulate("x_2_3", FSM_MODE::MM_LONGEST_PREFIX) << "\n";
 
-	// all of the above test must succeed and give us relevant info about the strings
+	// all of the above tests must succeed and give us relevant info about the strings
 
 	return 0;
 }

@@ -4,100 +4,105 @@ Getting Started
 
 Welcome! This tutorial highlights the core use cases of FSM library. For more information, you can take a look at the API documentation (get to the homepage and find it).
 
-Simulate a finite state machine
--------------------------------
-
-This is perhaps the only use of this library. To get started, you need to create an FSM object to represent your state machine. 
-
 .. role:: cpp(code)
   :language: cpp
 
+Simulate a finite state machine
+-------------------------------
+
+To get started, you need to create an FSM object to represent your state machine. 
+
 There are a few basic steps:
+
   1. Create a transition table mapping the characters of your alphabet to states of the machine. You do this using the struct :cpp:`FSMTable`.
   2. Create a transition function based on that table (this is optional, as the transition function is just an abstraction over the table). You do this using the template struct :cpp:`TransitionFunction<TableT>`
   3. Create the automatan using the template class :cpp:`DeterFiniteAutomatan<TransitionFunctionT, InputT>`
-  4. No you can simulate your state machine using the :cpp:`simulate` method called on the automatan object.
+  4. Now you can simulate your state machine using the :cpp:`simulate` method called on the automatan object.
 
-The following code  example demonstrates these steps.
+The following code example demonestrates these steps.
 
 DFA Example
 -----------
 
-Let's say you want to make a DFA that matches the regular language of identifiers. In this case, the regex of this machine will be :cpp:`\w+(\w|\d|_)*`
-
+Let's say you want to make a DFA that matches the regular language of identifiers. In this case, the regular language of this machine will be the language specified by the regex :cpp:`\w+(\w|\d|_)*`.
 First, build the state machine table (transition function). Then construct the DFA object.
-Now, you can simulate the DFA using the DFA object 
+Now, you can simulate the DFA using that DFA object.
 
-One last note: observe that everything in this library is within the namespace ``m0st4fa``. This is my special signature. It is a deviation from my name (which is Mostafa).
+.. note::
 
-.. code-block:: c++
-  :name: DFAExample
-  :caption: An example showing how to setup a basic state machine.
+	Notice how everything in this library is within the namespace ``m0st4fa``. This is my special signature. It is a deviation from my name (which is Mostafa).
 
-  #include "DFA.h"
+.. literalinclude:: examples/example_dfa.cpp
+	:language: cpp
+	:caption: Example of building a finite state machine object to run against the identifier grammar of C.
 
-	// for convenience (not recommended in real life)
-	using namespace m0st4fa;
+There are some assumption here. These can be summarized as:
 
-	// 1. building the transition table
+	1. Dead state is always 0 (this is fixed by the library).
+	2. You can choose the initial state. Here I chose it as 1.
+	3. You can also choose the final states. However, this will have an effect on the transition table. I suggest you first create the transition table and then set the final states.
 
-	/**
-	* Dead state is always 0 (fixed by the library).
-	* Initial state will be 1 (chosen by me).
-	* Final states: {2} (you can make it whater you want).
-	**/
+.. note::
+	Alternatively, you can work with :cpp:`TranFn<>` directly.
 
-	FSMTable table{ };
-	// set \w+
-	for (char c = 'a'; c <= 'z'; c++)
-		table(1, c) = 2;
-	for (char c = 'A'; c <= 'Z'; c++)
-		table(1, c) = 2;
+	.. code-block:: cpp
 
-	// set (\w|\d|_)* following \w+
-	for (char c = 'a'; c <= 'z'; c++)
-		table(2, c) = 2;
-	for (char c = 'A'; c <= 'Z'; c++)
-		table(2, c) = 2;
+			TransFn<> transFunction{ };
 
-	for (char c = '0'; c <= '9'; c++)
-		table(2, c) = 2;
+			for (char c = 'a'; c <= 'z'; c++)
+		    transFunction(1, c) = 2;
+		  for (char c = 'A'; c <= 'Z'; c++)
+				transFunction(1, c) = 2;
 
-	table(2, '_') = 2;
+			// set (\w|\d|_)* following \w+
+			for (char c = 'a'; c <= 'z'; c++)
+			  transFunction(2, c) = 2;
+			for (char c = 'A'; c <= 'Z'; c++)
+			  transFunction(2, c) = 2;
 
-  // 2. build the transition function
-	TransFn<> transFunction{ table }; // remember: `TransFn<>` is just an abstraction, the actual table/function is `table`
+			for (char c = '0'; c <= '9'; c++)
+			  transFunction(2, c) = 2;
 
-	/** alternatively, you can set `transFunction` directly:
-		TransFn<> transFunction{ };
+			transFunction(2, '_') = 2;
 
-		for (char c = 'a'; c <= 'z'; c++)
-		transFunction(1, c) = 2;
-	  for (char c = 'A'; c <= 'Z'; c++)
-	  	transFunction(1, c) = 2;
 
-	  // set (\w|\d|_)* following \w+
-	  for (char c = 'a'; c <= 'z'; c++)
-	  	transFunction(2, c) = 2;
-	  for (char c = 'A'; c <= 'Z'; c++)
-	  	transFunction(2, c) = 2;
+Simulation Modes
+----------------
 
-	  for (char c = '0'; c <= '9'; c++)
-	  	transFunction(2, c) = 2;
+When running the :cpp:`simulate` function, the second (optional) argument is the simulation mode. There are three simulation modes. All of them belong to the enum :cpp:`FSM_MODE`.
 
-	  transFunction(2, '_') = 2;
+:cpp:`MM_WHOLE_STRING` : default
+    In this mode, the simulation is run against the whole string. In other words, the entire string must be either accepted or rejected, no matter whether it contains a substring that may be rejected or accepted, respectively.
 
-	**/
+:cpp:`MM_LONGEST_PREFIX`
+    In this mode, the simulation looks for the longest prefix (i.e. substring from the front of the string) that may accept.
 
-	// 3. construct the DFA
-	DeterFiniteAutomatan<TransFn<>> automaton{ {2}, transFunction };
-	// here, the set of final states is {2} and `transFunction` is our transition function.
+:cpp:`MM_LONGEST_SUBSTRING`
+    In this mode, the simulation looks for the longest substring that accepts, no matter whether it is a prefix, a suffix or the entire string. 
 
-	// 4. now, you can simulate the automaton against any "potential identifier" you have and It will return you whether it is an "identifier" as well as other useful information.
-	std::cout << automaton.simulate("x", FSM_MODE::MM_LONGEST_PREFIX) << "\n";
-	std::cout << automaton.simulate("x_y_z", FSM_MODE::MM_LONGEST_PREFIX) << "\n";
-	std::cout << automaton.simulate("x_2_3", FSM_MODE::MM_LONGEST_PREFIX) << "\n";
+Logically, :cpp:`MM_LONGEST_SUBSTRING` has the poorest performance. What it literally does is that it keeps continuously searching for an accepting prefix, until either one is found or the the entire string is rejected. It is like running :cpp:`simulate` with :cpp:`MM_LONGEST_PREFIX` in a loop.
 
-	// all of the above test must succeed and give us relevant info about the strings
+NFA Example
+-----------
 
-That's it!!!  
+This is very similar to using a DFA except that you create an NFA object (instead of a DFA object).
+The grammar of the NFA in this example is the C language identifier lexical grammar (the same used for the DFA of the previous example.).
+Note, however, the difference that exists when mapping states using the transition table. In this case, you map a state to a **set of states**. With a DFA, you map a state to a **single state** (see the `DFA Example`_.). Everything else is almost exactly the same.
+
+.. literalinclude:: examples/example_nfa.cpp
+	:language: cpp
+	:caption: Example of the same identifier grammar using an NFA instead of a DFA. 
+
+Choosing the Type of NFA
+------------------------
+
+There are several types the state machine can take. All of these types are included in the enumerator :cpp:`FSM_TYPE`.
+
+:cpp:`MT_EPSILON_NFA` : default
+	This sets the NFA that the :cpp:`NFA` object simulates to an epsilon NFA.
+
+:cpp:`MT_NON_EPSILON_NFA`
+	This sets the NFA that the :cpp:`NFA` object simulates to a non-epsilon NFA.
+
+:cpp:`MT_DFA`
+	The type of a :cpp:`DFA`. This is set automatically for every :cpp:`DFA` object created.

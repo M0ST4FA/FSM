@@ -2,7 +2,7 @@
 FSM Documentation
 =================
 
-.. doxygenclass:: m0st4fa::FiniteStateMachine
+.. doxygenclass:: m0st4fa::fsm::FiniteStateMachine
   :members:
   :protected-members:
   :undoc-members:
