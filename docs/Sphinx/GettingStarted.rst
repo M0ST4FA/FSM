@@ -7,7 +7,7 @@ Welcome! This tutorial highlights the core use cases of FSM library. For more in
 .. role:: cpp(code)
   :language: cpp
 
-Simulate a finite state machine
+Simulate a Finite State Machine
 -------------------------------
 
 To get started, you need to create an FSM object to represent your state machine. 

@@ -2,7 +2,7 @@
 
 #include "universal.h"
 
-#include "NFA.h"
+#include "fsm/NFA.h"
 
 class NFATest : testing::Test {
 

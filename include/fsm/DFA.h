@@ -30,7 +30,7 @@ namespace m0st4fa::fsm {
 	public:
 		DeterFiniteAutomatan() = default;
 		DeterFiniteAutomatan(const FSMStateSetType& fStates, const TransFuncT& tranFn, FlagsType flags = FSM_FLAG::FF_FLAG_NONE) :
-			FiniteStateMachine<TransFuncT, InputT> {fStates, tranFn, FSMType::MT_DFA, flags}
+			FiniteStateMachine<TransFuncT, InputT> {fStates, tranFn, FSM_TYPE::MT_DFA, flags}
 		{};
 		DeterFiniteAutomatan& operator=(const DeterFiniteAutomatan& rhs) {
 			this->Base::operator=(rhs);

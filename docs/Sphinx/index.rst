@@ -22,8 +22,11 @@ API
 .. toctree::
 
    FSM/FSM
-   FSM/NFA.rst
-   FSM/DFA.rst
+   FSM/Enum
+   FSM/FSMStateSetType
+   FSM/NFA
+   FSM/DFA
+   FSM/Exceptions
 
 Indices and tables
 ==================

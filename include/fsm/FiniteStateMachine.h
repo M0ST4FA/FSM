@@ -15,13 +15,18 @@
 // EXCEPTION TYPES
 namespace m0st4fa::fsm {
 	
-
+	//! @brief The exception thrown when there is an invalid state machine argument.
 	struct InvalidStateMachineArgumentsException : public std::invalid_argument {
 
 		InvalidStateMachineArgumentsException(const std::string& message) : std::invalid_argument{ message} {};
 
 	};
 
+	/**
+	 * @brief The exception thrown when there is an unrecognized simulation mode.
+	 * @see NonDeterFiniteAutomatan<TransFuncT, InputT>::simulate(const InputT& input, FSM_MODE mode) const;
+	 * @see DeterFiniteAutomatan<TransFuncT, InputT>::simulate(const InputT& input, FSM_MODE mode) const;
+	 */
 	struct UnrecognizedSimModeException : public std::runtime_error {
 
 		UnrecognizedSimModeException() : std::runtime_error{ "Unrecognized mode give to `simulate()` function."} {};
@@ -33,7 +38,10 @@ namespace m0st4fa::fsm {
 namespace m0st4fa::fsm {
 
 	// TYPE ALIASES
+	//! @brief The type of a state used by `FSM` objects and their descendants.
 	using FSMStateType = unsigned;
+
+	//! @brief The type of a set of `FSMStateType` objects used by `FSM` objects and their descendants.
 	struct FSMStateSetType {
 		using SetType = std::set<FSMStateType>;
 
@@ -138,24 +146,28 @@ namespace m0st4fa::fsm {
 
 	// ENUMS
 
-	// the mode of simulation.
+	/**
+	 * @brief The simulation mode that the simulation function uses.
+	 * @see NonDeterFiniteAutomatan<TransFuncT, InputT>::simulate(const InputT& input, FSM_MODE mode) const;
+	 * @see DeterFiniteAutomatan<TransFuncT, InputT>::simulate(const InputT& input, FSM_MODE mode) const;
+	 */
 	enum class FSM_MODE {
-		MM_WHOLE_STRING = 0,
+		MM_WHOLE_STRING = 0, //! @brief Simulate the whole string.
 		MM_LONGEST_PREFIX,
 		MM_LONGEST_SUBSTRING,
 		MM_NONE,
 		MM_FSM_MODE_MAX,
 	};
 
-	// the type of the FSM.
-	enum class FSMType {
+	//! @brief The type of the FSM.
+	enum class FSM_TYPE {
 		MT_EPSILON_NFA = 0,
 		MT_NON_EPSILON_NFA,
 		MT_DFA,
 		MT_MACHINE_TYPE_MAX,
 	};
 
-	// flags to customize the behavior of the FSM.
+	//! @brief Flags to customize the behavior of the FSM. Right now, they are not implemented.
 	enum FSM_FLAG {
 		//FF_CASE_INSENSITIVE,
 		//FF_CASE_SENSITIVE,
@@ -266,6 +278,10 @@ namespace m0st4fa::fsm {
 	struct FSMResult;
 	std::ostream& operator<<(const std::ostream&, const FSMResult&);
 
+	/**
+	 * @brief A finite state machine that can check whether a string accepts according to some regular grammar.
+	 * @details This class is designed so as to contain common constructs that a typical state machine, no matter its type, will have; thus, it is mainly designed to be inherited from rather than used directly.
+	 */
 	template <typename TransFuncT, typename InputT = std::string_view>
 	class FiniteStateMachine {
 
@@ -274,16 +290,21 @@ namespace m0st4fa::fsm {
 		
 		// private instance data members
 		FSMStateSetType m_FinalStates{};
-		FSMType m_MachineType;
+		FSM_TYPE m_MachineType;
 		FlagsType m_Flags;
 
 	protected:
 
+		//! @brief Used to log to the console in a standard way, implementing the correct colors.
 		Logger m_Logger;
+		//! @brief The function that will be called on each transition.
 		TransFuncT m_TransitionFunc;
 
 		/**
-		* @return `true` if a state set is a final state set (contains at least one final state); `false` otherwise.
+		* @brief Checks whether `state` is final (contains at least one final state) and returns a boolean indicating it.
+		* @details This is often used to check whether a string is accepted or not (whether we've reached an accepting state).
+		* @param[in] state The state set to check for whether it is final or not.
+		* @return `True` if `state` is a final state set; `False` otherwise.
 		**/
 		inline bool _is_state_final(const FSMStateSetType& state) const
 		{
@@ -296,7 +317,9 @@ namespace m0st4fa::fsm {
 		}
 		
 		/**
-		* @return the final states within a state set (if any)
+		* @brief Searches for the final states within a state set and returns them.
+		* @param[in] state The state set that will be searched.
+		* @return The final states within `state`, if any.
 		**/
 		inline FSMStateSetType _get_final_states_from_state_set(const FSMStateSetType& state) const
 		{
@@ -310,11 +333,21 @@ namespace m0st4fa::fsm {
 		}
 
 		// static
+		//! @brief The start state that will be used by the state machine.
 		static constexpr FSMStateType START_STATE = 1;
 
 	public:
+		//! @brief Default constructor.
 		FiniteStateMachine() = default;
-		FiniteStateMachine(const FSMStateSetType& fStates, const TransFuncT& tranFn, FSMType machineType ,FlagsType flags) :
+
+		/**
+		 * @brief The typical constructor that will be used to construct a state machine.
+		 * @param[in] fStates The final states of the state machine.
+		 * @param[in] tranFn The transition function of the state machine.
+		 * @param[in] machineType The type of the state machine.
+		 * @param[in] flags The flags given to the state machine.
+		 */
+		FiniteStateMachine(const FSMStateSetType& fStates, const TransFuncT& tranFn, FSM_TYPE machineType ,FlagsType flags) :
 			m_FinalStates { fStates }, m_TransitionFunc{ tranFn }, m_MachineType {machineType}, m_Flags{flags}
 			{
 			
@@ -324,13 +357,19 @@ namespace m0st4fa::fsm {
 				throw InvalidStateMachineArgumentsException{ message };
 			};
 
-			if (machineType == FSMType::MT_MACHINE_TYPE_MAX) {
+			if (machineType == FSM_TYPE::MT_MACHINE_TYPE_MAX) {
 				const std::string message = R"(FSM: The machine type is invalid.)";
 				m_Logger.log(LoggerInfo::ERROR, message);
 				throw InvalidStateMachineArgumentsException{ message };
 			};
 		
 		};
+
+		/**
+		 * @brief Copy operator for the state machine.
+		 * @param[in] rhs The right hand side (right argument) of the copy operator.
+		 * @return A reference to the state machine after assignment.
+		 */
 		FiniteStateMachine& operator=(const FiniteStateMachine& rhs) {
 			this->m_TransitionFunc = rhs.m_TransitionFunc;
 			this->m_Flags = rhs.m_Flags;
@@ -340,9 +379,14 @@ namespace m0st4fa::fsm {
 			return *this;
 		}
 
+		//! @brief Gets the final states of the state machine.
 		const FSMStateSetType& getFinalStates() const { return m_FinalStates; };
+
+		//! @brief Gets the flags of the state machine.
 		FlagsType getFlags() const { return m_Flags; };
-		FSMType getMachineType() const { return m_MachineType; };
+
+		//! @brief Gets the type of the state machine. For a DFA, the type is always `FSM_TYPE::MT_DFA`; for an NFA it varies.
+		FSM_TYPE getMachineType() const { return m_MachineType; };
 	};
 
 	struct Indecies {

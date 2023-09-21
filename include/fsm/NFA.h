@@ -40,13 +40,13 @@ namespace m0st4fa::fsm {
 
 	public:
 		NonDeterFiniteAutomatan() = default;
-		NonDeterFiniteAutomatan(const FSMStateSetType& fStates, const TransFuncT& tranFn, FSMType machineType = FSMType::MT_EPSILON_NFA, FlagsType flags = FSM_FLAG::FF_FLAG_NONE) :
+		NonDeterFiniteAutomatan(const FSMStateSetType& fStates, const TransFuncT& tranFn, FSM_TYPE machineType = FSM_TYPE::MT_EPSILON_NFA, FlagsType flags = FSM_FLAG::FF_FLAG_NONE) :
 			FiniteStateMachine<TransFuncT, InputT>{ fStates, tranFn, machineType, flags }
 		{
 
 
 			// if the correct machine type is not passed
-			if (!(machineType == FSMType::MT_EPSILON_NFA || machineType == FSMType::MT_NON_EPSILON_NFA)) {
+			if (!(machineType == FSM_TYPE::MT_EPSILON_NFA || machineType == FSM_TYPE::MT_NON_EPSILON_NFA)) {
 				const std::string message = R"(NonDeterFiniteAutomatan: machineType must be either "MT_EPSILON_NFA" or "MT_NON_EPSILON_NFA")";
 				this->m_Logger.log(LoggerInfo::FATAL_ERROR, message);
 				throw InvalidStateMachineArgumentsException(message);
@@ -73,7 +73,7 @@ namespace m0st4fa::fsm {
 		 * Follow a path through the machine using the characters of the string.
 		 * Break if you hit a dead state since it is dead.
 		*/
-		if (this->getMachineType() == FSMType::MT_NON_EPSILON_NFA) // If the machine is a non-epsilon NFA
+		if (this->getMachineType() == FSM_TYPE::MT_NON_EPSILON_NFA) // If the machine is a non-epsilon NFA
 			for (auto c : input)
 				currState = this->m_TransitionFunc(currState, c);
 		else // If the machine is an epsilon NFA
@@ -104,7 +104,7 @@ namespace m0st4fa::fsm {
 		 * Follow a path through the machine using the characters of the string.
 		 * Keep track of that path in order to be able to find the longest prefix if the whole string is not accepted.
 		*/
-		if (this->getMachineType() == FSMType::MT_NON_EPSILON_NFA)
+		if (this->getMachineType() == FSM_TYPE::MT_NON_EPSILON_NFA)
 			for (; charIndex < input.size(); charIndex++) {
 				const auto c = input.at(charIndex);
 				// get next set of states and update our path through the machine
@@ -234,7 +234,7 @@ namespace m0st4fa::fsm {
 				charIndex--;
 		};
 		
-		if (this->getMachineType() == FSMType::MT_NON_EPSILON_NFA)
+		if (this->getMachineType() == FSM_TYPE::MT_NON_EPSILON_NFA)
 			matchInput();
 		else
 			matchInput(true);

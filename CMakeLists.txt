@@ -42,9 +42,9 @@ endif()
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/external/utility/")
 add_library(fsm 
 "${CMAKE_CURRENT_SOURCE_DIR}/src/FiniteStateMachine.cpp"
-"${CMAKE_CURRENT_SOURCE_DIR}/include/FiniteStateMachine.h"
-"${CMAKE_CURRENT_SOURCE_DIR}/include/DFA.h"
-"${CMAKE_CURRENT_SOURCE_DIR}/include/NFA.h"
+"include/fsm/FiniteStateMachine.h"
+"include/fsm/DFA.h"
+"include/fsm/NFA.h"
 )
 target_include_directories(fsm PUBLIC 
 "${UTILITY_INCLUDE_DIR}" 

@@ -4,7 +4,7 @@
 #include <map>
 #include <algorithm>
 
-#include "DFA.h"
+#include "fsm/DFA.h"
 #include "common.h"
 #include "Logger.h"
 #include "universal.h"

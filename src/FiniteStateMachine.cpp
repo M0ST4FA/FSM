@@ -1,5 +1,5 @@
 
-#include "FiniteStateMachine.h"
+#include "fsm/FiniteStateMachine.h"
 
 std::ostream& m0st4fa::fsm::operator<<(const std::ostream& os, const FSMResult& result)
 {

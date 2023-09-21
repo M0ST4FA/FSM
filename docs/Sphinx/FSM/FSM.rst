@@ -7,4 +7,5 @@ FSM Documentation
   :protected-members:
   :undoc-members:
   :allow-dot-graphs:
-  
+
+----
