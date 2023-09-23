@@ -24,8 +24,8 @@ namespace m0st4fa::fsm {
 
 	/**
 	 * @brief The exception thrown when there is an unrecognized simulation mode.
-	 * @see NonDeterFiniteAutomatan<TransFuncT, InputT>::simulate(const InputT& input, FSM_MODE mode) const;
-	 * @see DeterFiniteAutomatan<TransFuncT, InputT>::simulate(const InputT& input, FSM_MODE mode) const;
+	 * @see NonDeterFiniteAutomaton<TransFuncT, InputT>::simulate(const InputT& input, FSM_MODE mode) const;
+	 * @see DeterFiniteAutomaton<TransFuncT, InputT>::simulate(const InputT& input, FSM_MODE mode) const;
 	 */
 	struct UnrecognizedSimModeException : public std::runtime_error {
 
@@ -35,13 +35,13 @@ namespace m0st4fa::fsm {
 
 }
 
+// TYPE ALIASES
 namespace m0st4fa::fsm {
 
-	// TYPE ALIASES
 	//! @brief The type of a state used by `FSM` objects and their descendants.
 	using FSMStateType = unsigned;
 
-	//! @brief The type of a set of `FSMStateType` objects used by `FSM` objects and their descendants.
+	//! @brief The type of a set of FSMStateType objects used by FiniteStateMachine objects and their descendants.
 	struct FSMStateSetType {
 		using SetType = std::set<FSMStateType>;
 
@@ -111,7 +111,7 @@ namespace m0st4fa::fsm {
 
 	template <typename T>
 	concept StateSetConcept = std::is_same_v<T, FSMStateSetType> || std::is_same_v<T, std::vector<FSMStateType>>;
-	
+
 	template <StateSetConcept T>
 	std::ostream& operator<<(std::ostream& os, const T& set)
 	{
@@ -143,37 +143,74 @@ namespace m0st4fa::fsm {
 	typedef unsigned FlagsType;
 	typedef unsigned long long IndexType;
 
+}
 
-	// ENUMS
-
+// ENUMERATIONS
+namespace m0st4fa::fsm {
 	/**
-	 * @brief The simulation mode that the simulation function uses.
-	 * @see NonDeterFiniteAutomatan<TransFuncT, InputT>::simulate(const InputT& input, FSM_MODE mode) const;
-	 * @see DeterFiniteAutomatan<TransFuncT, InputT>::simulate(const InputT& input, FSM_MODE mode) const;
+	 * @brief The simulation mode that simulation functions use.
+	 * @see NonDeterFiniteAutomaton<TransFuncT, InputT>::simulate(const InputT& input, FSM_MODE mode) const;
+	 * @see DeterFiniteAutomaton<TransFuncT, InputT>::simulate(const InputT& input, FSM_MODE mode) const;
 	 */
 	enum class FSM_MODE {
-		MM_WHOLE_STRING = 0, //! @brief Simulate the whole string.
+
+		//! @brief The simulation returns true if and only if the whole string accepts.
+		MM_WHOLE_STRING = 0,
+
+		//! @brief Look for the longest prefix only. Once found, the string accepts.
 		MM_LONGEST_PREFIX,
+
+		//! @brief Look for the longest substring, which might be the entire string.
 		MM_LONGEST_SUBSTRING,
+
+		//! @brief The default value.
 		MM_NONE,
-		MM_FSM_MODE_MAX,
+
+		//! @brief The number of enumerators that this enumeration has.
+		MM_FSM_MODE_COUNT,
 	};
 
-	//! @brief The type of the FSM.
+	/**
+	 * @brief The type of the FiniteStateMachine.
+	 * @see NonDeterFiniteAutomaton
+	 * @see DeterFiniteAutomaton
+	 */
 	enum class FSM_TYPE {
+		//! @brief This sets the NFA that the NonDeterFiniteAutomaton object simulates to an epsilon NFA.
 		MT_EPSILON_NFA = 0,
+
+		//! @brief This sets the NFA that the NonDeterFiniteAutomaton object simulates to a non-epsilon NFA.
 		MT_NON_EPSILON_NFA,
+
+		//! @brief The type of a DeterFiniteAutomaton. This is set automatically for every DeterFiniteAutomaton object created.
 		MT_DFA,
-		MT_MACHINE_TYPE_MAX,
+
+		//! @brief The number of enumerators that this enumeration has.
+		MT_MACHINE_TYPE_COUNT,
 	};
 
-	//! @brief Flags to customize the behavior of the FSM. Right now, they are not implemented.
+	/**
+	 * @brief Flags to customize the behavior of the FSM.
+	 * @note Right now, they are not implemented.
+	 * @todo Implement the commented out flags (in the source code) in the state machines.
+	 * @see NonDeterFiniteAutomaton
+	 * @see DeterFiniteAutomaton
+	 */
 	enum FSM_FLAG {
 		//FF_CASE_INSENSITIVE,
 		//FF_CASE_SENSITIVE,
-		FF_FLAG_NONE = 0b0000000,
-		FF_FLAG_MAX
+
+		//! @brief The default value.
+		FF_FLAG_NONE = 0,
+
+		//! @brief The number of enumerators that this enumeration has.
+		FF_FLAG_COUNT
 	};
+
+}
+
+// CLASSES & STRUCTURES
+namespace m0st4fa::fsm {
 
 	struct FSMTable {
 		using StateSetVecType = std::vector<FSMStateSetType>;
@@ -357,7 +394,7 @@ namespace m0st4fa::fsm {
 				throw InvalidStateMachineArgumentsException{ message };
 			};
 
-			if (machineType == FSM_TYPE::MT_MACHINE_TYPE_MAX) {
+			if (machineType == FSM_TYPE::MT_MACHINE_TYPE_COUNT) {
 				const std::string message = R"(FSM: The machine type is invalid.)";
 				m_Logger.log(LoggerInfo::ERROR, message);
 				throw InvalidStateMachineArgumentsException{ message };
@@ -389,7 +426,7 @@ namespace m0st4fa::fsm {
 		FSM_TYPE getMachineType() const { return m_MachineType; };
 	};
 
-	struct Indecies {
+	struct Indicies {
 		IndexType start = 0;
 		IndexType end = 0;
 
@@ -400,10 +437,10 @@ namespace m0st4fa::fsm {
 			return toString();
 		}
 
-		bool operator==(const Indecies&) const = default;
+		bool operator==(const Indicies&) const = default;
 
-		Indecies operator+(const size_t num) const {
-			return Indecies{ start + num, end + num };
+		Indicies operator+(const size_t num) const {
+			return Indicies{ start + num, end + num };
 		}
 	};
 	struct FSMResult {
@@ -411,7 +448,7 @@ namespace m0st4fa::fsm {
 		// DATA MEMBERS AND NESTED TYPES
 		bool accepted = false;
 		FSMStateSetType finalState = { FiniteStateMachine<FSMStateType>::START_STATE };
-		Indecies indecies;
+		Indicies indecies;
 		const std::string_view input;
 
 		// UTILITY FUNCTIONS
@@ -421,16 +458,17 @@ namespace m0st4fa::fsm {
 		std::string_view getMatch() const {
 			return this->input.substr(indecies.start, this->size());
 		}
-		Indecies getIndecies() const {
+		Indicies getIndecies() const {
 			return indecies;
 		}
 	};
 
-	// @brief represents a single matched substring.
+	//! @brief Represents a single matched substring.
+	//! @note Not implmeneted yet.
 	template<typename T = FSMStateType>
 	struct Substring {
 		std::vector<T> matchedStates;
-		Indecies indecies;
+		Indicies indecies;
 
 		auto begin() const {
 			return matchedStates.begin();

@@ -15,7 +15,7 @@ namespace m0st4fa::fsm {
 	* The transition function must map states and input to sets of states.
 	*/	
 	template <typename TransFuncT, typename InputT = std::string_view>
-	class NonDeterFiniteAutomatan : public FiniteStateMachine<TransFuncT, InputT> {
+	class NonDeterFiniteAutomaton : public FiniteStateMachine<TransFuncT, InputT> {
 		using Base = FiniteStateMachine<TransFuncT, InputT>;
 		using SubstringType = Substring<FSMStateSetType>;
 
@@ -39,15 +39,15 @@ namespace m0st4fa::fsm {
 		FSMStateSetType _epsilon_closure(const FSMStateSetType&) const;
 
 	public:
-		NonDeterFiniteAutomatan() = default;
-		NonDeterFiniteAutomatan(const FSMStateSetType& fStates, const TransFuncT& tranFn, FSM_TYPE machineType = FSM_TYPE::MT_EPSILON_NFA, FlagsType flags = FSM_FLAG::FF_FLAG_NONE) :
+		NonDeterFiniteAutomaton() = default;
+		NonDeterFiniteAutomaton(const FSMStateSetType& fStates, const TransFuncT& tranFn, FSM_TYPE machineType = FSM_TYPE::MT_EPSILON_NFA, FlagsType flags = FSM_FLAG::FF_FLAG_NONE) :
 			FiniteStateMachine<TransFuncT, InputT>{ fStates, tranFn, machineType, flags }
 		{
 
 
 			// if the correct machine type is not passed
 			if (!(machineType == FSM_TYPE::MT_EPSILON_NFA || machineType == FSM_TYPE::MT_NON_EPSILON_NFA)) {
-				const std::string message = R"(NonDeterFiniteAutomatan: machineType must be either "MT_EPSILON_NFA" or "MT_NON_EPSILON_NFA")";
+				const std::string message = R"(NonDeterFiniteAutomaton: machineType must be either "MT_EPSILON_NFA" or "MT_NON_EPSILON_NFA")";
 				this->m_Logger.log(LoggerInfo::FATAL_ERROR, message);
 				throw InvalidStateMachineArgumentsException(message);
 			};
@@ -60,11 +60,11 @@ namespace m0st4fa::fsm {
 	};
 
 	template <typename TransFuncT, typename InputT = std::string>
-	using NFA = NonDeterFiniteAutomatan<TransFuncT, InputT>;
+	using NFA = NonDeterFiniteAutomaton<TransFuncT, InputT>;
 
 	// IMPLEMENTATIONS
 	template<typename TransFuncT, typename InputT>
-	FSMResult NonDeterFiniteAutomatan<TransFuncT, InputT>::_simulate_whole_string(const InputT& input) const
+	FSMResult NonDeterFiniteAutomaton<TransFuncT, InputT>::_simulate_whole_string(const InputT& input) const
 	{
 		constexpr FSMStateType startState = FiniteStateMachine<TransFuncT, InputT>::START_STATE;
 		FSMStateSetType currState = { startState };
@@ -89,7 +89,7 @@ namespace m0st4fa::fsm {
 	}
 
 	template<typename TransFuncT, typename InputT>
-	FSMResult NonDeterFiniteAutomatan<TransFuncT, InputT>::_simulate_longest_prefix(const InputT& input) const
+	FSMResult NonDeterFiniteAutomaton<TransFuncT, InputT>::_simulate_longest_prefix(const InputT& input) const
 	{
 		constexpr FSMStateType startState = FiniteStateMachine<TransFuncT, InputT>::START_STATE;
 		std::vector<FSMStateSetType> matchedStates = { {startState} };
@@ -136,7 +136,7 @@ namespace m0st4fa::fsm {
 	* @return the result of the simulation.
 	**/
 	template<typename TransFuncT, typename InputT>
-	FSMResult NonDeterFiniteAutomatan<TransFuncT, InputT>::_simulate_longest_substring(const InputT& input) const
+	FSMResult NonDeterFiniteAutomaton<TransFuncT, InputT>::_simulate_longest_substring(const InputT& input) const
 	{
 		constexpr FSMStateType startState = FiniteStateMachine<TransFuncT, InputT>::START_STATE;
 		/**
@@ -164,7 +164,7 @@ namespace m0st4fa::fsm {
 	* @return true if a prefix matches, false otherwise. It also updates `charIndex` to the index of the last character of that prefix.
 	**/
 	template<typename TransFuncT, typename InputT>
-	bool NonDeterFiniteAutomatan<TransFuncT, InputT>::_check_accepted_longest_prefix(const std::vector<FSMStateSetType>& stateSet, size_t& charIndex) const
+	bool NonDeterFiniteAutomaton<TransFuncT, InputT>::_check_accepted_longest_prefix(const std::vector<FSMStateSetType>& stateSet, size_t& charIndex) const
 	{
 		constexpr FSMStateType startState = FiniteStateMachine<TransFuncT, InputT>::START_STATE;
 		/**
@@ -193,7 +193,7 @@ namespace m0st4fa::fsm {
 	* @return return whether the substring is accepted.
 	**/
 	template<typename TransFuncT, typename InputT>
-	bool NonDeterFiniteAutomatan<TransFuncT, InputT>::_check_accepted_substring(const InputT& input, std::vector<FSMStateSetType>& matchedStates, size_t startIndex, size_t& charIndex) const	
+	bool NonDeterFiniteAutomaton<TransFuncT, InputT>::_check_accepted_substring(const InputT& input, std::vector<FSMStateSetType>& matchedStates, size_t startIndex, size_t& charIndex) const	
 	{
 
 		assert(charIndex == startIndex);
@@ -247,7 +247,7 @@ namespace m0st4fa::fsm {
 	* @brief records all matched substrings in `input` if any and updates all necessary variables given to as input.
 	**/
 	template<typename TransFuncT, typename InputT>
-	inline void NonDeterFiniteAutomatan<TransFuncT, InputT>::_record_matched_substrings(const InputT input, size_t& start, size_t& charIndex, std::vector<FSMStateSetType>& matchedStates, std::vector<SubstringType>& substrings) const
+	inline void NonDeterFiniteAutomaton<TransFuncT, InputT>::_record_matched_substrings(const InputT input, size_t& start, size_t& charIndex, std::vector<FSMStateSetType>& matchedStates, std::vector<SubstringType>& substrings) const
 	{
 		for (; charIndex < input.size(); charIndex = ++start) {
 
@@ -273,7 +273,7 @@ namespace m0st4fa::fsm {
 	* @return FSMResult object representing the longest matching substring from the set of substrings given to it.
 	**/
 	template<typename TransFuncT, typename InputT>
-	inline FSMResult NonDeterFiniteAutomatan<TransFuncT, InputT>::_get_longest_substring_from_matched_sets(const InputT input, const std::vector<SubstringType>& substrings) const {
+	inline FSMResult NonDeterFiniteAutomaton<TransFuncT, InputT>::_get_longest_substring_from_matched_sets(const InputT input, const std::vector<SubstringType>& substrings) const {
 
 		const SubstringType* longest = nullptr;
 		size_t size = 0;
@@ -304,7 +304,7 @@ namespace m0st4fa::fsm {
 	};
 
 	template<typename TransFuncT, typename InputT>
-	FSMStateSetType NonDeterFiniteAutomatan<TransFuncT, InputT>::_epsilon_closure(const FSMStateSetType& set) const
+	FSMStateSetType NonDeterFiniteAutomaton<TransFuncT, InputT>::_epsilon_closure(const FSMStateSetType& set) const
 	{
 		FSMStateSetType res{set};
 
@@ -347,7 +347,7 @@ namespace m0st4fa::fsm {
 	* this function can throw an exception of type `UnrecognizedSimModeException` in case `mode` is not recognized.
 	**/
 	template<typename TransFuncT, typename InputT>
-	inline FSMResult NonDeterFiniteAutomatan<TransFuncT, InputT>::simulate(const InputT& input, FSM_MODE mode) const
+	inline FSMResult NonDeterFiniteAutomaton<TransFuncT, InputT>::simulate(const InputT& input, FSM_MODE mode) const
 	{
 		switch (mode) {
 		case FSM_MODE::MM_WHOLE_STRING:
