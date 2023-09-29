@@ -5,8 +5,8 @@
 #include <algorithm>
 
 #include "fsm/DFA.h"
-#include "common.h"
-#include "Logger.h"
+#include "utility/common.h"
+#include "utility/Logger.h"
 #include "universal.h"
 
 struct FSMSharedInfo {
@@ -16,7 +16,7 @@ protected:
 	using FSMStateSetType = m0st4fa::fsm::FSMStateSetType;
 	using FSMTableType = m0st4fa::fsm::FSMTable;
 	using TranFn = m0st4fa::fsm::TransFn<FSMTableType>;
-	using DFAType = m0st4fa::fsm::DeterFiniteAutomatan<TranFn>;
+	using DFAType = m0st4fa::fsm::DeterFiniteAutomaton<TranFn>;
 	using Result = m0st4fa::fsm::FSMResult;
 
 	template<typename T = FSMTableType>

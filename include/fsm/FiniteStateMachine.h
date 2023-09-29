@@ -8,9 +8,9 @@
 #include <iostream>
 #include <source_location>
 #include <functional>
-
-#include "Logger.h"
 #include <concepts>
+
+#include "utility/Logger.h"
 
 // EXCEPTION TYPES
 namespace m0st4fa::fsm {
@@ -35,13 +35,19 @@ namespace m0st4fa::fsm {
 
 }
 
-// TYPE ALIASES
+// TYPE ALIASES AND CONCEPTS (AND A RELATED STRUCT)
 namespace m0st4fa::fsm {
 
-	//! @brief The type of a state used by `FSM` objects and their descendants.
+	/**
+	 * @brief A finite state machine state. 
+	 * @remark It is used by FiniteStateMachine objects and their descendants (objects of derived classes).
+	 */
 	using FSMStateType = unsigned;
 
-	//! @brief The type of a set of FSMStateType objects used by FiniteStateMachine objects and their descendants.
+	/**
+	 * @brief A set of m0st4fa::fsm::FSMStateType objects. 
+	 * @remark It is used by FiniteStateMachine objects and their descendants (objects of derived classes).
+	 */
 	struct FSMStateSetType {
 		using SetType = std::set<FSMStateType>;
 
@@ -109,6 +115,18 @@ namespace m0st4fa::fsm {
 
 	};
 
+	/**
+	 * @brief Flags given to finite state machine upon initialization.
+	 * @note Not implemented yet.
+	 */
+	using FlagsType = unsigned;
+
+	//! @brief Index into some collection.
+	using IndexType = unsigned long long;
+
+	/**
+	 * @brief Ensure that `T` is the same as m0st4fa::fsm::FSMStateSetType or is the same as std::vector<m0st4fa::fsm::FSMStateType>.
+	 */
 	template <typename T>
 	concept StateSetConcept = std::is_same_v<T, FSMStateSetType> || std::is_same_v<T, std::vector<FSMStateType>>;
 
@@ -139,9 +157,6 @@ namespace m0st4fa::fsm {
 
 		return os;
 	}
-
-	typedef unsigned FlagsType;
-	typedef unsigned long long IndexType;
 
 }
 
@@ -212,89 +227,158 @@ namespace m0st4fa::fsm {
 // CLASSES & STRUCTURES
 namespace m0st4fa::fsm {
 
-	struct FSMTable {
+	/**
+	 * @brief A transition table used to decide on which states comes next when simulating.
+	 */
+	class FSMTable {
+		
+	protected:
+		/**
+		 * @brief The type of a vector of FSMStateSetType.
+		 * @remark Used here as the type of a table entry. It stores the set of states mapped to a given state.
+		 */
 		using StateSetVecType = std::vector<FSMStateSetType>;
+
+		/**
+		 * @brief The internal type of the table (the table is an abstraction over this type).
+		 * @note I've chosen the internal type of the table to be a std::vector instead of a std::map or something else, because I wanted performance, given that the typical range of states will not be large. For this reason, it is advisable to have a set of states that falls within a tight range, as this will influence the size of the table used by the machine.
+		 */
 		using VecType = std::vector<StateSetVecType>;
+
+		//! @brief The type of an non-constant iterator.
 		using ItType = VecType::iterator;
+		//! @brief The type of a constant iterator.
 		using ConstItType = VecType::const_iterator;
 
-		mutable VecType table;
+	private:
+		mutable VecType m_Table;
 		
+	public:
+
+		/**
+		 * @brief Accesses the table entry indexed by `state` and `input`.
+		 * @param[in] state The state whose corresponding entry will be accessed.
+		 * @param input The input (typically character) used to access the entry corresponding to a given state.
+		 * @return A reference to the table entry indexed by `state` and `input`.
+		 */
 		template<typename InputT = char>
-		FSMStateSetType& operator()(const FSMStateType& state, const InputT c) noexcept(true) {
+		FSMStateSetType& operator()(const FSMStateType& state, const InputT input) noexcept(true) {
 			
-			if (table.size() <= state)
-				table.resize(state + 1);
+			if (m_Table.size() <= state)
+				m_Table.resize(state + 1);
 			
-			std::vector<FSMStateSetType>& stateMap = table.at(state);
+			std::vector<FSMStateSetType>& stateMap = m_Table.at(state);
 
-			if (stateMap.size() <= c)
-				stateMap.resize(c + 1);
+			if (stateMap.size() <= input)
+				stateMap.resize(input + 1);
 
-			return stateMap.at(c);
+			return stateMap.at(input);
 		}
 
+		/**
+		 * @brief Accesses the table entry indexed by `state` and `input`.
+		 * @param[in] state The state whose corresponding entry will be accessed.
+		 * @param input The input (typically character) used to access the entry corresponding to a given state.
+		 * @return A constant reference to the table entry indexed by `state` and `input`.
+		 */
 		template<typename InputT = char>
-		const FSMStateSetType& operator()(const FSMStateType& state, const InputT c) const {
-			if (table.size() <= state)
-				table.resize(state + 1);
+		const FSMStateSetType& operator()(const FSMStateType& state, const InputT input) const noexcept(true) {
+			if (m_Table.size() <= state)
+				m_Table.resize(state + 1);
 
-			std::vector<FSMStateSetType>& stateMap = table.at(state);
+			std::vector<FSMStateSetType>& stateMap = m_Table.at(state);
 
-			if (stateMap.size() <= c)
-				stateMap.resize(c + 1);
+			if (stateMap.size() <= input)
+				stateMap.resize(input + 1);
 
-			return stateMap.at(c);
+			// Impossible to throw an exception, as sizes of both dimensions have been already checked.
+			return stateMap.at(input);
 		}
 
+		/**
+		 * @brief Accesses the set of states corresponding to `state` (on all of its characters).
+		 * @param[in] state The state used to index the table.
+		 * @return A *vector* of *sets of states*. `state` is mapped to each set of states in this vector via some input character (you can get the set of states corresponding to a given input (assuming it exists) by indexing the vector). 
+		 */
 		const StateSetVecType& operator[](const FSMStateType& state) const {
-			if (table.size() <= state)
-				table.resize(state + 1);
+			if (m_Table.size() <= state)
+				m_Table.resize(state + 1);
 
-			return table.at(state);
+			return m_Table.at(state);
 		}
 
+		/**
+		 * @brief Same as operator[](const FSMStateType& state) const.
+		 */
 		const StateSetVecType& at(const FSMStateType& state) const {
-			if (table.size() <= state)
-				table.resize(state + 1);
+			if (m_Table.size() <= state)
+				m_Table.resize(state + 1);
 
-			return table.at(state);
+			return m_Table.at(state);
 		}
 
+		//! @return Iterator to the beginning.
 		ItType begin() {
-			return table.begin();
+			return m_Table.begin();
 		}
+		//! @return Constant iterator to the beginning.
 		ConstItType begin() const {
-			return table.begin();
+			return m_Table.begin();
 		}
 
+		//! @return Iterator to the end.
 		ItType end() {
-			return table.end();
+			return m_Table.end();
 		}
+		//! @return Constant iterator the end.
 		ConstItType end() const {
-			return table.end();
+			return m_Table.end();
 		}
 
 	};
 
+	/**
+	 * @brief A transition function used to decide on which states comes next when simulating
+	 * @note This is just an abstraction over m0st4fa::fsm::FSMTable. It is advisable to use this directly instead of building a m0st4fa::fsm::FSMTable object first and then passing it to this.
+	 */
 	template <typename TableT = FSMTable>
-	struct TransitionFunction {
-		TableT m_Table;
+	class TransitionFunction {
+
+		TableT m_Table{};
 		
+	public:
 		TransitionFunction() = default;
 		TransitionFunction(const TableT& table) : m_Table(table) {}
 		
+		/**
+		 * @brief Accesses the table entry indexed by `state` and `input`.
+		 * @param[in] state The state whose corresponding entry will be accessed.
+		 * @param input The input used to access the entry corresponding to a given state.
+		 * @return A reference to the table entry indexed by `state` and `input`.
+		 */
 		template<typename InputT>
 		FSMStateSetType& operator()(const FSMStateType& state, const InputT c) noexcept(true) {
 			return this->m_Table(state, c);
 		}
 
+		/**
+		 * @brief Accesses the table entry indexed by `state` and `input`.
+		 * @param[in] state The state whose corresponding entry will be accessed.
+		 * @param input The input used to access the entry corresponding to a given state.
+		 * @return A copy of the table entry indexed by `state` and `input`.
+		 */
 		template <typename InputT>
-		FSMStateSetType operator()(const FSMStateType state, const InputT input) const {
-
-			return m_Table(state, input);
+		FSMStateSetType operator()(const FSMStateType state, const InputT input) const noexcept(true) {
+			return this->m_Table(state, input);
 		}
 
+		/**
+		 * @brief Accesses the table entries indexed by every state in `stateSet` set and `input`.
+		 * @details You can think of this as a loop over every state in `stateSet`. Entries are accessed in each iteration using the state from `stateSet` corresponding to that iteration and `input`. The entires are then collected in a FSMStateSetType object and returned.
+		 * @param[in] stateSet The set of states whose corresponding entires will be accessed.
+		 * @param input The input used to access the entry corresponding to a given state.
+		 * @return A collection of table entries corresponding to the table entries indexed by every state in `stateSet` set and `input`.
+		 */
 		template <typename InputT>
 		FSMStateSetType operator()(const FSMStateSetType& stateSet, const InputT input) const {
 			FSMStateSetType res;
@@ -448,27 +532,29 @@ namespace m0st4fa::fsm {
 		// DATA MEMBERS AND NESTED TYPES
 		bool accepted = false;
 		FSMStateSetType finalState = { FiniteStateMachine<FSMStateType>::START_STATE };
-		Indicies indecies;
+		Indicies indicies;
 		const std::string_view input;
 
 		// UTILITY FUNCTIONS
 		size_t size() const {
-			return indecies.end - indecies.start;
+			return indicies.end - indicies.start;
 		}
 		std::string_view getMatch() const {
-			return this->input.substr(indecies.start, this->size());
+			return this->input.substr(indicies.start, this->size());
 		}
 		Indicies getIndecies() const {
-			return indecies;
+			return indicies;
 		}
 	};
 
-	//! @brief Represents a single matched substring.
-	//! @note Not implmeneted yet.
+	/**
+	 * @brief Represents a single matched substring.
+	 * @note Not implemented yet.
+	 */
 	template<typename T = FSMStateType>
 	struct Substring {
 		std::vector<T> matchedStates;
-		Indicies indecies;
+		Indicies indicies;
 
 		auto begin() const {
 			return matchedStates.begin();

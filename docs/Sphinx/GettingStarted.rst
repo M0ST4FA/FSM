@@ -2,7 +2,7 @@
 Getting Started
 ===============
 
-Welcome! This tutorial highlights the core use cases of FSM library. For more information, you can take a look at the API documentation (get to the homepage and find it).
+Welcome! This tutorial highlights the core use cases of FSM library. For more information, you can take a look at the API documentation (you can start reading the API at the `FSM-Documentation`_).
 
 .. role:: cpp(code)
   :language: cpp

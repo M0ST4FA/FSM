@@ -24,8 +24,9 @@ API
    FSM/FSM
    FSM/Enum
    FSM/FSMStateSetType
-   FSM/NFA
+   FSM/TranFn
    FSM/DFA
+   FSM/NFA
    FSM/Exceptions
 
 Indices and tables

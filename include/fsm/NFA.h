@@ -291,8 +291,8 @@ namespace m0st4fa::fsm {
 		size_t end = 0;
 
 		if (longest) {
-			start = longest->indecies.start;
-			end = longest->indecies.end;
+			start = longest->indicies.start;
+			end = longest->indicies.end;
 		}
 
 		// get the final states we've reached

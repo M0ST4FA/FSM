@@ -5,7 +5,7 @@
 
 #include "fsm/FiniteStateMachine.h"
 #include "fsm/DFA.h"
-#include "common.h"
+#include "utility/common.h"
 #include "universal.h"
 
 template<typename FSMType>
@@ -17,7 +17,7 @@ protected:
 	using FSMStateSetType = m0st4fa::fsm::FSMStateSetType;
 	using TableType = m0st4fa::fsm::FSMTable;
 	using TranFn = m0st4fa::fsm::TransFn<TableType>;
-	using DFAType = m0st4fa::fsm::DeterFiniteAutomatan<TranFn>;
+	using DFAType = m0st4fa::fsm::DeterFiniteAutomaton<TranFn>;
 	using Result = m0st4fa::fsm::FSMResult;
 
 	void SetUp() override {
@@ -30,29 +30,29 @@ protected:
 
 public:
 
-	void testFSMResultPositive(const Result& res, bool accepted, std::pair<size_t, size_t> indecies, std::source_location srcLoc = std::source_location::current()) const {
+	void testFSMResultPositive(const Result& res, bool accepted, std::pair<size_t, size_t> indicies, std::source_location srcLoc = std::source_location::current()) const {
 		std::string errmsg = std::format(ANSI_ERR_COLOR"{}" ANSI_RESET_ALL, m0st4fa::toString(srcLoc, true));
 		if (not res.input.empty()) {
 			errmsg += " input string -> " + std::string(res.input);
 		};
 
 		EXPECT_TRUE(res.accepted == accepted) << errmsg;
-		EXPECT_EQ(res.indecies.start, indecies.first) << errmsg;
-		EXPECT_EQ(res.indecies.end, indecies.second) << errmsg;
+		EXPECT_EQ(res.indicies.start, indicies.first) << errmsg;
+		EXPECT_EQ(res.indicies.end, indicies.second) << errmsg;
 
 	}
 
-	void testFSMResultNegative(const Result& res, bool accepted, std::pair<size_t, size_t> indecies, std::source_location srcLoc = std::source_location::current()) const {
+	void testFSMResultNegative(const Result& res, bool accepted, std::pair<size_t, size_t> indicies, std::source_location srcLoc = std::source_location::current()) const {
 		std::string errmsg = std::format(ANSI_ERR_COLOR"{}" ANSI_RESET_ALL, m0st4fa::toString(srcLoc, true));
 		if (not res.input.empty()) {
 			errmsg += " input string -> " + std::string(res.input);
 		};
 
-		bool condition = (res.accepted == accepted) and (res.indecies.start == indecies.first) and (res.indecies.end == indecies.second);
+		bool condition = (res.accepted == accepted) and (res.indicies.start == indicies.first) and (res.indicies.end == indicies.second);
 
 		EXPECT_FALSE(condition) << errmsg;
-	/*	EXPECT_FALSE(res.indecies.start == indecies.first) << errmsg;
-		EXPECT_FALSE(res.indecies.end == indecies.second) << errmsg;*/
+	/*	EXPECT_FALSE(res.indicies.start == indicies.first) << errmsg;
+		EXPECT_FALSE(res.indicies.end == indicies.second) << errmsg;*/
 	}
 
 };

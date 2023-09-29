@@ -8,4 +8,3 @@ NFA Documentation
   :undoc-members:
   :allow-dot-graphs:
   
-

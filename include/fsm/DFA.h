@@ -4,14 +4,15 @@
 #include <ranges>
 #include <assert.h>
 
+
+// DECLARATIONS
 namespace m0st4fa::fsm {
 
-	// DECLARATIONS
 	/**
 	* @brief A DFA that can be used to match strings.
 	*/
 	template <typename TransFuncT, typename InputT = std::string_view>
-	class DeterFiniteAutomaton: public FiniteStateMachine<TransFuncT, InputT> {
+	class DeterFiniteAutomaton : public FiniteStateMachine<TransFuncT, InputT> {
 		using Base = FiniteStateMachine<TransFuncT, InputT>;
 		using SubstringType = Substring<FSMStateType>;
 
@@ -25,11 +26,11 @@ namespace m0st4fa::fsm {
 
 		bool _check_accepted_longest_prefix(const std::vector<FSMStateType>&, size_t&) const;
 		bool _check_accepted_substring(const InputT&, std::vector<FSMStateType>&, size_t, size_t&) const;
-		
+
 	public:
 		DeterFiniteAutomaton() = default;
 		DeterFiniteAutomaton(const FSMStateSetType& fStates, const TransFuncT& tranFn, FlagsType flags = FSM_FLAG::FF_FLAG_NONE) :
-			FiniteStateMachine<TransFuncT, InputT> {fStates, tranFn, FSM_TYPE::MT_DFA, flags}
+			FiniteStateMachine<TransFuncT, InputT>{ fStates, tranFn, FSM_TYPE::MT_DFA, flags }
 		{};
 		DeterFiniteAutomaton& operator=(const DeterFiniteAutomaton& rhs) {
 			this->Base::operator=(rhs);
@@ -37,14 +38,22 @@ namespace m0st4fa::fsm {
 		}
 
 		FSMResult simulate(const InputT&, const FSM_MODE) const;
-		
+
 	};
 
 	template <typename TransFuncT, typename InputT = std::string>
 	using DFAType = DeterFiniteAutomaton<TransFuncT, InputT>;
-	
 
-	// IMPLEMENTATIONS
+}
+
+// IMPLEMENTATIONS
+namespace m0st4fa::fsm {
+
+	/**
+	 * @brief Simulate against whole string. The simulation returns true if and only if the whole string accepts.
+	 * @param[in] input The input string against which the simulation will run.
+	 * @return FSMResult object that indicates the result of the simulation.
+	 */
 	template<typename TransFuncT, typename InputT>
 	FSMResult DeterFiniteAutomaton<TransFuncT, InputT>::_simulate_whole_string(const InputT& input) const
 	{
@@ -67,7 +76,11 @@ namespace m0st4fa::fsm {
 		return FSMResult(accepted, accepted ? FSMStateSetType{currState} : FSMStateSetType{startState}, { 0, accepted ? input.size() : 0 }, input);
 	}
 
-
+	/**
+	 * @brief Look for the longest prefix only. Once found, the string accepts.
+	 * @param[in] input The input string against which the simulation will run.
+	 * @return FSMResult object that indicates the result of the simulation.
+	 */
 	template<typename TransFuncT, typename InputT>
 	FSMResult DeterFiniteAutomaton<TransFuncT, InputT>::_simulate_longest_prefix(const InputT& input) const
 	{
@@ -119,6 +132,11 @@ namespace m0st4fa::fsm {
 		return FSMResult(accepted, finalStates, { start, end }, input);
 	}
 
+	/**
+	 * @brief Look for the longest substring, which might be the entire string.
+	 * @param[in] input The input string against which the simulation will run.
+	 * @return FSMResult object that indicates the result of the simulation.
+	 */
 	template<typename TransFuncT, typename InputT>
 	FSMResult DeterFiniteAutomaton<TransFuncT, InputT>::_simulate_longest_substring(const InputT& input) const
 	{
@@ -170,8 +188,8 @@ namespace m0st4fa::fsm {
 				}
 			}
 
-			const size_t startIndex = longest->indecies.start;
-			const size_t endIndex = longest->indecies.end;
+			const size_t startIndex = longest->indicies.start;
+			const size_t endIndex = longest->indicies.end;
 
 			// get the final states we've reached
 			const FSMStateType finalState = matchedStates.back();
@@ -214,11 +232,10 @@ namespace m0st4fa::fsm {
 	}
 
 	/**
-	* @brief checks whether the substring starting from `startIndex` accepts.
-	* @param 
-		* `matchedStates`: set to the path taken through the machine.
-		* `charIndex`: the index of the last checked character (the last that didn't result in a dead state).
-	* @return whether a substring starting from startIndex has accepted
+	* @brief Checks whether the substring starting from `startIndex` accepts.
+	* @param[out] matchedStates Set to the path taken through the machine.
+	* @param[in] charIndex The index of the last checked character (the last that didn't result in a dead state).
+	* @return `true` if a substring starting from startIndex has accepted; `false` otherwise.
 	**/
 	template<typename TransFuncT, typename InputT>
 	bool DeterFiniteAutomaton<TransFuncT, InputT>::_check_accepted_substring(const InputT& input, std::vector<FSMStateType>& matchedStates, size_t startIndex, size_t& charIndex) const
@@ -264,6 +281,9 @@ namespace m0st4fa::fsm {
 
 	/**
 	* @brief Simulate the given input string using the given simulation method.
+	* @param[in] input The input string to be simulated.
+	* @param[in] mode The simulation mode.
+	* @return FSMResult object indicating the result of the simulation.
 	*/
 	template<typename TransFuncT, typename InputT>
 	inline FSMResult DeterFiniteAutomaton<TransFuncT, InputT>::simulate(const InputT& input, const FSM_MODE mode) const

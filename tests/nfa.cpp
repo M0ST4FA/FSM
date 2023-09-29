@@ -36,7 +36,7 @@ class NFATest : testing::Test {
 using FSMStateSetType = m0st4fa::fsm::FSMStateSetType;
 using TableType = m0st4fa::fsm::FSMTable;
 using TranFn = m0st4fa::fsm::TransFn<TableType>;
-using NFA = m0st4fa::fsm::NonDeterFiniteAutomatan<TranFn>;
+using NFA = m0st4fa::fsm::NonDeterFiniteAutomaton<TranFn>;
 using Result = m0st4fa::fsm::FSMResult;
 
 INSTANTIATE_TYPED_TEST_SUITE_P(NFATests, FSMTests, NFA);
