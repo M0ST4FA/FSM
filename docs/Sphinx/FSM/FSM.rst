@@ -16,6 +16,12 @@ The Main Class
 Representing the Result of Simulations
 --------------------------------------
 
+.. doxygenstruct:: m0st4fa::fsm::Indicies
+  :members:
+  :protected-members:
+  :undoc-members:
+  :allow-dot-graphs:
+
 .. doxygenstruct:: m0st4fa::fsm::FSMResult
   :members:
   :protected-members:

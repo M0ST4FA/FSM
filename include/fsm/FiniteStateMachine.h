@@ -510,38 +510,86 @@ namespace m0st4fa::fsm {
 		FSM_TYPE getMachineType() const { return m_MachineType; };
 	};
 
+	/**
+	 * @brief Indicies of matches by an FSM.
+	 */
 	struct Indicies {
-		IndexType start = 0;
-		IndexType end = 0;
+		/**
+		 * @brief The index of the first-matched letter.
+		 */
+		IndexType start = 0; 
+		/**
+		 * @brief The index of the letter after the last-matched letter.
+		 */
+		IndexType end = 0;   
 
-		std::string toString() const {
-			return std::format("({}, {})", start, end);
-		}
+		/**
+		 * @brief Converts this Indicies object to a string.
+		 */
 		operator std::string() const {
 			return toString();
 		}
+		/**
+		 * @brief Converts this Indicies object to a string. Uses the `Indicies::operator std::string() const` behind the scenes.
+		 */
+		std::string toString() const {
+			return std::format("({}, {})", start, end);
+		}
 
+		/**
+		 * @brief Compares this Indicies object with another for equality.
+		 */
 		bool operator==(const Indicies&) const = default;
 
+		/**
+		 * @brief Creates a new Indicies object whose indicies equal the indicies of this object + `num`.
+		 * @param[in] num The number that will offset `start` and `end` of this Indicies object in the new object.
+		 * @return A new Indicies object with `start = this->start + num` and `end = this->end + num`.
+		 */
 		Indicies operator+(const size_t num) const {
 			return Indicies{ start + num, end + num };
 		}
 	};
+
+	/**
+	 * @brief The result of a simulation by some state machine against some string.
+	 */
 	struct FSMResult {
 
 		// DATA MEMBERS AND NESTED TYPES
+		/**
+		 * @brief Whether the string was accepted by simulation. `true` if the string was accepted; `false` otherwise.
+		 */
 		bool accepted = false;
+		/**
+		 * @brief The final states used for this simulation.
+		 */
 		FSMStateSetType finalState = { FiniteStateMachine<FSMStateType>::START_STATE };
+		/**
+		 * @brief The indicies of the accepting string, if any. If no string accepts, both indicies will be 0.
+		 */
 		Indicies indicies;
+		/**
+		 * @brief The input string that the simulation was performed against.
+		 */
 		const std::string_view input;
 
 		// UTILITY FUNCTIONS
+		/**
+		 * @brief Returns the size of the matched string, if any. In case no input matches, it returns 0.
+		 */
 		size_t size() const {
 			return indicies.end - indicies.start;
 		}
+		/**
+		 * @brief Gets (extracts) the matched string from the input against which the match was performed.
+		 */
 		std::string_view getMatch() const {
 			return this->input.substr(indicies.start, this->size());
 		}
+		/**
+		 * @brief Gets the indicies of the match.
+		 */
 		Indicies getIndecies() const {
 			return indicies;
 		}
