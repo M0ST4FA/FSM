@@ -7,3 +7,7 @@ DFA Documentation
   :protected-members:
   :undoc-members:
   :allow-dot-graphs:
+
+----
+
+.. doxygentypedef:: m0st4fa::fsm::DFA

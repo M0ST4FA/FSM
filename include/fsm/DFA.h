@@ -28,10 +28,22 @@ namespace m0st4fa::fsm {
 		bool _check_accepted_substring(const InputT&, std::vector<FSMStateType>&, size_t, size_t&) const;
 
 	public:
+		/**
+		 * @brief Default constructor.
+		 */
 		DeterFiniteAutomaton() = default;
+		/**
+		 * @brief Initialize a new DFA object.
+		 * @param[in] fStates The set of final states of the new DFA object.
+		 * @param[in] tranFn The transition function of the new DFA object.
+		 * @param[in] flags The flags given to the new DFA object.
+		 */
 		DeterFiniteAutomaton(const FSMStateSetType& fStates, const TransFuncT& tranFn, FlagsType flags = FSM_FLAG::FF_FLAG_NONE) :
 			FiniteStateMachine<TransFuncT, InputT>{ fStates, tranFn, FSM_TYPE::MT_DFA, flags }
 		{};
+		/**
+		 * @brief Copy assignment operator for DFA objects.
+		 */
 		DeterFiniteAutomaton& operator=(const DeterFiniteAutomaton& rhs) {
 			this->Base::operator=(rhs);
 			return *this;
@@ -41,8 +53,11 @@ namespace m0st4fa::fsm {
 
 	};
 
+	/**
+	 * @brief An alias type for DeterFiniteAutomaton.
+	 */
 	template <typename TransFuncT, typename InputT = std::string>
-	using DFAType = DeterFiniteAutomaton<TransFuncT, InputT>;
+	using DFA = DeterFiniteAutomaton<TransFuncT, InputT>;
 
 }
 
