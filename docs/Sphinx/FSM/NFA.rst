@@ -8,3 +8,6 @@ NFA Documentation
   :undoc-members:
   :allow-dot-graphs:
   
+----
+
+.. doxygentypedef:: m0st4fa::fsm::NFA

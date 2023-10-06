@@ -596,8 +596,8 @@ namespace m0st4fa::fsm {
 	};
 
 	/**
-	 * @brief Represents a single matched substring.
-	 * @note Not implemented yet.
+	 * @brief Represents a single matched substring as the path through an FSM.
+	 * @note Typically used internally to record matched substrings.
 	 */
 	template<typename T = FSMStateType>
 	struct Substring {

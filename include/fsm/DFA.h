@@ -17,6 +17,9 @@ namespace m0st4fa::fsm {
 		using SubstringType = Substring<FSMStateType>;
 
 		// static variables
+		/**
+		 * @brief The dead state used by the DFA simulation methods.
+		 */
 		constexpr static FSMStateType DEAD_STATE = 0;
 
 		// private methods
@@ -25,7 +28,7 @@ namespace m0st4fa::fsm {
 		FSMResult _simulate_longest_substring(const InputT&) const;
 
 		bool _check_accepted_longest_prefix(const std::vector<FSMStateType>&, size_t&) const;
-		bool _check_accepted_substring(const InputT&, std::vector<FSMStateType>&, size_t, size_t&) const;
+		bool _check_accepted_substring(const InputT&, std::vector<FSMStateType>&, const size_t, size_t&) const;
 
 	public:
 		/**
@@ -92,7 +95,7 @@ namespace m0st4fa::fsm {
 	}
 
 	/**
-	 * @brief Look for the longest prefix only. Once found, the string accepts.
+	 * @brief Simulates the DFA against `input` looking for the longest prefix only.
 	 * @param[in] input The input string against which the simulation will run.
 	 * @return FSMResult object that indicates the result of the simulation.
 	 */
@@ -148,7 +151,7 @@ namespace m0st4fa::fsm {
 	}
 
 	/**
-	 * @brief Look for the longest substring, which might be the entire string.
+	 * @brief Simulates the DFA against `input` looking for the longest substring, which might be the entire string.
 	 * @param[in] input The input string against which the simulation will run.
 	 * @return FSMResult object that indicates the result of the simulation.
 	 */
@@ -217,8 +220,10 @@ namespace m0st4fa::fsm {
 	};
 	
 	/**
-	* @param `matchedStates`: the result of matching an NFA against a string. `charIndex` the index of the last matching character within the input.
-	* @return true if a prefix matches, false otherwise. It also updates `charIndex` to the index of the last character of that prefix.
+	* @brief Simulates the DFA against `input` looking for the longest prefix. It also updates `charIndex` to the index of the last character of that prefix.
+	* @param[in] matchedStates The set of states that form the path taken through the machine after simulating the machine against `input`.
+	* @param[out] charIndex The index of the last character of the matched prefix, if found; otherwise, 0.
+	* @return `true` if a prefix matches, `false` otherwise.
 	**/
 	template<typename TransFuncT, typename InputT>
 	inline bool DeterFiniteAutomaton<TransFuncT, InputT>::_check_accepted_longest_prefix(const std::vector<FSMStateType>& matchedStates, size_t& charIndex) const
@@ -247,13 +252,14 @@ namespace m0st4fa::fsm {
 	}
 
 	/**
-	* @brief Checks whether the substring starting from `startIndex` accepts.
-	* @param[out] matchedStates Set to the path taken through the machine.
-	* @param[in] charIndex The index of the last checked character (the last that didn't result in a dead state).
+	* @brief Checks whether the substring starting from `startIndex` accepts. It also updates `charIndex` to the index of the last character of that substring.
+	* @param[in] matchedStates The set of states that form the path taken through the machine after simulating the machine against `input`.
+	* @param[in] startIndex The index, within `input`, at which the substring starts.
+	* @param[out] charIndex The index of the last checked character (the last that didn't result in a dead state).
 	* @return `true` if a substring starting from startIndex has accepted; `false` otherwise.
 	**/
 	template<typename TransFuncT, typename InputT>
-	bool DeterFiniteAutomaton<TransFuncT, InputT>::_check_accepted_substring(const InputT& input, std::vector<FSMStateType>& matchedStates, size_t startIndex, size_t& charIndex) const
+	bool DeterFiniteAutomaton<TransFuncT, InputT>::_check_accepted_substring(const InputT& input, std::vector<FSMStateType>& matchedStates, const size_t startIndex, size_t& charIndex) const
 	{
 		assert(startIndex == charIndex);
 
@@ -298,6 +304,7 @@ namespace m0st4fa::fsm {
 	* @brief Simulate the given input string using the given simulation method.
 	* @param[in] input The input string to be simulated.
 	* @param[in] mode The simulation mode.
+	* @throw UnrecognizedSimModeException Thrown in case an incorrect simulation mode is entered, which is in fact unreachable. Thus, this exception is almost impossible to throw under normal conditions.
 	* @return FSMResult object indicating the result of the simulation.
 	*/
 	template<typename TransFuncT, typename InputT>

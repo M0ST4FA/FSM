@@ -7,19 +7,22 @@
 
 #include "FiniteStateMachine.h"
 
+// DECLARATIONS
 namespace m0st4fa::fsm {
 
-	// DECLARATIONS
 	/**
 	* @brief An NFA that can be used to match strings.
-	* The transition function must map states and input to sets of states.
-	*/	
+	* @noop The transition function must map states and input to sets of states.
+	*/
 	template <typename TransFuncT, typename InputT = std::string_view>
 	class NonDeterFiniteAutomaton : public FiniteStateMachine<TransFuncT, InputT> {
 		using Base = FiniteStateMachine<TransFuncT, InputT>;
 		using SubstringType = Substring<FSMStateSetType>;
 
 		// static variables
+		/**
+		 * @brief The dead state used by the NFA simulation methods.
+		 */
 		constexpr static FSMStateType DEAD_STATE = 0;
 
 		// PRIVATE METHODS
@@ -32,14 +35,25 @@ namespace m0st4fa::fsm {
 		// HELPERS
 		bool _check_accepted_longest_prefix(const std::vector<FSMStateSetType>&, size_t&) const;
 
-		bool _check_accepted_substring(const InputT&, std::vector<FSMStateSetType>&, size_t, size_t&) const;
-		inline void _record_matched_substrings(const InputT, size_t&, size_t&, std::vector<FSMStateSetType>&, std::vector<SubstringType>&) const;
+		bool _check_accepted_substring(const InputT&, std::vector<FSMStateSetType>&, const size_t, size_t&) const;
+		inline std::vector<SubstringType> _extract_matching_substrings(const InputT) const;
 		FSMResult _get_longest_substring_from_matched_sets(const InputT, const std::vector<SubstringType>&) const;
 
 		FSMStateSetType _epsilon_closure(const FSMStateSetType&) const;
 
 	public:
+		/**
+		 * @brief Default constructor.
+		 */
 		NonDeterFiniteAutomaton() = default;
+		/**
+		 * @brief Initialize a new NFA object.
+		 * @param[in] fStates The set of final states of the new NFA object.
+		 * @param[in] tranFn The transition function of the new NFA object.
+		 * @param[in] machineType The type of the NFA.
+		 * @param[in] flags The flags given to the new NFA object.
+		 * @see See m0st4fa::fsm::FSM_TYPE for setting the type of the machine and m0st4fa::fsm::FlagsType for determining flags.
+		 */
 		NonDeterFiniteAutomaton(const FSMStateSetType& fStates, const TransFuncT& tranFn, FSM_TYPE machineType = FSM_TYPE::MT_EPSILON_NFA, FlagsType flags = FSM_FLAG::FF_FLAG_NONE) :
 			FiniteStateMachine<TransFuncT, InputT>{ fStates, tranFn, machineType, flags }
 		{
@@ -59,10 +73,21 @@ namespace m0st4fa::fsm {
 
 	};
 
+	/**
+	 * @brief An alias type for NonDeterFiniteAutomaton.
+	 */
 	template <typename TransFuncT, typename InputT = std::string>
 	using NFA = NonDeterFiniteAutomaton<TransFuncT, InputT>;
+}
 
-	// IMPLEMENTATIONS
+// IMPLEMENTATIONS
+namespace m0st4fa::fsm {
+
+	/**
+	 * @brief Simulate against whole string. The simulation returns true if and only if the whole string accepts.
+	 * @param[in] input The input string against which the simulation will run.
+	 * @return FSMResult object that indicates the result of the simulation.
+	 */
 	template<typename TransFuncT, typename InputT>
 	FSMResult NonDeterFiniteAutomaton<TransFuncT, InputT>::_simulate_whole_string(const InputT& input) const
 	{
@@ -88,6 +113,11 @@ namespace m0st4fa::fsm {
 		return FSMResult(accepted, finalStates, { 0, accepted ? input.size() : 0 }, input);
 	}
 
+	/**
+	 * @brief Simulates the NFA against `input` looking for the longest prefix only.
+	 * @param[in] input The input string against which the simulation will run.
+	 * @return FSMResult object that indicates the result of the simulation.
+	 */
 	template<typename TransFuncT, typename InputT>
 	FSMResult NonDeterFiniteAutomaton<TransFuncT, InputT>::_simulate_longest_prefix(const InputT& input) const
 	{
@@ -132,46 +162,41 @@ namespace m0st4fa::fsm {
 	}
 
 	/**
-	* @param `input`: the input that the NFA will be simulated against.
-	* @return the result of the simulation.
-	**/
+	 * @brief Simulates the NFA against `input` looking for the longest substring, which might be the entire string.
+	 * @param[in] input The input string against which the simulation will run.
+	 * @return FSMResult object that indicates the result of the simulation.
+	 */
 	template<typename TransFuncT, typename InputT>
 	FSMResult NonDeterFiniteAutomaton<TransFuncT, InputT>::_simulate_longest_substring(const InputT& input) const
 	{
-		constexpr FSMStateType startState = FiniteStateMachine<TransFuncT, InputT>::START_STATE;
-		/**
-		* keeps track of the path taken through the machine.
-		* Will be used to figure out the longest matched prefix, if any.
-		*/
-		std::vector<FSMStateSetType> matchedStates = { {startState} };
 
-		std::vector<SubstringType> substrings{};
+		// The substrings that are matching within `input`.
+		std::vector<SubstringType> substrings = _extract_matching_substrings(input);
 
-		size_t start = 0, charIndex = 0;
-
-		_record_matched_substrings(input, start, charIndex, matchedStates, substrings);
-
+		// If there's at least one accepted substring
 		if (substrings.size())
 			return _get_longest_substring_from_matched_sets(input, substrings);
 
-		// if there was no accepted substring
+		// If there was no accepted substring.
 		return FSMResult(false, {}, {0, 0}, input);
-
 	}
 
 	/**
-	* @param `stateSet`: the result of matching an NFA against a string. `charIndex` the index of the last matching character within the input.
-	* @return true if a prefix matches, false otherwise. It also updates `charIndex` to the index of the last character of that prefix.
+	* @brief Simulates the DFA against `input` looking for the longest prefix. It also updates `charIndex` to the index of the last character of that prefix.
+	* @param[in] matchedStates A set of states that constitute a path through the NFA, following `input` character by character starting from the start state of the NFA.
+	* @param[out] charIndex The index of the last character of the matched prefix, if found; otherwise, 0.
+	* @return `true` if a prefix matches, `false` otherwise.
 	**/
 	template<typename TransFuncT, typename InputT>
-	bool NonDeterFiniteAutomaton<TransFuncT, InputT>::_check_accepted_longest_prefix(const std::vector<FSMStateSetType>& stateSet, size_t& charIndex) const
+	bool NonDeterFiniteAutomaton<TransFuncT, InputT>::_check_accepted_longest_prefix(const std::vector<FSMStateSetType>& matchedStates, size_t& charIndex) const
 	{
 		constexpr FSMStateType startState = FiniteStateMachine<TransFuncT, InputT>::START_STATE;
+
 		/**
 		* Loop through the path from the end seeking the closes final state.
 		* Update the character index as you do so.
 		*/
-		std::ranges::reverse_view rv{stateSet};
+		std::ranges::reverse_view rv{matchedStates};
 		for(const FSMStateSetType& state : rv)
 		{
 			if (this->_is_state_final(state))
@@ -188,19 +213,21 @@ namespace m0st4fa::fsm {
 	}
 
 	/**
-	* @brief check whether the substring from `input` starting from index `startIndex` and ending at index `endIndex` is accepted. also, populate the `matchedStatesSet` with the path going through that substring.
-	* @param `charIndex` is set the index of the last matching character and `matchedStates` is set to the path followed through the machine.
-	* @return return whether the substring is accepted.
+	* @brief Checks whether the substring starting from `startIndex` accepts. It also updates `charIndex` to the index of the last character of that substring.
+	* @param[in] matchedStates The set of states that form the path taken through the machine after simulating the machine against `input`.
+	* @param[in] startIndex The index, within `input`, at which the substring starts.
+	* @param[out] charIndex The index of the last checked character (the last that didn't result in a dead state).
+	* @return `true` if a substring starting from startIndex has accepted; `false` otherwise.
 	**/
 	template<typename TransFuncT, typename InputT>
-	bool NonDeterFiniteAutomaton<TransFuncT, InputT>::_check_accepted_substring(const InputT& input, std::vector<FSMStateSetType>& matchedStates, size_t startIndex, size_t& charIndex) const	
+	bool NonDeterFiniteAutomaton<TransFuncT, InputT>::_check_accepted_substring(const InputT& input, std::vector<FSMStateSetType>& matchedStates, const size_t startIndex, size_t& charIndex) const	
 	{
 
 		assert(charIndex == startIndex);
 
 		/**
-			* Follow a path through the machine using the characters of the string.
-			* Keep track of that path in order to be able to find the longest prefix if the whole string is not accepted.
+		* Follow a path through the machine using the characters of the string.
+		* Keep track of that path in order to be able to find the longest prefix if the whole string is not accepted.
 		*/
 		auto matchInput = [input, &charIndex, &matchedStates, this](bool calcClosure = false) {
 			for (; charIndex < input.size(); charIndex++) {
@@ -244,11 +271,29 @@ namespace m0st4fa::fsm {
 	}
 
 	/**
-	* @brief records all matched substrings in `input` if any and updates all necessary variables given to as input.
+	* @brief Extracts all matched substrings in `input`, if any, and returns them.
+	* @param[in] input The input out of which the substrings will be extracted.
+	* @return The set of substrings extracted out of `input`.
 	**/
 	template<typename TransFuncT, typename InputT>
-	inline void NonDeterFiniteAutomaton<TransFuncT, InputT>::_record_matched_substrings(const InputT input, size_t& start, size_t& charIndex, std::vector<FSMStateSetType>& matchedStates, std::vector<SubstringType>& substrings) const
+	inline std::vector<Substring<FSMStateSetType>> NonDeterFiniteAutomaton<TransFuncT, InputT>::_extract_matching_substrings(const InputT input) const
 	{
+		size_t start = 0;
+		size_t charIndex = 0;
+
+		constexpr FSMStateType startState = FiniteStateMachine<TransFuncT, InputT>::START_STATE;
+		/*
+		* @brief Keeps track of the path taken through the machine.
+		* Will be used to figure out the longest matched prefix, if any.
+		*/
+		std::vector<FSMStateSetType> matchedStates = { {startState} };
+
+		// @note Note that it is necessary to find all substrings first and then find which one is the longest. You cannot simply find the longest substring before finding all substrings first.
+
+		// The substrings that match within `input`.
+		std::vector<SubstringType> substrings{};
+
+		// Get all the substrings that match within `input` and store them in `substrings`.
 		for (; charIndex < input.size(); charIndex = ++start) {
 
 			// check whether the substring is accepted (and populate everything given by reference)
@@ -266,16 +311,21 @@ namespace m0st4fa::fsm {
 			matchedStates.resize(1);
 		}
 
+		return substrings;
 	}
 
 	/**
-	* @brief takes a set of matched substrings, finds the longest one and returns an FSMResult object representing that longest substring.
-	* @return FSMResult object representing the longest matching substring from the set of substrings given to it.
+	* @brief Gets the longest substring from a set of matching substrings.
+	* @param[in] input The input string to the simulation method (the matching substrings are substrings of this input string).
+	* @param[in] substrings The set of matching substrings.
+	* @return FSMResult object representing the longest matching substring from the set of matching substrings given to it.
 	**/
 	template<typename TransFuncT, typename InputT>
 	inline FSMResult NonDeterFiniteAutomaton<TransFuncT, InputT>::_get_longest_substring_from_matched_sets(const InputT input, const std::vector<SubstringType>& substrings) const {
 
+		// longest-matching substring
 		const SubstringType* longest = nullptr;
+		// size of longest-matching substring.
 		size_t size = 0;
 
 		// choose the longest substring or the first of many having the same length
@@ -295,7 +345,7 @@ namespace m0st4fa::fsm {
 			end = longest->indicies.end;
 		}
 
-		// get the final states we've reached
+		// the final states we've reached
 		const FSMStateSetType currState = longest->matchedStates.back();
 		const FSMStateSetType finalStateSet = this->_get_final_states_from_state_set(currState);
 		//assert("This set must contain at least a single final state" && finalStateSet.size());
@@ -303,6 +353,11 @@ namespace m0st4fa::fsm {
 		return FSMResult(true, finalStateSet, { start, end }, input);
 	};
 
+	/**
+	 * @brief Calculate the epsilon closure of a set of states.
+	 * @param[in] set The set for which epsilon closure will be calculated.
+	 * @return The set that represents the epsilon closure of `set`.
+	 */
 	template<typename TransFuncT, typename InputT>
 	FSMStateSetType NonDeterFiniteAutomaton<TransFuncT, InputT>::_epsilon_closure(const FSMStateSetType& set) const
 	{
@@ -323,10 +378,10 @@ namespace m0st4fa::fsm {
 
 			// if the set has at least a single epsilon-transition
 			if (!epsilonTransitions.empty()) {
-				/**
+				/*
 				* Push all the states in the epsilon transitions onto the stack.
 				* We do this to consider whether the state itself has any epsilon transitions.
-				* This applies the recursivness of the algorithm.
+				* This applies the recursiveness of the algorithm.
 				* Before we push a state, we check to see if it is already in the set so that we don't consider the state again.
 				* If we don't do that, we might end up with an infinite loop.
 				*/ 
@@ -343,9 +398,12 @@ namespace m0st4fa::fsm {
 	}
 	
 	/**
-	* @brief simulate the NFA against `input` according to `mode`.
-	* this function can throw an exception of type `UnrecognizedSimModeException` in case `mode` is not recognized.
-	**/
+	* @brief Simulate the given input string using the given simulation method.
+	* @param[in] input The input string to be simulated.
+	* @param[in] mode The simulation mode.
+	* @throw UnrecognizedSimModeException Thrown in case an incorrect simulation mode is entered, which is in fact unreachable. Thus, this exception is almost impossible to throw under normal conditions.
+	* @return FSMResult object indicating the result of the simulation.
+	*/
 	template<typename TransFuncT, typename InputT>
 	inline FSMResult NonDeterFiniteAutomaton<TransFuncT, InputT>::simulate(const InputT& input, FSM_MODE mode) const
 	{
@@ -357,7 +415,7 @@ namespace m0st4fa::fsm {
 		case FSM_MODE::MM_LONGEST_SUBSTRING:
 			return this->_simulate_longest_substring(input);
 		default:
-			this->m_Logger.log(LoggerInfo::ERROR, "Unreachable: simulate() cannot reach this point. The provided mode is probably erraneous.");
+			this->m_Logger.log(LoggerInfo::ERROR, "Unreachable: simulate() cannot reach this point. The provided mode is probably erroneous.");
 			throw UnrecognizedSimModeException();
 		}
 
