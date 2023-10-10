@@ -597,20 +597,35 @@ namespace m0st4fa::fsm {
 
 	/**
 	 * @brief Represents a single matched substring as the path through an FSM.
-	 * @note Typically used internally to record matched substrings.
+	 * @note Typically used only internally to record matched substrings.
 	 */
 	template<typename T = FSMStateType>
 	struct Substring {
+		/**
+		 * @brief The path (that mimics the substring) through the FSM.
+		 */
 		std::vector<T> matchedStates;
+		/**
+		 * @brief The indicies of the substring within the input string.
+		 */
 		Indicies indicies;
 
+		/**
+		 * @brief Gets an iterator to the beginning of the path (that mimics the substring) through the FSM.
+		 */
 		auto begin() const {
 			return matchedStates.begin();
 		}
+		/**
+		 * @brief Gets an iterator to the end of the path (that mimics the substring) through the FSM.
+		 */
 		auto end() const {
 			return matchedStates.end();
 		}
 
+		/**
+		 * @brief Gets the number of states in the path (that mimics the substring) through the FSM.
+		 */
 		size_t size() const {
 			return matchedStates.size();
 		}

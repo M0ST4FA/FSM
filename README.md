@@ -1,248 +1,251 @@
-# FSM
+<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 
-finite state machine library in C++.
+<a name="readme-top"></a>
 
-# Notes
+<!--
+*** Thanks for checking out the Best-README-Template. If you have a suggestion
+*** that would make this better, please fork the repo and create a pull request
+*** or simply open an issue with the tag "enhancement".
+*** Don't forget to give the project a star!
+*** Thanks again! Now go create something AMAZING! :D
+-->
 
-- The tests depend on gtest, so you need to install the package if you want to run the tests.
-- The `utility` directory has general utility functions used by this project and others, so it is important.
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
 
-# Documentation
+<!-- [![Contributors][contributors-shield]][contributors-url] -->
+<!-- [![Forks][forks-shield]][forks-url] -->
+<!-- [![Stargazers][stars-shield]][stars-url] -->
+<!-- [![Issues][issues-shield]][issues-url] -->
+<!-- [![MIT License][license-shield]][license-url] -->
+<!-- [![LinkedIn][linkedin-shield]][linkedin-url] -->
 
-## Exception Types
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/M0sT4fa/FSM">
+    <img src="resources/logo 1.jpeg" alt="Logo" width="80" height="80">
+  </a>
 
-### `InvalidStateMachineArgumentsException`
+<h3 align="center">FSM</h3>
 
-- A wrapper over `std::invalid_argument` that is thrown from the constructor of a state machine in case there is at least one invalid argument given to a state machine.
+  <p align="center">
+    Finite state machine library written in C++ for designing compilers. Might be extended in the future.
+    <!-- <br /> -->
+    <!-- <a href="https://github.com/M0sT4fa/FSM/"><strong>Explore the docs »</strong></a> -->
+    <!-- <br /> -->
+    <br />
+    <a href="https://github.com/M0sT4fa/FSM">View Demo</a>
+    ·
+    <a href="https://github.com/M0sT4fa/FSM/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/M0sT4fa/FSM/issues">Request Feature</a>
+  </p>
+</div>
 
-### `UnrecognizedSimModeException`
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <!-- <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul> -->
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#building-documentation">Building Documentation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <!-- <li><a href="#acknowledgments">Acknowledgments</a></li> -->
+  </ol>
+</details>
 
-- A wrapper over `std::runtime_error` that is thrown from any `simulate()` function in case the simulation mode is unrecognized.
+<!-- ABOUT THE PROJECT -->
 
-## Utility Data Structures
+## About The Project
 
-file: FiniteStateMachine.h
+<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
-### `FSMStateType`
+Finite state machine library written in C++ for designing compilers. Might be extended in the future.
 
-- A typedef representing a single state of the fsm. It is an alias to `unsigned`.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### `FSMStateSetType`
+<!-- GETTING STARTED -->
 
-- A data structure representing a set of `FSMStateType`. This is used primarily for `NFA` simulation.
+## Getting Started
 
-### `FSMTableType`
+<!-- This is an example of how you may give instructions on setting up your project locally.
+To get a local copy up and running follow these simple example steps.
 
-- A data structure representing a 2D table of sets of states.
+This project uses CMake. Therefore, to incorporate it into your project, you need to clone this project into some subdirectory within your project. This is typically done using `git submodule` or using CMake's `FetchContent` or `ExternalProject_Add`.
 
-  | field | definition                           |
-  | ----- | ------------------------------------ |
-  | table | the actual object holding the table. |
+In the first two cases, you need to call `add_subdirectory()` on the subdirectory in which the project was fetched. In the case of `ExternalProject_Add`, the CMake command itself will do everything for you. -->
 
-  | method                                                 | definition                                                                                             |
-  | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-  | `FSMStateType&` operator()(state, c)                   | returns `table[state][c]`, and makes sure the vectors are not overflowed (resizing them if necessary). |
-  | `const FSMStateType&` operator()(state, c) const       | returns `table[state][c]`.                                                                             |
-  | `const vector<FSMStateType>&` operator[] (index) const | return `table.at(index).`                                                                              |
-  | `const vector<FSMStateType>&` at(index) const          | return `table.at(index)`.                                                                              |
+### Prerequisites
 
-- `FSMStateSetType` is used as the value of each element of the table rather than `FSMStateType` in order for the table to be general, i.e., able to be used with either a `DFA` or an `NFA`.
+<!-- This is an example of how to list things you need to use the software and how to install them. -->
 
-### `TransitionFunction<TableT>`
+This project is built with CMake. To include it in one of your projects, your project must be CMake-based or otherwise be able to include CMake projects.
 
-- A data structure that represents a transition function. It is a function object.
+- Install CMake on Windows using `winget`
 
-  | field          | definition        |
-  | -------------- | ----------------- |
-  | `TableT` table | the actual table. |
+  ```pwsh
+  winget install --id "Kitware.CMake"
+  ```
 
-  | method                                              | definition                                                                                             |
-  | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-  | `FSMStateType&` operator()(state, c)                | returns `table[state][c]`, and makes sure the vectors are not overflowed (resizing them if necessary). |
-  | `const FSMStateSetType&` operator()(state, c) const | returns `table[state][c]`.                                                                             |
-  | `const FSMStateType&` operator()(stateSet, c) const | returns `table[state][c]` for every state within `stateSet`.                                           |
+- Install CMake for Windows and Other OSes from the [Official CMake Download Webiste].
 
-- The goal of this data structure is to treat a `TableT` table as a function, i.e., it is just a wrapper around a `TableT` object.
-- `TransFn<TableT>` is an alias for this data structure.
+### Installation
 
-### `FSMResult`
+There are many ways to incorporate this project into your project. The simples is using `git submodule` (which is the one listed here), but you can also use `FetchContent()` and `ExternalProject_Add()` Cmake commands.
 
-- A data structure that represents the result of a single simulation of a `DFA` or an `NFA`.
+I assume that your project puts external libraries in a top level directory named external.
 
-  | field                        | definition                                                                                                          |
-  | ---------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-  | `bool` accepted              | whether (a possibly substring of, depending on flags given to the simulation function) the input has been accepted. |
-  | `FSMStateSetType` finalState | the final states reached when (the substring of) the input was accepted.                                            |
-  | `Indecies` indecies          | the indecies of the matched (substring from the) input.                                                             |
-  | `std::string_view` input     | the input against which the simulation has been run.                                                                |
+1. Submodule the repo into your project
 
-  | method                              | definition                                                                        |
-  | ----------------------------------- | --------------------------------------------------------------------------------- |
-  | `size_t` size() const               | the size of the matched substring. equivalent to `indecies.end - indecies.start`. |
-  | `std::string_view` getMatch() const | returns the matched substring from input.                                         |
-  | `Indecies` getIndecies() const      | returns `this->indecies`.                                                         |
+   ```powershell
+   git submodule add https://github.com/M0sT4fa/FSM.git external/FSM --recursive
+   ```
 
-  | function                     | definition                     |
-  | ---------------------------- | ------------------------------ |
-  | `std::ostream<<(Result res)` | print `res` to `std::ostream`. |
+   **⚠️Warning**: The `--recursive` option is extremely important. It makes sure dependencies of this project are fetched with it. If you didn't include it, run this command from the root directory of your project:
 
-### `Indecies`
+   ```powershell
+   git submodule --remote external/FSM
+   ```
 
-- A data structure that represents the indecies of a lexeme found during a single simulation of a `DFA` or an `NFA`.
+2. Within `CMakeLists.txt`, add `add_subdirectory()` command with `external/FSM` directory as its argument.
 
-  | field             | definition                                               |
-  | ----------------- | -------------------------------------------------------- |
-  | `IndexType` start | the start index of a found lexeme relative to the input. |
-  | `IndexType` end   | the end index of a found lexeme relative to the input.   |
+   ```CMake
+   # Add the following command to your top-level CMakeLists.txt
+   add_subdirectory("${CMAKE_SOURCE_DIR}/external/FSM")
+   ```
 
-  | method                            | definition                                                                                  |
-  | --------------------------------- | ------------------------------------------------------------------------------------------- |
-  | `std::string` toString()          | method that converts the `Indecies` object to a string.                                     |
-  | `operator std::string()`          | conversion operator that just calls `toString()`.                                           |
-  | `Indecies` operator +(`size_t` x) | method that adds whatever `x` to both `start` and `end`, returning a new `Indecies` object. |
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### `Substring<T>`
+<!-- USAGE EXAMPLES -->
 
-- Represents a single matched substring in a simulation that matches a longest substring (the data structure is mainly used internally).
+## Usage
 
-  | field                          | definition                                                              |
-  | ------------------------------ | ----------------------------------------------------------------------- |
-  | `std::vector<T>` matchedStates | the set of states the machine has went through to match this substring. |
-  | `Indecies` indecies            | the indecies of the matched substring within the entire string.         |
+The main target is `fsm`. This target represents the library.
 
-  | method          | definition                     |
-  | --------------- | ------------------------------ |
-  | begin() `const` | return `matchedStates.begin()` |
-  | end() `const`   | return `matchedStates.end()`   |
-  | size() `const`  | return `matchedStates.size()`  |
+Another target is [`utility`]('https://github.com/M0sT4fa/utility.git'). This target represents a library that is a dependency of this library.
 
-## Enums
+For example, assume you have an executable target named `foo` and you want to link this library to it.
 
-file: FiniteStateMachine.h
-
-```C++
-  // the mode of simulation.
- enum class FSM_MODE {
-  MM_WHOLE_STRING = 0,
-  MM_LONGEST_PREFIX,
-  MM_LONGEST_SUBSTRING,
-  MM_NONE,
-  MM_FSM_MODE_MAX,
- };
-
- // the type of the FSM.
- enum class FSMType {
-  MT_EPSILON_NFA = 0,
-  MT_NON_EPSILON_NFA,
-  MT_DFA,
-  MT_MACHINE_TYPE_MAX,
- };
-
- // flags to customize the behavior of the FSM.
- enum FSM_FLAG {
-  FF_FLAG_NONE = 0b0000000,
-  FF_FLAG_MAX
- };
+```CMake
+target_link_libraries(foo PRIVATE fsm)
 ```
 
-## Main Data Structures
+_For more examples, please refer to the Documentation._
 
-### `FSM`
+## Building Documentation
 
-file: FiniteStateMachine.h
+The documentation is built automatically if you set the CMake cache variable `BUILD_DOCUMENTATION`. It is built in the directory `${CMAKE_BUILD_DIRECTORY}/docs/sphinx/`. Open it using `index.html` in that directory after it is built.
 
-```C++
-template <typename TransFuncT, typename InputT = std::string_view>
- class FiniteStateMachine {
+Conversly, you can run the following pwershell script on the root directory:
 
-  public:
-  FiniteStateMachine() = default;
-  FiniteStateMachine(const FSMStateSetType& fStates, const TransFuncT& tranFn, FSMType machineType ,FSMFlag flags);
+```powershell
+# Build directory
+$BuildDirectory = ".\out\build\x64-Debug\"
 
-  FiniteStateMachine& operator=(const FiniteStateMachine& rhs);
+# Build the documentation targets
+cmake.exe --build $BuildDirectory --target Doxygen && cmake.exe --build $BuildDirectory --target Sphinx
 
-  const FSMStateSetType& getFinalStates() const;
-  FSMFlag getFlags() const;
-  FSMType getMachineType() const;
-}
-
-
+# Run the documentation
+& "$BuildDirectory\docs\Sphinx\index.html"
 ```
 
-| constructor parameter | definition                                  |
-| --------------------- | ------------------------------------------- |
-| fStates               | the set of final states for this FSM.       |
-| tranFn                | the transfer function for this FSM.         |
-| machineType           | the type of the machine.                    |
-| flags                 | flag to modify the behavior of the machine. |
+This script will automatically build and run the documentation, assuming your build directory is ".\out\build\x64-Debug\". Note that the build directory can be different, and in this case, this script will not be successful.
 
-| method           | definition                                                                                                |
-| ---------------- | --------------------------------------------------------------------------------------------------------- |
-| getFinalStates() | returns the set of final states of this machine; i.e. returns the value of constructor parameter fStates. |
-| getFlags()       | returns the flags of this machine.                                                                        |
-| getMachineType() | returns the machine type of this machine.                                                                 |
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### `NFA`
+<!-- ROADMAP -->
 
-file: NFA.h
+## Roadmap
 
-```C++
-template <typename TransFuncT, typename InputT = std::string_view>
- class NonDeterFiniteAutomatan : FiniteStateMachine<TransFuncT, InputT> {
+Nothing in mind currently, although I want to make the library more general. This library has come out of my own needs and I will likely add features as I need them.
 
-public:
-  NonDeterFiniteAutomatan() = default;
-  NonDeterFiniteAutomatan(const FSMStateSetType& fStates, const TransFuncT& tranFn, FSMType machineType = FSMType::MT_EPSILON_NFA, FSMFlag flags = FSM_FLAG::FF_FLAG_NONE);
+See the [open issues](https://github.com/M0sT4fa/FSM/issues) for a full list of proposed features (and known issues).
 
-  FSMResult simulate(const InputT& input, const FSM_MODE mode) const;
-  }
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-```
+<!-- CONTRIBUTING -->
 
-| constructor parameter | definition                                                                                                                                                               |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| fStates               | the set of final states for this FSM.                                                                                                                                    |
-| tranFn                | the transfer function for this FSM.                                                                                                                                      |
-| machineType           | the type of the machine. this must be either `FSMType::MT_EPSILON_NFA` or `FSMType::MT_NON_EPSILON_NFA`. if not, an exception of type `std::invalid_argument` is thrown. |
-| flags                 | flag to modify the behavior of the machine.                                                                                                                              |
+## Contributing
 
-| method     | definition                                                                                                           |
-| ---------- | -------------------------------------------------------------------------------------------------------------------- |
-| simulate() | simulates the string given to it as input, according to the simulation mode and returns the result as a `FSMResult`. |
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-- <b>Note</b>: types of simulation will be discussed at the end of this documentation.
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
 
-### `DFA`
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-file: DFA.h
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-```C++
-template <typename TransFuncT, typename InputT = std::string_view>
- class DeterFiniteAutomatan: public FiniteStateMachine<TransFuncT, InputT> {
-public:
-  DeterFiniteAutomatan() = default;
-  DeterFiniteAutomatan(const FSMStateSetType& fStates, const TransFuncT& tranFn, FSMFlag flags = FSM_FLAG::FF_FLAG_NONE);
+<!-- LICENSE -->
 
-  DeterFiniteAutomatan& operator=(const DeterFiniteAutomatan& rhs);
+## License
 
-  FSMResult simulate(const InputT& input, const FSM_MODE mode) const;
- };
-```
+Distributed under the MIT License. See `LICENSE.txt` for more information.
 
-| constructor parameter | definition                                  |
-| --------------------- | ------------------------------------------- |
-| fStates               | the set of final states for this FSM.       |
-| tranFn                | the transfer function for this FSM.         |
-| flags                 | flag to modify the behavior of the machine. |
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-| method     | definition                                                                                                           |
-| ---------- | -------------------------------------------------------------------------------------------------------------------- |
-| simulate() | simulates the string given to it as input, according to the simulation mode and returns the result as a `FSMResult`. |
+<!-- CONTACT -->
 
-## About Simulation Types
+## Contact
 
-| simulation type   | definition                                                                                                                                |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| whole string      | checks whether the entire input string is accepted or not, and returns positive result iff it is accepted.                                |
-| longest prefix    | checks for the longest accepted prefix of the input string, and returns positive resulf for it. otherwise, it returns negative result.    |
-| longest substring | checks for the longest accepted substring of the input string, and returns positive resulf for it. otherwise, it returns negative result. |
+Mostafa Bideer - mostafa2018a3s@gmail.com
+
+<!-- ⚠️**Warning**: I'm very likely to not respond, at least now, as medical school is taking most of my time. -->
+
+Project Link: [https://github.com/M0sT4fa/FSM](https://github.com/M0sT4fa/FSM)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ACKNOWLEDGMENTS -->
+
+<!-- ## Acknowledgments
+
+- []()
+- []()
+- []()
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
+[Official CMake Download Webiste]: https://cmake.org/download
+[contributors-shield]: https://img.shields.io/github/contributors/M0sT4fa/FSM.svg?style=for-the-badge
+[contributors-url]: https://github.com/M0sT4fa/FSM/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/M0sT4fa/FSM.svg?style=for-the-badge
+[forks-url]: https://github.com/M0sT4fa/FSM/network/members
+[stars-shield]: https://img.shields.io/github/stars/M0sT4fa/FSM.svg?style=for-the-badge
+[stars-url]: https://github.com/M0sT4fa/FSM/stargazers
+[issues-shield]: https://img.shields.io/github/issues/M0sT4fa/FSM.svg?style=for-the-badge
+[issues-url]: https://github.com/M0sT4fa/FSM/issues
+[license-shield]: https://img.shields.io/github/license/M0sT4fa/FSM.svg?style=for-the-badge
+[license-url]: https://github.com/M0sT4fa/FSM/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/linkedin_username
+[product-screenshot]: images/screenshot.png

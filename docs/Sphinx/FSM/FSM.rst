@@ -28,6 +28,12 @@ Representing the Result of Simulations
   :undoc-members:
   :allow-dot-graphs:
 
+.. doxygenstruct:: m0st4fa::fsm::Substring
+  :members:
+  :protected-members:
+  :undoc-members:
+  :allow-dot-graphs:
+
 ----
 
 Type Aliases

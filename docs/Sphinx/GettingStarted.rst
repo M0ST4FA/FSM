@@ -2,7 +2,9 @@
 Getting Started
 ===============
 
-Welcome! This tutorial highlights the core use cases of FSM library. For more information, you can take a look at the API documentation (you can start reading the API at the `FSM-Documentation`_).
+Welcome! This tutorial highlights the core use cases of FSM library. For more information, you can take a look at the API documentation (you can start reading the API at the `FSM Documentation`_).
+
+.. _`FSM Documentation`: ./FSM/FSM.html
 
 .. role:: cpp(code)
   :language: cpp
@@ -13,7 +15,6 @@ Simulate a Finite State Machine
 To get started, you need to create an FSM object to represent your state machine. 
 
 There are a few basic steps:
-
   1. Create a transition table mapping the characters of your alphabet to states of the machine. You do this using the struct :cpp:`FSMTable`.
   2. Create a transition function based on that table (this is optional, as the transition function is just an abstraction over the table). You do this using the template struct :cpp:`TransitionFunction<TableT>`
   3. Create the automatan using the template class :cpp:`DeterFiniteAutomatan<TransitionFunctionT, InputT>`
@@ -37,7 +38,6 @@ Now, you can simulate the DFA using that DFA object.
 	:caption: Example of building a finite state machine object to run against the identifier grammar of C.
 
 There are some assumption here. These can be summarized as:
-
 	1. Dead state is always 0 (this is fixed by the library).
 	2. You can choose the initial state. Here I chose it as 1.
 	3. You can also choose the final states. However, this will have an effect on the transition table. I suggest you first create the transition table and then set the final states.
@@ -96,13 +96,13 @@ Note, however, the difference that exists when mapping states using the transiti
 Choosing the Type of NFA
 ------------------------
 
-There are several types the state machine can take. All of these types are included in the enumerator :cpp:`FSM_TYPE`.
+There are several types the state machine can take. All of these types are included in the enumerator :cpp:`m0st4fa::fsm::FSM_TYPE`.
 
-:cpp:`MT_EPSILON_NFA` : default
+:cpp:`FSM_TYPE::MT_EPSILON_NFA` : default
 	This sets the NFA that the :cpp:`NFA` object simulates to an epsilon NFA.
 
-:cpp:`MT_NON_EPSILON_NFA`
+:cpp:`FSM_TYPE::MT_NON_EPSILON_NFA`
 	This sets the NFA that the :cpp:`NFA` object simulates to a non-epsilon NFA.
 
-:cpp:`MT_DFA`
+:cpp:`FSM_TYPE::MT_DFA`
 	The type of a :cpp:`DFA`. This is set automatically for every :cpp:`DFA` object created.
