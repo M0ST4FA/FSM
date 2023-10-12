@@ -37,9 +37,9 @@
 
   <p align="center">
     Finite state machine library written in C++ for designing compilers. Might be extended in the future.
-    <!-- <br /> -->
-    <!-- <a href="https://github.com/M0sT4fa/FSM/"><strong>Explore the docs »</strong></a> -->
-    <!-- <br /> -->
+    <br />
+    <a href="https://fsm.readthedocs.io/en/latest/"><strong>Explore the docs »</strong></a>
+    <br />
     <br />
     <a href="https://github.com/M0sT4fa/FSM">View Demo</a>
     ·
