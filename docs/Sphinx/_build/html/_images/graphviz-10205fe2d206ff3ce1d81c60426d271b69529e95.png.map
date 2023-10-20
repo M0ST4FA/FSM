@@ -1,0 +1,7 @@
+<map id="%3" name="%3">
+<area shape="rect" id="node1" title="m0st4fa::fsm::UnrecognizedSimModeException" alt="" coords="5,5,381,53"/>
+<area shape="rect" id="node3" title="std::runtime_error" alt="" coords="116,101,270,149"/>
+<area shape="poly" id="edge1" title="public&#45;inheritance" alt="" coords="196,54,196,87,190,87,190,54"/>
+<area shape="rect" id="node2" title="std::exception" alt="" coords="131,197,255,245"/>
+<area shape="poly" id="edge2" title="public&#45;inheritance" alt="" coords="196,150,196,183,190,183,190,150"/>
+</map>

@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.7" xml:lang="en-US">
+  <compounddef id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_m_e" kind="page">
+    <compoundname>md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_m_e</compoundname>
+    <title>README</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><anchor id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_m_e_1readme-top"/></para>
+<para><linebreak/>
+  <ulink url="https://github.com/M0sT4fa/FSM"><image type="html" name="resources/logo 1.jpeg" alt="Logo" inline="yes"></image>
+ </ulink></para>
+<para><heading level="3">FSM</heading>
+</para>
+<para></para>
+<para> </para>
+<para> Finite state machine library written in C++ for designing compilers. Might be extended in the future. <linebreak/>
+ <ulink url="https://fsm.readthedocs.io/en/latest/"><bold>Explore the docs »</bold></ulink> <linebreak/>
+ <linebreak/>
+ <ulink url="https://github.com/M0sT4fa/FSM">View Demo</ulink> · <ulink url="https://github.com/M0sT4fa/FSM/issues">Report Bug</ulink> · <ulink url="https://github.com/M0sT4fa/FSM/issues">Request Feature</ulink> </para>
+<para> </para>
+<para><details><summary>Table of Contents</summary><para><orderedlist>
+<listitem>
+<para><ulink url="#about-the-project">About The Project</ulink></para>
+<para></para>
+</listitem>
+<listitem>
+<para><ulink url="#getting-started">Getting Started</ulink> <itemizedlist>
+<listitem>
+<para><ulink url="#prerequisites">Prerequisites</ulink> </para>
+</listitem>
+<listitem>
+<para><ulink url="#installation">Installation</ulink> </para>
+</listitem>
+<listitem>
+<para><ulink url="#building-documentation">Building Documentation</ulink> </para>
+</listitem>
+</itemizedlist>
+</para>
+</listitem>
+<listitem>
+<para><ulink url="#usage">Usage</ulink> </para>
+</listitem>
+<listitem>
+<para><ulink url="#roadmap">Roadmap</ulink> </para>
+</listitem>
+<listitem>
+<para><ulink url="#contributing">Contributing</ulink> </para>
+</listitem>
+<listitem>
+<para><ulink url="#license">License</ulink> </para>
+</listitem>
+<listitem>
+<para><ulink url="#contact">Contact</ulink></para>
+<para></para>
+</listitem>
+</orderedlist>
+</para>
+</details></para>
+<sect2 id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_m_e_1autotoc_md20">
+<title>About The Project</title>
+<para>Finite state machine library written in C++ for designing compilers. Might be extended in the future.</para>
+<para>(<ulink url="#readme-top">back to top</ulink>)</para>
+</sect2>
+<sect2 id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_m_e_1autotoc_md21">
+<title>Getting Started</title>
+<sect3 id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_m_e_1autotoc_md22">
+<title>Prerequisites</title>
+<para>This project is built with CMake. To include it in one of your projects, your project must be CMake-based or otherwise be able to include CMake projects.</para>
+<para><itemizedlist>
+<listitem><para>Install CMake on Windows using <computeroutput>winget</computeroutput></para>
+<para><programlisting filename=".pwsh"><codeline><highlight class="normal">winget<sp/>install<sp/>--id<sp/>&quot;Kitware.CMake&quot;</highlight></codeline>
+</programlisting></para>
+</listitem><listitem><para>Install CMake for Windows and Other OSes from the <ulink url="https://cmake.org/download">Official CMake Download Webiste</ulink>.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+<sect3 id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_m_e_1autotoc_md23">
+<title>Installation</title>
+<para>There are many ways to incorporate this project into your project. The simples is using <computeroutput>git submodule</computeroutput> (which is the one listed here), but you can also use <computeroutput>FetchContent()</computeroutput> and <computeroutput>ExternalProject_Add()</computeroutput> Cmake commands.</para>
+<para>I assume that your project puts external libraries in a top level directory named external.</para>
+<para><orderedlist>
+<listitem><para>Submodule the repo into your project</para>
+<para><programlisting filename=".powershell"><codeline><highlight class="normal">git<sp/>submodule<sp/>add<sp/>https://github.com/M0sT4fa/FSM.git<sp/>external/FSM<sp/>--recursive</highlight></codeline>
+</programlisting></para>
+<para><bold>⚠️Warning</bold>: The <computeroutput>--recursive</computeroutput> option is extremely important. It makes sure dependencies of this project are fetched with it. If you didn&apos;t include it, run this command from the root directory of your project:</para>
+<para><programlisting filename=".powershell"><codeline><highlight class="normal">git<sp/>submodule<sp/>--remote<sp/>external/FSM</highlight></codeline>
+</programlisting></para>
+</listitem><listitem><para>Within <computeroutput>CMakeLists.txt</computeroutput>, add <computeroutput>add_subdirectory()</computeroutput> command with <computeroutput>external/FSM</computeroutput> directory as its argument.</para>
+<para><programlisting filename=".CMake"><codeline><highlight class="normal">#<sp/>Add<sp/>the<sp/>following<sp/>command<sp/>to<sp/>your<sp/>top-level<sp/>CMakeLists.txt</highlight></codeline>
+<codeline><highlight class="normal">add_subdirectory(&quot;${CMAKE_SOURCE_DIR}/external/FSM&quot;)</highlight></codeline>
+</programlisting></para>
+</listitem></orderedlist>
+</para>
+<para>(<ulink url="#readme-top">back to top</ulink>)</para>
+</sect3>
+</sect2>
+<sect2 id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_m_e_1autotoc_md24">
+<title>Usage</title>
+<para>The main target is <computeroutput>fsm</computeroutput>. This target represents the library.</para>
+<para>Another target is [<computeroutput>utility</computeroutput>](&apos;<ulink url="https://github.com/M0sT4fa/utility.git&apos;">https://github.com/M0sT4fa/utility.git&apos;</ulink>). This target represents a library that is a dependency of this library.</para>
+<para>For example, assume you have an executable target named <computeroutput>foo</computeroutput> and you want to link this library to it.</para>
+<para><programlisting filename=".CMake"><codeline><highlight class="normal">target_link_libraries(foo<sp/>PRIVATE<sp/>fsm)</highlight></codeline>
+</programlisting></para>
+<para><emphasis>For more examples, please refer to the Documentation.</emphasis></para>
+</sect2>
+<sect2 id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_m_e_1autotoc_md25">
+<title>Building Documentation</title>
+<para>The documentation is built automatically if you set the CMake cache variable <computeroutput>BUILD_DOCUMENTATION</computeroutput>. It is built in the directory <computeroutput>${CMAKE_BUILD_DIRECTORY}/docs/sphinx/</computeroutput>. Open it using <computeroutput>index.html</computeroutput> in that directory after it is built.</para>
+<para>Conversly, you can run the following pwershell script on the root directory:</para>
+<para><programlisting filename=".powershell"><codeline><highlight class="normal">#<sp/>Build<sp/>directory</highlight></codeline>
+<codeline><highlight class="normal">$BuildDirectory<sp/>=<sp/>&quot;.\out\build\x64-Debug\&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Build<sp/>the<sp/>documentation<sp/>targets</highlight></codeline>
+<codeline><highlight class="normal">cmake.exe<sp/>--build<sp/>$BuildDirectory<sp/>--target<sp/>Doxygen<sp/>&amp;&amp;<sp/>cmake.exe<sp/>--build<sp/>$BuildDirectory<sp/>--target<sp/>Sphinx</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Run<sp/>the<sp/>documentation</highlight></codeline>
+<codeline><highlight class="normal">&amp;<sp/>&quot;$BuildDirectory\docs\Sphinx\index.html&quot;</highlight></codeline>
+</programlisting></para>
+<para>This script will automatically build and run the documentation, assuming your build directory is &quot;.\out\build\x64-Debug\&quot;. Note that the build directory can be different, and in this case, this script will not be successful.
+
+&lt;p align=&quot;right&quot;&gt;(&lt;a href=&quot;#readme-top&quot;&gt;back to top&lt;/a&gt;)&lt;/p&gt;
+
+
+
+@subsection autotoc_md26 Roadmap
+
+Nothing in mind currently, although I want to make the library more general. This library has come out of my own needs and I will likely add features as I need them.
+
+See the &lt;a href=&quot;<ulink url="https://github.com/M0sT4fa/FSM/issues">https://github.com/M0sT4fa/FSM/issues</ulink>&quot; &gt;open issues&lt;/a&gt; for a full list of proposed features (and known issues).
+
+&lt;p align=&quot;right&quot;&gt;(&lt;a href=&quot;#readme-top&quot;&gt;back to top&lt;/a&gt;)&lt;/p&gt;
+
+
+
+@subsection autotoc_md27 Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are &lt;strong&gt;greatly appreciated&lt;/strong&gt;.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag &quot;enhancement&quot;.
+Don&apos;t forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (&lt;tt&gt;git checkout -b feature/AmazingFeature&lt;/tt&gt;)
+3. Commit your Changes (&amp;lsquo;git commit -m &apos;Add some AmazingFeature&amp;rsquo;&lt;tt&gt;)
+4. Push to the Branch (&lt;/tt&gt;git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+&lt;p align=&quot;right&quot;&gt;(&lt;a href=&quot;#readme-top&quot;&gt;back to top&lt;/a&gt;)&lt;/p&gt;
+
+
+
+@subsection autotoc_md28 License
+
+Distributed under the MIT License. See &lt;tt&gt;LICENSE.txt&lt;/tt&gt; for more information.
+
+&lt;p align=&quot;right&quot;&gt;(&lt;a href=&quot;#readme-top&quot;&gt;back to top&lt;/a&gt;)&lt;/p&gt;
+
+
+
+@subsection autotoc_md29 Contact
+
+Mostafa Bideer - mostafa2018a3s@gmail.com
+
+
+
+Project Link: &lt;a href=&quot;<ulink url="https://github.com/M0sT4fa/FSM">https://github.com/M0sT4fa/FSM</ulink>&quot; &gt;https://github.com/M0sT4fa/FSM&lt;/a&gt;
+
+&lt;p align=&quot;right&quot;&gt;(&lt;a href=&quot;#readme-top"&gt;back to top)</para>
+</sect2>
+    </detaileddescription>
+    <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/README.md"/>
+  </compounddef>
+</doxygen>

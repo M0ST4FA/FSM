@@ -1,0 +1,491 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.7" xml:lang="en-US">
+  <compounddef id="classm0st4fa_1_1fsm_1_1_finite_state_machine" kind="class" language="C++" prot="public">
+    <compoundname>m0st4fa::fsm::FiniteStateMachine</compoundname>
+    <derivedcompoundref refid="classm0st4fa_1_1fsm_1_1_deter_finite_automaton" prot="public" virt="non-virtual">m0st4fa::fsm::DeterFiniteAutomaton&lt; TransFuncT, InputT &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton" prot="public" virt="non-virtual">m0st4fa::fsm::NonDeterFiniteAutomaton&lt; TransFuncT, InputT &gt;</derivedcompoundref>
+    <includes refid="_finite_state_machine_8h" local="no">FiniteStateMachine.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename <ref refid="class_trans_func_t" kindref="compound">TransFuncT</ref></type>
+      </param>
+      <param>
+        <type>typename InputT</type>
+        <defval>std::string_view</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a93bbc0499903ffa2d78306b08a687146" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct</type>
+        <definition>friend struct FSMResult</definition>
+        <argsstring></argsstring>
+        <name>FSMResult</name>
+        <qualifiedname>m0st4fa::fsm::FiniteStateMachine::FSMResult</qualifiedname>
+        <param>
+          <type><ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_result" kindref="compound">FSMResult</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="410" column="15" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="410" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a671dac4b92a9737963fc11d80c790d65" prot="private" static="no" mutable="no">
+        <type><ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type" kindref="compound">FSMStateSetType</ref></type>
+        <definition>FSMStateSetType m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::m_FinalStates</definition>
+        <argsstring></argsstring>
+        <name>m_FinalStates</name>
+        <qualifiedname>m0st4fa::fsm::FiniteStateMachine::m_FinalStates</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="413" column="17" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="413" bodyend="-1"/>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1af27589cf2239dd94d87f252effb43f84" compoundref="_finite_state_machine_8h" startline="504" endline="504">m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::getFinalStates</referencedby>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a379192050bd13f35664b5960ea465c80" compoundref="_finite_state_machine_8h" startline="494" endline="501">m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::operator=</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a6298a230a79036e1079049ae415c8d0d" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacem0st4fa_1_1fsm_1a824af687b77ebbcb14e1051fb902b1d8" kindref="member">FSM_TYPE</ref></type>
+        <definition>FSM_TYPE m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::m_MachineType</definition>
+        <argsstring></argsstring>
+        <name>m_MachineType</name>
+        <qualifiedname>m0st4fa::fsm::FiniteStateMachine::m_MachineType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="414" column="10" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="414" bodyend="-1"/>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1adcd2de25e74e415309594a6dddd23d51" compoundref="_finite_state_machine_8h" startline="510" endline="510">m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::getMachineType</referencedby>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a379192050bd13f35664b5960ea465c80" compoundref="_finite_state_machine_8h" startline="494" endline="501">m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::operator=</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a4c3312d267bd2288d28965078a9329a2" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacem0st4fa_1_1fsm_1a9daf74accff16baed24fc902eaf5e0d2" kindref="member">FlagsType</ref></type>
+        <definition>FlagsType m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::m_Flags</definition>
+        <argsstring></argsstring>
+        <name>m_Flags</name>
+        <qualifiedname>m0st4fa::fsm::FiniteStateMachine::m_Flags</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="415" column="11" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="415" bodyend="-1"/>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1aeeb4b2093840ab12624d034be708fc10" compoundref="_finite_state_machine_8h" startline="507" endline="507">m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::getFlags</referencedby>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a379192050bd13f35664b5960ea465c80" compoundref="_finite_state_machine_8h" startline="494" endline="501">m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::operator=</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a5155c91b2dcd709e41f2845e79d1e1fd" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_logger" kindref="compound">Logger</ref></type>
+        <definition>Logger m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::m_Logger</definition>
+        <argsstring></argsstring>
+        <name>m_Logger</name>
+        <qualifiedname>m0st4fa::fsm::FiniteStateMachine::m_Logger</qualifiedname>
+        <briefdescription>
+<para>Used to log to the console in a standard way, implementing the correct colors. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="420" column="8" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="420" bodyend="-1"/>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a6cc82307f218ab8bd807751dcd9f13d0" compoundref="_finite_state_machine_8h" startline="471" endline="487">m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::FiniteStateMachine</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a0c61563a5042149aeaf6b0b06b6b37f8" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_trans_func_t" kindref="compound">TransFuncT</ref></type>
+        <definition>TransFuncT m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::m_TransitionFunc</definition>
+        <argsstring></argsstring>
+        <name>m_TransitionFunc</name>
+        <qualifiedname>m0st4fa::fsm::FiniteStateMachine::m_TransitionFunc</qualifiedname>
+        <briefdescription>
+<para>The function that will be called on each transition. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="422" column="12" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="422" bodyend="-1"/>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a379192050bd13f35664b5960ea465c80" compoundref="_finite_state_machine_8h" startline="494" endline="501">m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::operator=</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-static-attrib">
+      <memberdef kind="variable" id="classm0st4fa_1_1fsm_1_1_finite_state_machine_1af5fa6501d388a47f8625a9af2fa1205c" prot="protected" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="namespacem0st4fa_1_1fsm_1adea900ebd34b3b5d62931d51d398268d" kindref="member">FSMStateType</ref></type>
+        <definition>constexpr FSMStateType m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::START_STATE</definition>
+        <argsstring></argsstring>
+        <name>START_STATE</name>
+        <qualifiedname>m0st4fa::fsm::FiniteStateMachine::START_STATE</qualifiedname>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>The start state that will be used by the state machine. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="458" column="31" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="458" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a605a16645ce198a8a571ac2e3ddb4a5e" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::_is_state_final</definition>
+        <argsstring>(const FSMStateSetType &amp;state) const</argsstring>
+        <name>_is_state_final</name>
+        <qualifiedname>m0st4fa::fsm::FiniteStateMachine::_is_state_final</qualifiedname>
+        <param>
+          <type>const <ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type" kindref="compound">FSMStateSetType</ref> &amp;</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+<para>Checks whether <computeroutput>state</computeroutput> is final (contains at least one final state) and returns a boolean indicating it. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This is often used to check whether a string is accepted or not (whether we&apos;ve reached an accepting state). <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The state set to check for whether it is final or not. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>True</computeroutput> if <computeroutput>state</computeroutput> is a final state set; <computeroutput>False</computeroutput> otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="430" column="13" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="430" bodyend="438"/>
+        <references refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type_1ab37c773c0c059b360dd43536ab8d5517" compoundref="_finite_state_machine_8h" startline="106" endline="108">m0st4fa::fsm::FSMStateSetType::contains</references>
+        <references refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1af27589cf2239dd94d87f252effb43f84" compoundref="_finite_state_machine_8h" startline="504" endline="504">m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::getFinalStates</references>
+      </memberdef>
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a7d866f7d6701ce070aae3f0a88b47047" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type" kindref="compound">FSMStateSetType</ref></type>
+        <definition>FSMStateSetType m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::_get_final_states_from_state_set</definition>
+        <argsstring>(const FSMStateSetType &amp;state) const</argsstring>
+        <name>_get_final_states_from_state_set</name>
+        <qualifiedname>m0st4fa::fsm::FiniteStateMachine::_get_final_states_from_state_set</qualifiedname>
+        <param>
+          <type>const <ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type" kindref="compound">FSMStateSetType</ref> &amp;</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+<para>Searches for the final states within a state set and returns them. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The state set that will be searched. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The final states within <computeroutput>state</computeroutput>, if any. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="445" column="24" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="445" bodyend="454"/>
+        <references refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type_1ab37c773c0c059b360dd43536ab8d5517" compoundref="_finite_state_machine_8h" startline="106" endline="108">m0st4fa::fsm::FSMStateSetType::contains</references>
+        <references refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1af27589cf2239dd94d87f252effb43f84" compoundref="_finite_state_machine_8h" startline="504" endline="504">m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::getFinalStates</references>
+        <references refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type_1a63aacc1726d7c7d22805708b5e2a1fef" compoundref="_finite_state_machine_8h" startline="77" endline="79">m0st4fa::fsm::FSMStateSetType::insert</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a247d21b7b8a25f7a75b3d3444cd8a9c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::FiniteStateMachine</definition>
+        <argsstring>()=default</argsstring>
+        <name>FiniteStateMachine</name>
+        <qualifiedname>m0st4fa::fsm::FiniteStateMachine::FiniteStateMachine</qualifiedname>
+        <briefdescription>
+<para>Default constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="462" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a6cc82307f218ab8bd807751dcd9f13d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::FiniteStateMachine</definition>
+        <argsstring>(const FSMStateSetType &amp;fStates, const TransFuncT &amp;tranFn, FSM_TYPE machineType, FlagsType flags)</argsstring>
+        <name>FiniteStateMachine</name>
+        <qualifiedname>m0st4fa::fsm::FiniteStateMachine::FiniteStateMachine</qualifiedname>
+        <param>
+          <type>const <ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type" kindref="compound">FSMStateSetType</ref> &amp;</type>
+          <declname>fStates</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_trans_func_t" kindref="compound">TransFuncT</ref> &amp;</type>
+          <declname>tranFn</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacem0st4fa_1_1fsm_1a824af687b77ebbcb14e1051fb902b1d8" kindref="member">FSM_TYPE</ref></type>
+          <declname>machineType</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacem0st4fa_1_1fsm_1a9daf74accff16baed24fc902eaf5e0d2" kindref="member">FlagsType</ref></type>
+          <declname>flags</declname>
+        </param>
+        <briefdescription>
+<para>The typical constructor that will be used to construct a state machine. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">fStates</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The final states of the state machine. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tranFn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The transition function of the state machine. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">machineType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the state machine. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">flags</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The flags given to the state machine. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="471" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="471" bodyend="487"/>
+        <references refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type_1a22812a634242303fadc3ebb54bbd5732" compoundref="_finite_state_machine_8h" startline="112" endline="114">m0st4fa::fsm::FSMStateSetType::empty</references>
+        <references refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a5155c91b2dcd709e41f2845e79d1e1fd" compoundref="_finite_state_machine_8h" startline="420">m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::m_Logger</references>
+        <references refid="namespacem0st4fa_1_1fsm_1a824af687b77ebbcb14e1051fb902b1d8aa3712c2dc4c9d906dfe5f99e6d6c6dc0">m0st4fa::fsm::MT_MACHINE_TYPE_COUNT</references>
+      </memberdef>
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a379192050bd13f35664b5960ea465c80" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classm0st4fa_1_1fsm_1_1_finite_state_machine" kindref="compound">FiniteStateMachine</ref> &amp;</type>
+        <definition>FiniteStateMachine &amp; m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::operator=</definition>
+        <argsstring>(const FiniteStateMachine &amp;rhs)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>m0st4fa::fsm::FiniteStateMachine::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classm0st4fa_1_1fsm_1_1_finite_state_machine" kindref="compound">FiniteStateMachine</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Copy operator for the state machine. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The right hand side (right argument) of the copy operator. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the state machine after assignment. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="494" column="20" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="494" bodyend="501"/>
+        <references refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a671dac4b92a9737963fc11d80c790d65" compoundref="_finite_state_machine_8h" startline="413">m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::m_FinalStates</references>
+        <references refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a4c3312d267bd2288d28965078a9329a2" compoundref="_finite_state_machine_8h" startline="415">m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::m_Flags</references>
+        <references refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a6298a230a79036e1079049ae415c8d0d" compoundref="_finite_state_machine_8h" startline="414">m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::m_MachineType</references>
+        <references refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a0c61563a5042149aeaf6b0b06b6b37f8" compoundref="_finite_state_machine_8h" startline="422">m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::m_TransitionFunc</references>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_deter_finite_automaton_1ab09c10b99d00b7356aa328e47fde3b36" compoundref="_d_f_a_8h" startline="50" endline="53">m0st4fa::fsm::DeterFiniteAutomaton&lt; TransFuncT, InputT &gt;::operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_finite_state_machine_1af27589cf2239dd94d87f252effb43f84" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type" kindref="compound">FSMStateSetType</ref> &amp;</type>
+        <definition>const FSMStateSetType &amp; m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::getFinalStates</definition>
+        <argsstring>() const</argsstring>
+        <name>getFinalStates</name>
+        <qualifiedname>m0st4fa::fsm::FiniteStateMachine::getFinalStates</qualifiedname>
+        <briefdescription>
+<para>Gets the final states of the state machine. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="504" column="23" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="504" bodyend="504"/>
+        <references refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a671dac4b92a9737963fc11d80c790d65" compoundref="_finite_state_machine_8h" startline="413">m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::m_FinalStates</references>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a7d866f7d6701ce070aae3f0a88b47047" compoundref="_finite_state_machine_8h" startline="445" endline="454">m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::_get_final_states_from_state_set</referencedby>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a605a16645ce198a8a571ac2e3ddb4a5e" compoundref="_finite_state_machine_8h" startline="430" endline="438">m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::_is_state_final</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_finite_state_machine_1aeeb4b2093840ab12624d034be708fc10" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacem0st4fa_1_1fsm_1a9daf74accff16baed24fc902eaf5e0d2" kindref="member">FlagsType</ref></type>
+        <definition>FlagsType m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::getFlags</definition>
+        <argsstring>() const</argsstring>
+        <name>getFlags</name>
+        <qualifiedname>m0st4fa::fsm::FiniteStateMachine::getFlags</qualifiedname>
+        <briefdescription>
+<para>Gets the flags of the state machine. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="507" column="11" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="507" bodyend="507"/>
+        <references refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a4c3312d267bd2288d28965078a9329a2" compoundref="_finite_state_machine_8h" startline="415">m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::m_Flags</references>
+      </memberdef>
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_finite_state_machine_1adcd2de25e74e415309594a6dddd23d51" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespacem0st4fa_1_1fsm_1a824af687b77ebbcb14e1051fb902b1d8" kindref="member">FSM_TYPE</ref></type>
+        <definition>FSM_TYPE m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::getMachineType</definition>
+        <argsstring>() const</argsstring>
+        <name>getMachineType</name>
+        <qualifiedname>m0st4fa::fsm::FiniteStateMachine::getMachineType</qualifiedname>
+        <briefdescription>
+<para>Gets the type of the state machine. For a DFA, the type is always <computeroutput><ref refid="namespacem0st4fa_1_1fsm_1a824af687b77ebbcb14e1051fb902b1d8afc791e61adbabe19e3c5fc01607034fc" kindref="member">FSM_TYPE::MT_DFA</ref></computeroutput>; for an NFA it varies. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="510" column="10" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="510" bodyend="510"/>
+        <references refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a6298a230a79036e1079049ae415c8d0d" compoundref="_finite_state_machine_8h" startline="414">m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;::m_MachineType</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A finite state machine that can check whether a string accepts according to some regular grammar. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class is designed so as to contain common constructs that a typical state machine, no matter its type, will have; thus, it is mainly designed to be inherited from rather than used directly. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4">
+        <label>m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, std::string_view &gt;</label>
+        <link refid="classm0st4fa_1_1fsm_1_1_finite_state_machine"/>
+        <childnode refid="1" relation="template-instance">
+          <edgelabel>&lt; TransFuncT, std::string_view &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>m0st4fa::fsm::DeterFiniteAutomaton&lt; TransFuncT, InputT &gt;</label>
+        <link refid="classm0st4fa_1_1fsm_1_1_deter_finite_automaton"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;</label>
+        <link refid="classm0st4fa_1_1fsm_1_1_finite_state_machine"/>
+      </node>
+      <node id="3">
+        <label>m0st4fa::fsm::NonDeterFiniteAutomaton&lt; TransFuncT, InputT &gt;</label>
+        <link refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="7">
+        <label>FSM_TYPE</label>
+      </node>
+      <node id="6">
+        <label>K</label>
+      </node>
+      <node id="8">
+        <label>Logger</label>
+        <link refid="class_logger"/>
+      </node>
+      <node id="9">
+        <label>TransFuncT</label>
+        <link refid="class_trans_func_t"/>
+      </node>
+      <node id="2">
+        <label>m0st4fa::fsm::FSMStateSetType</label>
+        <link refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>+m_StateSet</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;</label>
+        <link refid="classm0st4fa_1_1fsm_1_1_finite_state_machine"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>-m_FinalStates</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>-m_MachineType</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>#START_STATE</edgelabel>
+          <edgelabel>-m_Flags</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>#m_Logger</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>#m_TransitionFunc</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::set&lt; FSMStateType &gt;</label>
+        <childnode refid="4" relation="usage">
+          <edgelabel>+keys</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="template-instance">
+          <edgelabel>&lt; FSMStateType &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>std::set&lt; K &gt;</label>
+        <childnode refid="6" relation="usage">
+          <edgelabel>+keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>unsigned</label>
+        <link refid="classunsigned"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="407" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="407" bodyend="511"/>
+    <listofallmembers>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a7d866f7d6701ce070aae3f0a88b47047" prot="protected" virt="non-virtual"><scope>m0st4fa::fsm::FiniteStateMachine</scope><name>_get_final_states_from_state_set</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a605a16645ce198a8a571ac2e3ddb4a5e" prot="protected" virt="non-virtual"><scope>m0st4fa::fsm::FiniteStateMachine</scope><name>_is_state_final</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a247d21b7b8a25f7a75b3d3444cd8a9c0" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::FiniteStateMachine</scope><name>FiniteStateMachine</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a6cc82307f218ab8bd807751dcd9f13d0" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::FiniteStateMachine</scope><name>FiniteStateMachine</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a93bbc0499903ffa2d78306b08a687146" prot="private" virt="non-virtual"><scope>m0st4fa::fsm::FiniteStateMachine</scope><name>FSMResult</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1af27589cf2239dd94d87f252effb43f84" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::FiniteStateMachine</scope><name>getFinalStates</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1aeeb4b2093840ab12624d034be708fc10" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::FiniteStateMachine</scope><name>getFlags</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1adcd2de25e74e415309594a6dddd23d51" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::FiniteStateMachine</scope><name>getMachineType</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a671dac4b92a9737963fc11d80c790d65" prot="private" virt="non-virtual"><scope>m0st4fa::fsm::FiniteStateMachine</scope><name>m_FinalStates</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a4c3312d267bd2288d28965078a9329a2" prot="private" virt="non-virtual"><scope>m0st4fa::fsm::FiniteStateMachine</scope><name>m_Flags</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a5155c91b2dcd709e41f2845e79d1e1fd" prot="protected" virt="non-virtual"><scope>m0st4fa::fsm::FiniteStateMachine</scope><name>m_Logger</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a6298a230a79036e1079049ae415c8d0d" prot="private" virt="non-virtual"><scope>m0st4fa::fsm::FiniteStateMachine</scope><name>m_MachineType</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a0c61563a5042149aeaf6b0b06b6b37f8" prot="protected" virt="non-virtual"><scope>m0st4fa::fsm::FiniteStateMachine</scope><name>m_TransitionFunc</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a379192050bd13f35664b5960ea465c80" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::FiniteStateMachine</scope><name>operator=</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1af5fa6501d388a47f8625a9af2fa1205c" prot="protected" virt="non-virtual"><scope>m0st4fa::fsm::FiniteStateMachine</scope><name>START_STATE</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

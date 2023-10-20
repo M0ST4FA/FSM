@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.7" xml:lang="en-US">
+  <compounddef id="structm0st4fa_1_1fsm_1_1_invalid_state_machine_arguments_exception" kind="struct" language="C++" prot="public">
+    <compoundname>m0st4fa::fsm::InvalidStateMachineArgumentsException</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::invalid_argument</basecompoundref>
+    <includes refid="_finite_state_machine_8h" local="no">FiniteStateMachine.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structm0st4fa_1_1fsm_1_1_invalid_state_machine_arguments_exception_1a5a170c84b3dc1577c3807db2c32516f6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>m0st4fa::fsm::InvalidStateMachineArgumentsException::InvalidStateMachineArgumentsException</definition>
+        <argsstring>(const std::string &amp;message)</argsstring>
+        <name>InvalidStateMachineArgumentsException</name>
+        <qualifiedname>m0st4fa::fsm::InvalidStateMachineArgumentsException::InvalidStateMachineArgumentsException</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="21" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="21" bodyend="21"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>The exception thrown when there is an invalid state machine argument. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>m0st4fa::fsm::InvalidStateMachineArgumentsException</label>
+        <link refid="structm0st4fa_1_1fsm_1_1_invalid_state_machine_arguments_exception"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>std::exception</label>
+      </node>
+      <node id="2">
+        <label>std::invalid_argument</label>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::logic_error</label>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>m0st4fa::fsm::InvalidStateMachineArgumentsException</label>
+        <link refid="structm0st4fa_1_1fsm_1_1_invalid_state_machine_arguments_exception"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>std::exception</label>
+      </node>
+      <node id="2">
+        <label>std::invalid_argument</label>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::logic_error</label>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="19" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="19" bodyend="23"/>
+    <listofallmembers>
+      <member refid="structm0st4fa_1_1fsm_1_1_invalid_state_machine_arguments_exception_1a5a170c84b3dc1577c3807db2c32516f6" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::InvalidStateMachineArgumentsException</scope><name>InvalidStateMachineArgumentsException</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

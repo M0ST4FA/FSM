@@ -1,0 +1,268 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.7" xml:lang="en-US">
+  <compounddef id="classm0st4fa_1_1fsm_1_1_transition_function" kind="class" language="C++" prot="public">
+    <compoundname>m0st4fa::fsm::TransitionFunction</compoundname>
+    <includes refid="_finite_state_machine_8h" local="no">FiniteStateMachine.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename TableT</type>
+        <defval><ref refid="classm0st4fa_1_1fsm_1_1_f_s_m_table" kindref="compound">FSMTable</ref></defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classm0st4fa_1_1fsm_1_1_transition_function_1a07efae944582638386ef88f6505f7719" prot="private" static="no" mutable="no">
+        <type>TableT</type>
+        <definition>TableT m0st4fa::fsm::TransitionFunction&lt; TableT &gt;::m_Table</definition>
+        <argsstring></argsstring>
+        <name>m_Table</name>
+        <qualifiedname>m0st4fa::fsm::TransitionFunction::m_Table</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="347" column="8" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="347" bodyend="-1"/>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_transition_function_1aa9d32801e9136d2f048bc08d72cb3b8e" compoundref="_finite_state_machine_8h" startline="383" endline="392">m0st4fa::fsm::TransitionFunction&lt; TableT &gt;::operator()</referencedby>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_transition_function_1af4bc04818c9126c07305732a6b9108d7" compoundref="_finite_state_machine_8h" startline="360" endline="362">m0st4fa::fsm::TransitionFunction&lt; TableT &gt;::operator()</referencedby>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_transition_function_1a77884de4b07f532c78f5f9bb1d01a657" compoundref="_finite_state_machine_8h" startline="371" endline="373">m0st4fa::fsm::TransitionFunction&lt; TableT &gt;::operator()</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_transition_function_1a77fc8dcfa6d5e5c902326fe5b749e62c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>m0st4fa::fsm::TransitionFunction&lt; TableT &gt;::TransitionFunction</definition>
+        <argsstring>()=default</argsstring>
+        <name>TransitionFunction</name>
+        <qualifiedname>m0st4fa::fsm::TransitionFunction::TransitionFunction</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="350" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_transition_function_1aaf9b768b1a8deaa3e85d000a785d56fd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>m0st4fa::fsm::TransitionFunction&lt; TableT &gt;::TransitionFunction</definition>
+        <argsstring>(const TableT &amp;table)</argsstring>
+        <name>TransitionFunction</name>
+        <qualifiedname>m0st4fa::fsm::TransitionFunction::TransitionFunction</qualifiedname>
+        <param>
+          <type>const TableT &amp;</type>
+          <declname>table</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="351" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="351" bodyend="351"/>
+      </memberdef>
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_transition_function_1af4bc04818c9126c07305732a6b9108d7" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename InputT</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type" kindref="compound">FSMStateSetType</ref> &amp;</type>
+        <definition>FSMStateSetType &amp; m0st4fa::fsm::TransitionFunction&lt; TableT &gt;::operator()</definition>
+        <argsstring>(const FSMStateType &amp;state, const InputT c) noexcept(true)</argsstring>
+        <name>operator()</name>
+        <qualifiedname>m0st4fa::fsm::TransitionFunction::operator()</qualifiedname>
+        <param>
+          <type>const <ref refid="namespacem0st4fa_1_1fsm_1adea900ebd34b3b5d62931d51d398268d" kindref="member">FSMStateType</ref> &amp;</type>
+          <declname>state</declname>
+        </param>
+        <param>
+          <type>const InputT</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+<para>Accesses the table entry indexed by <computeroutput>state</computeroutput> and <computeroutput>input</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The state whose corresponding entry will be accessed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>input</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The input used to access the entry corresponding to a given state. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the table entry indexed by <computeroutput>state</computeroutput> and <computeroutput>input</computeroutput>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="360" column="17" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="360" bodyend="362"/>
+        <references refid="classm0st4fa_1_1fsm_1_1_transition_function_1a07efae944582638386ef88f6505f7719" compoundref="_finite_state_machine_8h" startline="347">m0st4fa::fsm::TransitionFunction&lt; TableT &gt;::m_Table</references>
+      </memberdef>
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_transition_function_1a77884de4b07f532c78f5f9bb1d01a657" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename InputT</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type" kindref="compound">FSMStateSetType</ref></type>
+        <definition>FSMStateSetType m0st4fa::fsm::TransitionFunction&lt; TableT &gt;::operator()</definition>
+        <argsstring>(const FSMStateType state, const InputT input) const noexcept(true)</argsstring>
+        <name>operator()</name>
+        <qualifiedname>m0st4fa::fsm::TransitionFunction::operator()</qualifiedname>
+        <param>
+          <type>const <ref refid="namespacem0st4fa_1_1fsm_1adea900ebd34b3b5d62931d51d398268d" kindref="member">FSMStateType</ref></type>
+          <declname>state</declname>
+        </param>
+        <param>
+          <type>const InputT</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+<para>Accesses the table entry indexed by <computeroutput>state</computeroutput> and <computeroutput>input</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The state whose corresponding entry will be accessed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>input</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The input used to access the entry corresponding to a given state. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A copy of the table entry indexed by <computeroutput>state</computeroutput> and <computeroutput>input</computeroutput>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="371" column="17" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="371" bodyend="373"/>
+        <references refid="classm0st4fa_1_1fsm_1_1_transition_function_1a07efae944582638386ef88f6505f7719" compoundref="_finite_state_machine_8h" startline="347">m0st4fa::fsm::TransitionFunction&lt; TableT &gt;::m_Table</references>
+      </memberdef>
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_transition_function_1aa9d32801e9136d2f048bc08d72cb3b8e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename InputT</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type" kindref="compound">FSMStateSetType</ref></type>
+        <definition>FSMStateSetType m0st4fa::fsm::TransitionFunction&lt; TableT &gt;::operator()</definition>
+        <argsstring>(const FSMStateSetType &amp;stateSet, const InputT input) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>m0st4fa::fsm::TransitionFunction::operator()</qualifiedname>
+        <param>
+          <type>const <ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type" kindref="compound">FSMStateSetType</ref> &amp;</type>
+          <declname>stateSet</declname>
+        </param>
+        <param>
+          <type>const InputT</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+<para>Accesses the table entries indexed by every state in <computeroutput>stateSet</computeroutput> set and <computeroutput>input</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>You can think of this as a loop over every state in <computeroutput>stateSet</computeroutput>. Entries are accessed in each iteration using the state from <computeroutput>stateSet</computeroutput> corresponding to that iteration and <computeroutput>input</computeroutput>. The entires are then collected in a <ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type" kindref="compound">FSMStateSetType</ref> object and returned. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">stateSet</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The set of states whose corresponding entires will be accessed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>input</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The input used to access the entry corresponding to a given state. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A collection of table entries corresponding to the table entries indexed by every state in <computeroutput>stateSet</computeroutput> set and <computeroutput>input</computeroutput>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="383" column="17" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="383" bodyend="392"/>
+        <references refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type_1aabf7cc7baa5c6e1a289fa4e635466cac" compoundref="_finite_state_machine_8h" startline="92" endline="94">m0st4fa::fsm::FSMStateSetType::begin</references>
+        <references refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type_1a992bc9289d334ffd6b5ce4af99dea260" compoundref="_finite_state_machine_8h" startline="95" endline="97">m0st4fa::fsm::FSMStateSetType::end</references>
+        <references refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type_1a63aacc1726d7c7d22805708b5e2a1fef" compoundref="_finite_state_machine_8h" startline="77" endline="79">m0st4fa::fsm::FSMStateSetType::insert</references>
+        <references refid="classm0st4fa_1_1fsm_1_1_transition_function_1a07efae944582638386ef88f6505f7719" compoundref="_finite_state_machine_8h" startline="347">m0st4fa::fsm::TransitionFunction&lt; TableT &gt;::m_Table</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A transition function used to decide on which states comes next when simulating. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="note"><para>This is just an abstraction over <ref refid="classm0st4fa_1_1fsm_1_1_f_s_m_table" kindref="compound">m0st4fa::fsm::FSMTable</ref>. It is advisable to use this directly instead of building a <ref refid="classm0st4fa_1_1fsm_1_1_f_s_m_table" kindref="compound">m0st4fa::fsm::FSMTable</ref> object first and then passing it to this. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="5">
+        <label>T</label>
+      </node>
+      <node id="2">
+        <label>m0st4fa::fsm::FSMTable</label>
+        <link refid="classm0st4fa_1_1fsm_1_1_f_s_m_table"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>-m_Table</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>m0st4fa::fsm::TransitionFunction&lt; TableT &gt;</label>
+        <link refid="classm0st4fa_1_1fsm_1_1_transition_function"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>-m_Table</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>std::vector&lt; T &gt;</label>
+        <childnode refid="5" relation="usage">
+          <edgelabel>+elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::vector&lt; StateSetVecType &gt;</label>
+        <childnode refid="4" relation="usage">
+          <edgelabel>+elements</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="template-instance">
+          <edgelabel>&lt; StateSetVecType &gt;</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="345" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="345" bodyend="394"/>
+    <listofallmembers>
+      <member refid="classm0st4fa_1_1fsm_1_1_transition_function_1a07efae944582638386ef88f6505f7719" prot="private" virt="non-virtual"><scope>m0st4fa::fsm::TransitionFunction</scope><name>m_Table</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_transition_function_1af4bc04818c9126c07305732a6b9108d7" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::TransitionFunction</scope><name>operator()</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_transition_function_1a77884de4b07f532c78f5f9bb1d01a657" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::TransitionFunction</scope><name>operator()</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_transition_function_1aa9d32801e9136d2f048bc08d72cb3b8e" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::TransitionFunction</scope><name>operator()</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_transition_function_1a77fc8dcfa6d5e5c902326fe5b749e62c" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::TransitionFunction</scope><name>TransitionFunction</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_transition_function_1aaf9b768b1a8deaa3e85d000a785d56fd" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::TransitionFunction</scope><name>TransitionFunction</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

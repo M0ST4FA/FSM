@@ -1,0 +1,5 @@
+<map id="%3" name="%3">
+<area shape="rect" id="node1" title="m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;" alt="" coords="33,101,484,149"/>
+<area shape="rect" id="node2" title="m0st4fa::fsm::NonDeterFiniteAutomaton&lt; TransFuncT, InputT &gt;" alt="" coords="5,5,512,53"/>
+<area shape="poly" id="edge1" title="public&#45;inheritance" alt="" coords="261,54,261,87,256,87,256,54"/>
+</map>

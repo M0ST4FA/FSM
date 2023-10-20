@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.7" xml:lang="en-US">
+  <compounddef id="conceptm0st4fa_1_1fsm_1_1_state_set_concept" kind="concept">
+    <compoundname>m0st4fa::fsm::StateSetConcept</compoundname>
+    <includes refid="_finite_state_machine_8h" local="no">FiniteStateMachine.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <initializer>template&lt;typename T&gt;
+concept <ref refid="conceptm0st4fa_1_1fsm_1_1_state_set_concept" kindref="compound">m0st4fa::fsm::StateSetConcept</ref> =  std::is_same_v&lt;T, FSMStateSetType&gt; || std::is_same_v&lt;T, std::vector&lt;FSMStateType&gt;&gt;    </initializer>
+    <briefdescription>
+<para>Ensure that <computeroutput>T</computeroutput> is the same as <ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type" kindref="compound">m0st4fa::fsm::FSMStateSetType</ref> or is the same as std::vector&lt;m0st4fa::fsm::FSMStateType&gt;. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="131" column="1"/>
+  </compounddef>
+</doxygen>

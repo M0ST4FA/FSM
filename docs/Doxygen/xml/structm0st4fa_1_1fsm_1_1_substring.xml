@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.7" xml:lang="en-US">
+  <compounddef id="structm0st4fa_1_1fsm_1_1_substring" kind="struct" language="C++" prot="public">
+    <compoundname>m0st4fa::fsm::Substring</compoundname>
+    <includes refid="_finite_state_machine_8h" local="no">FiniteStateMachine.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+        <defval><ref refid="namespacem0st4fa_1_1fsm_1adea900ebd34b3b5d62931d51d398268d" kindref="member">FSMStateType</ref></defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structm0st4fa_1_1fsm_1_1_substring_1a1c2c176f54b01b75afa2a46408d290ef" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; T &gt;</type>
+        <definition>std::vector&lt;T&gt; m0st4fa::fsm::Substring&lt; T &gt;::matchedStates</definition>
+        <argsstring></argsstring>
+        <name>matchedStates</name>
+        <qualifiedname>m0st4fa::fsm::Substring::matchedStates</qualifiedname>
+        <briefdescription>
+<para>The path (that mimics the substring) through the FSM. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="607" column="13" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="607" bodyend="-1"/>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1a06caf80399672022c82511e19b44ac5f" compoundref="_n_f_a_8h" startline="324" endline="354">m0st4fa::fsm::NonDeterFiniteAutomaton&lt; TransFuncT, InputT &gt;::_get_longest_substring_from_matched_sets</referencedby>
+        <referencedby refid="structm0st4fa_1_1fsm_1_1_substring_1a3aa809e4abcef2f3014be74bb6717769" compoundref="_finite_state_machine_8h" startline="616" endline="618">m0st4fa::fsm::Substring&lt; T &gt;::begin</referencedby>
+        <referencedby refid="structm0st4fa_1_1fsm_1_1_substring_1a521f425072d2254087543c705e37474c" compoundref="_finite_state_machine_8h" startline="622" endline="624">m0st4fa::fsm::Substring&lt; T &gt;::end</referencedby>
+        <referencedby refid="structm0st4fa_1_1fsm_1_1_substring_1a1cef219ef9c89c06006236ffeccd7149" compoundref="_finite_state_machine_8h" startline="629" endline="631">m0st4fa::fsm::Substring&lt; T &gt;::size</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structm0st4fa_1_1fsm_1_1_substring_1a8c1557f5a490aa868a11435ccdac5674" prot="public" static="no" mutable="no">
+        <type><ref refid="structm0st4fa_1_1fsm_1_1_indicies" kindref="compound">Indicies</ref></type>
+        <definition>Indicies m0st4fa::fsm::Substring&lt; T &gt;::indicies</definition>
+        <argsstring></argsstring>
+        <name>indicies</name>
+        <qualifiedname>m0st4fa::fsm::Substring::indicies</qualifiedname>
+        <briefdescription>
+<para>The indicies of the substring within the input string. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="611" column="10" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="611" bodyend="-1"/>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1a06caf80399672022c82511e19b44ac5f" compoundref="_n_f_a_8h" startline="324" endline="354">m0st4fa::fsm::NonDeterFiniteAutomaton&lt; TransFuncT, InputT &gt;::_get_longest_substring_from_matched_sets</referencedby>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_deter_finite_automaton_1a4cba6af87ed86c81807f39115a8b7289" compoundref="_d_f_a_8h" startline="159" endline="220">m0st4fa::fsm::DeterFiniteAutomaton&lt; TransFuncT, InputT &gt;::_simulate_longest_substring</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structm0st4fa_1_1fsm_1_1_substring_1a3aa809e4abcef2f3014be74bb6717769" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto m0st4fa::fsm::Substring&lt; T &gt;::begin</definition>
+        <argsstring>() const</argsstring>
+        <name>begin</name>
+        <qualifiedname>m0st4fa::fsm::Substring::begin</qualifiedname>
+        <briefdescription>
+<para>Gets an iterator to the beginning of the path (that mimics the substring) through the FSM. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="616" column="6" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="616" bodyend="618"/>
+        <references refid="structm0st4fa_1_1fsm_1_1_substring_1a1c2c176f54b01b75afa2a46408d290ef" compoundref="_finite_state_machine_8h" startline="607">m0st4fa::fsm::Substring&lt; T &gt;::matchedStates</references>
+      </memberdef>
+      <memberdef kind="function" id="structm0st4fa_1_1fsm_1_1_substring_1a521f425072d2254087543c705e37474c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto m0st4fa::fsm::Substring&lt; T &gt;::end</definition>
+        <argsstring>() const</argsstring>
+        <name>end</name>
+        <qualifiedname>m0st4fa::fsm::Substring::end</qualifiedname>
+        <briefdescription>
+<para>Gets an iterator to the end of the path (that mimics the substring) through the FSM. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="622" column="6" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="622" bodyend="624"/>
+        <references refid="structm0st4fa_1_1fsm_1_1_substring_1a1c2c176f54b01b75afa2a46408d290ef" compoundref="_finite_state_machine_8h" startline="607">m0st4fa::fsm::Substring&lt; T &gt;::matchedStates</references>
+      </memberdef>
+      <memberdef kind="function" id="structm0st4fa_1_1fsm_1_1_substring_1a1cef219ef9c89c06006236ffeccd7149" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t m0st4fa::fsm::Substring&lt; T &gt;::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <qualifiedname>m0st4fa::fsm::Substring::size</qualifiedname>
+        <briefdescription>
+<para>Gets the number of states in the path (that mimics the substring) through the FSM. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="629" column="8" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="629" bodyend="631"/>
+        <references refid="structm0st4fa_1_1fsm_1_1_substring_1a1c2c176f54b01b75afa2a46408d290ef" compoundref="_finite_state_machine_8h" startline="607">m0st4fa::fsm::Substring&lt; T &gt;::matchedStates</references>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1a06caf80399672022c82511e19b44ac5f" compoundref="_n_f_a_8h" startline="324" endline="354">m0st4fa::fsm::NonDeterFiniteAutomaton&lt; TransFuncT, InputT &gt;::_get_longest_substring_from_matched_sets</referencedby>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_deter_finite_automaton_1a4cba6af87ed86c81807f39115a8b7289" compoundref="_d_f_a_8h" startline="159" endline="220">m0st4fa::fsm::DeterFiniteAutomaton&lt; TransFuncT, InputT &gt;::_simulate_longest_substring</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a single matched substring as the path through an FSM. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="note"><para>Typically used only internally to record matched substrings. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="5">
+        <label>T</label>
+      </node>
+      <node id="6">
+        <label>m0st4fa::fsm::Indicies</label>
+        <link refid="structm0st4fa_1_1fsm_1_1_indicies"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>+end</edgelabel>
+          <edgelabel>+start</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>m0st4fa::fsm::Substring&lt; T &gt;</label>
+        <link refid="structm0st4fa_1_1fsm_1_1_substring"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>+matchedStates</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>+indicies</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>std::vector&lt; T &gt;</label>
+        <childnode refid="5" relation="usage">
+          <edgelabel>+elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>unsigned</label>
+        <link refid="classunsigned"/>
+      </node>
+      <node id="2">
+        <label>std::vector&lt; FSMStateType &gt;</label>
+        <childnode refid="3" relation="usage">
+          <edgelabel>+elements</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="template-instance">
+          <edgelabel>&lt; FSMStateType &gt;</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="603" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="603" bodyend="633"/>
+    <listofallmembers>
+      <member refid="structm0st4fa_1_1fsm_1_1_substring_1a3aa809e4abcef2f3014be74bb6717769" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::Substring</scope><name>begin</name></member>
+      <member refid="structm0st4fa_1_1fsm_1_1_substring_1a521f425072d2254087543c705e37474c" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::Substring</scope><name>end</name></member>
+      <member refid="structm0st4fa_1_1fsm_1_1_substring_1a8c1557f5a490aa868a11435ccdac5674" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::Substring</scope><name>indicies</name></member>
+      <member refid="structm0st4fa_1_1fsm_1_1_substring_1a1c2c176f54b01b75afa2a46408d290ef" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::Substring</scope><name>matchedStates</name></member>
+      <member refid="structm0st4fa_1_1fsm_1_1_substring_1a1cef219ef9c89c06006236ffeccd7149" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::Substring</scope><name>size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

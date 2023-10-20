@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.7" xml:lang="en-US">
+  <compounddef id="dir_b17c13804e0450a92e5156755c194e36" kind="dir">
+    <compoundname>C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm</compoundname>
+    <innerfile refid="_d_f_a_8h">DFA.h</innerfile>
+    <innerfile refid="_finite_state_machine_8h">FiniteStateMachine.h</innerfile>
+    <innerfile refid="_n_f_a_8h">NFA.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/"/>
+  </compounddef>
+</doxygen>

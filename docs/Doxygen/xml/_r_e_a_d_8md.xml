@@ -1,0 +1,261 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.7" xml:lang="en-US">
+  <compounddef id="_r_e_a_d_8md" kind="file" language="Markdown">
+    <compoundname>READ.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>FSM</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">finite<sp/>state<sp/>machine<sp/>library<sp/>in<sp/>C++.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Notes</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>The<sp/>tests<sp/>depend<sp/>on<sp/>gtest,<sp/>so<sp/>you<sp/>need<sp/>to<sp/>install<sp/>the<sp/>package<sp/>if<sp/>you<sp/>want<sp/>to<sp/>run<sp/>the<sp/>tests.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>The<sp/>`utility`<sp/>directory<sp/>has<sp/>general<sp/>utility<sp/>functions<sp/>used<sp/>by<sp/>this<sp/>project<sp/>and<sp/>others,<sp/>so<sp/>it<sp/>is<sp/>important.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Documentation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Exception<sp/>Types</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>`InvalidStateMachineArgumentsException`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>A<sp/>wrapper<sp/>over<sp/>`std::invalid_argument`<sp/>that<sp/>is<sp/>thrown<sp/>from<sp/>the<sp/>constructor<sp/>of<sp/>a<sp/>state<sp/>machine<sp/>in<sp/>case<sp/>there<sp/>is<sp/>at<sp/>least<sp/>one<sp/>invalid<sp/>argument<sp/>given<sp/>to<sp/>a<sp/>state<sp/>machine.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>`UnrecognizedSimModeException`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>A<sp/>wrapper<sp/>over<sp/>`std::runtime_error`<sp/>that<sp/>is<sp/>thrown<sp/>from<sp/>any<sp/>`simulate()`<sp/>function<sp/>in<sp/>case<sp/>the<sp/>simulation<sp/>mode<sp/>is<sp/>unrecognized.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Utility<sp/>Data<sp/>Structures</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">file:<sp/>FiniteStateMachine.h</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>`FSMStateType`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>A<sp/>typedef<sp/>representing<sp/>a<sp/>single<sp/>state<sp/>of<sp/>the<sp/>fsm.<sp/>It<sp/>is<sp/>an<sp/>alias<sp/>to<sp/>`unsigned`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>`FSMStateSetType`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>A<sp/>data<sp/>structure<sp/>representing<sp/>a<sp/>set<sp/>of<sp/>`FSMStateType`.<sp/>This<sp/>is<sp/>used<sp/>primarily<sp/>for<sp/>`NFA`<sp/>simulation.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>`FSMTableType`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>A<sp/>data<sp/>structure<sp/>representing<sp/>a<sp/>2D<sp/>table<sp/>of<sp/>sets<sp/>of<sp/>states.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>field<sp/>|<sp/>definition<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>-----<sp/>|<sp/>------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>table<sp/>|<sp/>the<sp/>actual<sp/>object<sp/>holding<sp/>the<sp/>table.<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>method<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>definition<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>------------------------------------------------------<sp/>|<sp/>------------------------------------------------------------------------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>`FSMStateType&amp;`<sp/>operator()(state,<sp/>c)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>returns<sp/>`table[state][c]`,<sp/>and<sp/>makes<sp/>sure<sp/>the<sp/>vectors<sp/>are<sp/>not<sp/>overflowed<sp/>(resizing<sp/>them<sp/>if<sp/>necessary).<sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>`const<sp/>FSMStateType&amp;`<sp/>operator()(state,<sp/>c)<sp/>const<sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>returns<sp/>`table[state][c]`.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>`const<sp/>vector&lt;FSMStateType&gt;&amp;`<sp/>operator[]<sp/>(index)<sp/>const<sp/>|<sp/>return<sp/>`table.at(index).`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>`const<sp/>vector&lt;FSMStateType&gt;&amp;`<sp/>at(index)<sp/>const<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>return<sp/>`table.at(index)`.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>`FSMStateSetType`<sp/>is<sp/>used<sp/>as<sp/>the<sp/>value<sp/>of<sp/>each<sp/>element<sp/>of<sp/>the<sp/>table<sp/>rather<sp/>than<sp/>`FSMStateType`<sp/>in<sp/>order<sp/>for<sp/>the<sp/>table<sp/>to<sp/>be<sp/>general,<sp/>i.e.,<sp/>able<sp/>to<sp/>be<sp/>used<sp/>with<sp/>either<sp/>a<sp/>`DFA`<sp/>or<sp/>an<sp/>`NFA`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>`TransitionFunction&lt;TableT&gt;`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>A<sp/>data<sp/>structure<sp/>that<sp/>represents<sp/>a<sp/>transition<sp/>function.<sp/>It<sp/>is<sp/>a<sp/>function<sp/>object.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>field<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>definition<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>--------------<sp/>|<sp/>-----------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>`TableT`<sp/>table<sp/>|<sp/>the<sp/>actual<sp/>table.<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>method<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>definition<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>---------------------------------------------------<sp/>|<sp/>------------------------------------------------------------------------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>`FSMStateType&amp;`<sp/>operator()(state,<sp/>c)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>returns<sp/>`table[state][c]`,<sp/>and<sp/>makes<sp/>sure<sp/>the<sp/>vectors<sp/>are<sp/>not<sp/>overflowed<sp/>(resizing<sp/>them<sp/>if<sp/>necessary).<sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>`const<sp/>FSMStateSetType&amp;`<sp/>operator()(state,<sp/>c)<sp/>const<sp/>|<sp/>returns<sp/>`table[state][c]`.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>`const<sp/>FSMStateType&amp;`<sp/>operator()(stateSet,<sp/>c)<sp/>const<sp/>|<sp/>returns<sp/>`table[state][c]`<sp/>for<sp/>every<sp/>state<sp/>within<sp/>`stateSet`.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>The<sp/>goal<sp/>of<sp/>this<sp/>data<sp/>structure<sp/>is<sp/>to<sp/>treat<sp/>a<sp/>`TableT`<sp/>table<sp/>as<sp/>a<sp/>function,<sp/>i.e.,<sp/>it<sp/>is<sp/>just<sp/>a<sp/>wrapper<sp/>around<sp/>a<sp/>`TableT`<sp/>object.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`TransFn&lt;TableT&gt;`<sp/>is<sp/>an<sp/>alias<sp/>for<sp/>this<sp/>data<sp/>structure.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>`FSMResult`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>A<sp/>data<sp/>structure<sp/>that<sp/>represents<sp/>the<sp/>result<sp/>of<sp/>a<sp/>single<sp/>simulation<sp/>of<sp/>a<sp/>`DFA`<sp/>or<sp/>an<sp/>`NFA`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>field<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>definition<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>----------------------------<sp/>|<sp/>-------------------------------------------------------------------------------------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>`bool`<sp/>accepted<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>whether<sp/>(a<sp/>possibly<sp/>substring<sp/>of,<sp/>depending<sp/>on<sp/>flags<sp/>given<sp/>to<sp/>the<sp/>simulation<sp/>function)<sp/>the<sp/>input<sp/>has<sp/>been<sp/>accepted.<sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>`FSMStateSetType`<sp/>finalState<sp/>|<sp/>the<sp/>final<sp/>states<sp/>reached<sp/>when<sp/>(the<sp/>substring<sp/>of)<sp/>the<sp/>input<sp/>was<sp/>accepted.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>`Indecies`<sp/>indecies<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>the<sp/>indecies<sp/>of<sp/>the<sp/>matched<sp/>(substring<sp/>from<sp/>the)<sp/>input.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>`std::string_view`<sp/>input<sp/><sp/><sp/><sp/><sp/>|<sp/>the<sp/>input<sp/>against<sp/>which<sp/>the<sp/>simulation<sp/>has<sp/>been<sp/>run.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>method<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>definition<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>-----------------------------------<sp/>|<sp/>---------------------------------------------------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>`size_t`<sp/>size()<sp/>const<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>the<sp/>size<sp/>of<sp/>the<sp/>matched<sp/>substring.<sp/>equivalent<sp/>to<sp/>`indecies.end<sp/>-<sp/>indecies.start`.<sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>`std::string_view`<sp/>getMatch()<sp/>const<sp/>|<sp/>returns<sp/>the<sp/>matched<sp/>substring<sp/>from<sp/>input.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>`Indecies`<sp/>getIndecies()<sp/>const<sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>returns<sp/>`this-&gt;indecies`.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>function<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>definition<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>----------------------------<sp/>|<sp/>------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>`std::ostream&lt;&lt;(Result<sp/>res)`<sp/>|<sp/>print<sp/>`res`<sp/>to<sp/>`std::ostream`.<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>`Indecies`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>A<sp/>data<sp/>structure<sp/>that<sp/>represents<sp/>the<sp/>indecies<sp/>of<sp/>a<sp/>lexeme<sp/>found<sp/>during<sp/>a<sp/>single<sp/>simulation<sp/>of<sp/>a<sp/>`DFA`<sp/>or<sp/>an<sp/>`NFA`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>field<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>definition<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>-----------------<sp/>|<sp/>--------------------------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>`IndexType`<sp/>start<sp/>|<sp/>the<sp/>start<sp/>index<sp/>of<sp/>a<sp/>found<sp/>lexeme<sp/>relative<sp/>to<sp/>the<sp/>input.<sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>`IndexType`<sp/>end<sp/><sp/><sp/>|<sp/>the<sp/>end<sp/>index<sp/>of<sp/>a<sp/>found<sp/>lexeme<sp/>relative<sp/>to<sp/>the<sp/>input.<sp/><sp/><sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>method<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>definition<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>---------------------------------<sp/>|<sp/>-------------------------------------------------------------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>`std::string`<sp/>toString()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>method<sp/>that<sp/>converts<sp/>the<sp/>`Indecies`<sp/>object<sp/>to<sp/>a<sp/>string.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>`operator<sp/>std::string()`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>conversion<sp/>operator<sp/>that<sp/>just<sp/>calls<sp/>`toString()`.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>`Indecies`<sp/>operator<sp/>+(`size_t`<sp/>x)<sp/>|<sp/>method<sp/>that<sp/>adds<sp/>whatever<sp/>`x`<sp/>to<sp/>both<sp/>`start`<sp/>and<sp/>`end`,<sp/>returning<sp/>a<sp/>new<sp/>`Indecies`<sp/>object.<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>`Substring&lt;T&gt;`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Represents<sp/>a<sp/>single<sp/>matched<sp/>substring<sp/>in<sp/>a<sp/>simulation<sp/>that<sp/>matches<sp/>a<sp/>longest<sp/>substring<sp/>(the<sp/>data<sp/>structure<sp/>is<sp/>mainly<sp/>used<sp/>internally).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>field<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>definition<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>------------------------------<sp/>|<sp/>-----------------------------------------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>`std::vector&lt;T&gt;`<sp/>matchedStates<sp/>|<sp/>the<sp/>set<sp/>of<sp/>states<sp/>the<sp/>machine<sp/>has<sp/>went<sp/>through<sp/>to<sp/>match<sp/>this<sp/>substring.<sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>`Indecies`<sp/>indecies<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>the<sp/>indecies<sp/>of<sp/>the<sp/>matched<sp/>substring<sp/>within<sp/>the<sp/>entire<sp/>string.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>method<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>definition<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>---------------<sp/>|<sp/>------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>begin()<sp/>`const`<sp/>|<sp/>return<sp/>`matchedStates.begin()`<sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>end()<sp/>`const`<sp/><sp/><sp/>|<sp/>return<sp/>`matchedStates.end()`<sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>|<sp/>size()<sp/>`const`<sp/><sp/>|<sp/>return<sp/>`matchedStates.size()`<sp/><sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Enums</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">file:<sp/>FiniteStateMachine.h</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```C++</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>the<sp/>mode<sp/>of<sp/>simulation.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>enum<sp/>class<sp/>FSM_MODE<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>MM_WHOLE_STRING<sp/>=<sp/>0,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>MM_LONGEST_PREFIX,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>MM_LONGEST_SUBSTRING,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>MM_NONE,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>MM_FSM_MODE_MAX,</highlight></codeline>
+<codeline><highlight class="normal"><sp/>};</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/>//<sp/>the<sp/>type<sp/>of<sp/>the<sp/>FSM.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>enum<sp/>class<sp/>FSMType<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>MT_EPSILON_NFA<sp/>=<sp/>0,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>MT_NON_EPSILON_NFA,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>MT_DFA,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>MT_MACHINE_TYPE_MAX,</highlight></codeline>
+<codeline><highlight class="normal"><sp/>};</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/>//<sp/>flags<sp/>to<sp/>customize<sp/>the<sp/>behavior<sp/>of<sp/>the<sp/>FSM.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>enum<sp/>FSM_FLAG<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>FF_FLAG_NONE<sp/>=<sp/>0b0000000,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>FF_FLAG_MAX</highlight></codeline>
+<codeline><highlight class="normal"><sp/>};</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Main<sp/>Data<sp/>Structures</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>`FSM`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">file:<sp/>FiniteStateMachine.h</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```C++</highlight></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;typename<sp/>TransFuncT,<sp/>typename<sp/>InputT<sp/>=<sp/>std::string_view&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>class<sp/>FiniteStateMachine<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>public:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>FiniteStateMachine()<sp/>=<sp/>default;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>FiniteStateMachine(const<sp/>FSMStateSetType&amp;<sp/>fStates,<sp/>const<sp/>TransFuncT&amp;<sp/>tranFn,<sp/>FSMType<sp/>machineType<sp/>,FSMFlag<sp/>flags);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>FiniteStateMachine&amp;<sp/>operator=(const<sp/>FiniteStateMachine&amp;<sp/>rhs);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>FSMStateSetType&amp;<sp/>getFinalStates()<sp/>const;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>FSMFlag<sp/>getFlags()<sp/>const;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>FSMType<sp/>getMachineType()<sp/>const;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>constructor<sp/>parameter<sp/>|<sp/>definition<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>---------------------<sp/>|<sp/>-------------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>fStates<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>the<sp/>set<sp/>of<sp/>final<sp/>states<sp/>for<sp/>this<sp/>FSM.<sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>tranFn<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>the<sp/>transfer<sp/>function<sp/>for<sp/>this<sp/>FSM.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>machineType<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>the<sp/>type<sp/>of<sp/>the<sp/>machine.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>flags<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>flag<sp/>to<sp/>modify<sp/>the<sp/>behavior<sp/>of<sp/>the<sp/>machine.<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>method<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>definition<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>----------------<sp/>|<sp/>---------------------------------------------------------------------------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>getFinalStates()<sp/>|<sp/>returns<sp/>the<sp/>set<sp/>of<sp/>final<sp/>states<sp/>of<sp/>this<sp/>machine;<sp/>i.e.<sp/>returns<sp/>the<sp/>value<sp/>of<sp/>constructor<sp/>parameter<sp/>fStates.<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>getFlags()<sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>returns<sp/>the<sp/>flags<sp/>of<sp/>this<sp/>machine.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>getMachineType()<sp/>|<sp/>returns<sp/>the<sp/>machine<sp/>type<sp/>of<sp/>this<sp/>machine.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>`NFA`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">file:<sp/>NFA.h</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```C++</highlight></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;typename<sp/>TransFuncT,<sp/>typename<sp/>InputT<sp/>=<sp/>std::string_view&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>class<sp/>NonDeterFiniteAutomatan<sp/>:<sp/>FiniteStateMachine&lt;TransFuncT,<sp/>InputT&gt;<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">public:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>NonDeterFiniteAutomatan()<sp/>=<sp/>default;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>NonDeterFiniteAutomatan(const<sp/>FSMStateSetType&amp;<sp/>fStates,<sp/>const<sp/>TransFuncT&amp;<sp/>tranFn,<sp/>FSMType<sp/>machineType<sp/>=<sp/>FSMType::MT_EPSILON_NFA,<sp/>FSMFlag<sp/>flags<sp/>=<sp/>FSM_FLAG::FF_FLAG_NONE);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>FSMResult<sp/>simulate(const<sp/>InputT&amp;<sp/>input,<sp/>const<sp/>FSM_MODE<sp/>mode)<sp/>const;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>constructor<sp/>parameter<sp/>|<sp/>definition<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>---------------------<sp/>|<sp/>------------------------------------------------------------------------------------------------------------------------------------------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>fStates<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>the<sp/>set<sp/>of<sp/>final<sp/>states<sp/>for<sp/>this<sp/>FSM.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>tranFn<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>the<sp/>transfer<sp/>function<sp/>for<sp/>this<sp/>FSM.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>machineType<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>the<sp/>type<sp/>of<sp/>the<sp/>machine.<sp/>this<sp/>must<sp/>be<sp/>either<sp/>`FSMType::MT_EPSILON_NFA`<sp/>or<sp/>`FSMType::MT_NON_EPSILON_NFA`.<sp/>if<sp/>not,<sp/>an<sp/>exception<sp/>of<sp/>type<sp/>`std::invalid_argument`<sp/>is<sp/>thrown.<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>flags<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>flag<sp/>to<sp/>modify<sp/>the<sp/>behavior<sp/>of<sp/>the<sp/>machine.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>method<sp/><sp/><sp/><sp/><sp/>|<sp/>definition<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>----------<sp/>|<sp/>--------------------------------------------------------------------------------------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>simulate()<sp/>|<sp/>simulates<sp/>the<sp/>string<sp/>given<sp/>to<sp/>it<sp/>as<sp/>input,<sp/>according<sp/>to<sp/>the<sp/>simulation<sp/>mode<sp/>and<sp/>returns<sp/>the<sp/>result<sp/>as<sp/>a<sp/>`FSMResult`.<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>&lt;b&gt;Note&lt;/b&gt;:<sp/>types<sp/>of<sp/>simulation<sp/>will<sp/>be<sp/>discussed<sp/>at<sp/>the<sp/>end<sp/>of<sp/>this<sp/>documentation.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>`DFA`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">file:<sp/>DFA.h</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```C++</highlight></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;typename<sp/>TransFuncT,<sp/>typename<sp/>InputT<sp/>=<sp/>std::string_view&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>class<sp/>DeterFiniteAutomatan:<sp/>public<sp/>FiniteStateMachine&lt;TransFuncT,<sp/>InputT&gt;<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">public:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>DeterFiniteAutomatan()<sp/>=<sp/>default;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>DeterFiniteAutomatan(const<sp/>FSMStateSetType&amp;<sp/>fStates,<sp/>const<sp/>TransFuncT&amp;<sp/>tranFn,<sp/>FSMFlag<sp/>flags<sp/>=<sp/>FSM_FLAG::FF_FLAG_NONE);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>DeterFiniteAutomatan&amp;<sp/>operator=(const<sp/>DeterFiniteAutomatan&amp;<sp/>rhs);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>FSMResult<sp/>simulate(const<sp/>InputT&amp;<sp/>input,<sp/>const<sp/>FSM_MODE<sp/>mode)<sp/>const;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>};</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>constructor<sp/>parameter<sp/>|<sp/>definition<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>---------------------<sp/>|<sp/>-------------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>fStates<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>the<sp/>set<sp/>of<sp/>final<sp/>states<sp/>for<sp/>this<sp/>FSM.<sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>tranFn<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>the<sp/>transfer<sp/>function<sp/>for<sp/>this<sp/>FSM.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>flags<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>flag<sp/>to<sp/>modify<sp/>the<sp/>behavior<sp/>of<sp/>the<sp/>machine.<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>method<sp/><sp/><sp/><sp/><sp/>|<sp/>definition<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>----------<sp/>|<sp/>--------------------------------------------------------------------------------------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>simulate()<sp/>|<sp/>simulates<sp/>the<sp/>string<sp/>given<sp/>to<sp/>it<sp/>as<sp/>input,<sp/>according<sp/>to<sp/>the<sp/>simulation<sp/>mode<sp/>and<sp/>returns<sp/>the<sp/>result<sp/>as<sp/>a<sp/>`FSMResult`.<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>About<sp/>Simulation<sp/>Types</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>simulation<sp/>type<sp/><sp/><sp/>|<sp/>definition<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>-----------------<sp/>|<sp/>-----------------------------------------------------------------------------------------------------------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>whole<sp/>string<sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>checks<sp/>whether<sp/>the<sp/>entire<sp/>input<sp/>string<sp/>is<sp/>accepted<sp/>or<sp/>not,<sp/>and<sp/>returns<sp/>positive<sp/>result<sp/>iff<sp/>it<sp/>is<sp/>accepted.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>longest<sp/>prefix<sp/><sp/><sp/><sp/>|<sp/>checks<sp/>for<sp/>the<sp/>longest<sp/>accepted<sp/>prefix<sp/>of<sp/>the<sp/>input<sp/>string,<sp/>and<sp/>returns<sp/>positive<sp/>resulf<sp/>for<sp/>it.<sp/>otherwise,<sp/>it<sp/>returns<sp/>negative<sp/>result.<sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>longest<sp/>substring<sp/>|<sp/>checks<sp/>for<sp/>the<sp/>longest<sp/>accepted<sp/>substring<sp/>of<sp/>the<sp/>input<sp/>string,<sp/>and<sp/>returns<sp/>positive<sp/>resulf<sp/>for<sp/>it.<sp/>otherwise,<sp/>it<sp/>returns<sp/>negative<sp/>result.<sp/>|</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/READ.md"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,483 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.7" xml:lang="en-US">
+  <compounddef id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d" kind="page">
+    <compoundname>md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d</compoundname>
+    <title>FSM</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><anchor id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_1autotoc_md0"/> finite state machine library in C++.</para>
+<sect1 id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_1autotoc_md1">
+<title>Notes</title>
+<para><itemizedlist>
+<listitem><para>The tests depend on gtest, so you need to install the package if you want to run the tests.</para>
+</listitem><listitem><para>The <computeroutput>utility</computeroutput> directory has general utility functions used by this project and others, so it is important.</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_1autotoc_md2">
+<title>Documentation</title>
+<sect2 id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_1autotoc_md3">
+<title>Exception Types</title>
+<sect3 id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_1autotoc_md4">
+<title>&lt;tt&gt;InvalidStateMachineArgumentsException&lt;/tt&gt;</title>
+<para><itemizedlist>
+<listitem><para>A wrapper over <computeroutput>std::invalid_argument</computeroutput> that is thrown from the constructor of a state machine in case there is at least one invalid argument given to a state machine.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+<sect3 id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_1autotoc_md5">
+<title>&lt;tt&gt;UnrecognizedSimModeException&lt;/tt&gt;</title>
+<para><itemizedlist>
+<listitem><para>A wrapper over <computeroutput>std::runtime_error</computeroutput> that is thrown from any <computeroutput>simulate()</computeroutput> function in case the simulation mode is unrecognized.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+</sect2>
+<sect2 id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_1autotoc_md6">
+<title>Utility Data Structures</title>
+<para>file: <ref refid="_finite_state_machine_8h" kindref="compound">FiniteStateMachine.h</ref></para>
+<sect3 id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_1autotoc_md7">
+<title>&lt;tt&gt;FSMStateType&lt;/tt&gt;</title>
+<para><itemizedlist>
+<listitem><para>A typedef representing a single state of the fsm. It is an alias to <computeroutput>unsigned</computeroutput>.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+<sect3 id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_1autotoc_md8">
+<title>&lt;tt&gt;FSMStateSetType&lt;/tt&gt;</title>
+<para><itemizedlist>
+<listitem><para>A data structure representing a set of <computeroutput>FSMStateType</computeroutput>. This is used primarily for <computeroutput>NFA</computeroutput> simulation.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+<sect3 id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_1autotoc_md9">
+<title>&lt;tt&gt;FSMTableType&lt;/tt&gt;</title>
+<para><itemizedlist>
+<listitem><para>A data structure representing a 2D table of sets of states.</para>
+</listitem></itemizedlist>
+</para>
+<para><table rows="2" cols="2"><row>
+<entry thead="yes"><para>field   </para>
+</entry><entry thead="yes"><para>definition    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>table   </para>
+</entry><entry thead="no"><para>the actual object holding the table.   </para>
+</entry></row>
+</table>
+</para>
+<para><table rows="5" cols="2"><row>
+<entry thead="yes"><para>method   </para>
+</entry><entry thead="yes"><para>definition    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>FSMStateType&amp;</computeroutput> operator()(state, c)   </para>
+</entry><entry thead="no"><para>returns <computeroutput>table[state][c]</computeroutput>, and makes sure the vectors are not overflowed (resizing them if necessary).    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>const FSMStateType&amp;</computeroutput> operator()(state, c) const   </para>
+</entry><entry thead="no"><para>returns <computeroutput>table[state][c]</computeroutput>.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>const vector&lt;FSMStateType&gt;&amp;</computeroutput> operator[] (index) const   </para>
+</entry><entry thead="no"><para>return <computeroutput>table.at(index).</computeroutput>    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>const vector&lt;FSMStateType&gt;&amp;</computeroutput> at(index) const   </para>
+</entry><entry thead="no"><para>return <computeroutput>table.at(index)</computeroutput>.   </para>
+</entry></row>
+</table>
+</para>
+<para><itemizedlist>
+<listitem><para><computeroutput>FSMStateSetType</computeroutput> is used as the value of each element of the table rather than <computeroutput>FSMStateType</computeroutput> in order for the table to be general, i.e., able to be used with either a <computeroutput>DFA</computeroutput> or an <computeroutput>NFA</computeroutput>.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+<sect3 id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_1autotoc_md10">
+<title>&lt;tt&gt;TransitionFunction&lt;TableT&gt;&lt;/tt&gt;</title>
+<para><itemizedlist>
+<listitem><para>A data structure that represents a transition function. It is a function object.</para>
+</listitem></itemizedlist>
+</para>
+<para><table rows="2" cols="2"><row>
+<entry thead="yes"><para>field   </para>
+</entry><entry thead="yes"><para>definition    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>TableT</computeroutput> table   </para>
+</entry><entry thead="no"><para>the actual table.   </para>
+</entry></row>
+</table>
+</para>
+<para><table rows="4" cols="2"><row>
+<entry thead="yes"><para>method   </para>
+</entry><entry thead="yes"><para>definition    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>FSMStateType&amp;</computeroutput> operator()(state, c)   </para>
+</entry><entry thead="no"><para>returns <computeroutput>table[state][c]</computeroutput>, and makes sure the vectors are not overflowed (resizing them if necessary).    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>const FSMStateSetType&amp;</computeroutput> operator()(state, c) const   </para>
+</entry><entry thead="no"><para>returns <computeroutput>table[state][c]</computeroutput>.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>const FSMStateType&amp;</computeroutput> operator()(stateSet, c) const   </para>
+</entry><entry thead="no"><para>returns <computeroutput>table[state][c]</computeroutput> for every state within <computeroutput>stateSet</computeroutput>.   </para>
+</entry></row>
+</table>
+</para>
+<para><itemizedlist>
+<listitem><para>The goal of this data structure is to treat a <computeroutput>TableT</computeroutput> table as a function, i.e., it is just a wrapper around a <computeroutput>TableT</computeroutput> object.</para>
+</listitem><listitem><para><computeroutput>TransFn&lt;TableT&gt;</computeroutput> is an alias for this data structure.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+<sect3 id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_1autotoc_md11">
+<title>&lt;tt&gt;FSMResult&lt;/tt&gt;</title>
+<para><itemizedlist>
+<listitem><para>A data structure that represents the result of a single simulation of a <computeroutput>DFA</computeroutput> or an <computeroutput>NFA</computeroutput>.</para>
+</listitem></itemizedlist>
+</para>
+<para><table rows="5" cols="2"><row>
+<entry thead="yes"><para>field   </para>
+</entry><entry thead="yes"><para>definition    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>bool</computeroutput> accepted   </para>
+</entry><entry thead="no"><para>whether (a possibly substring of, depending on flags given to the simulation function) the input has been accepted.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>FSMStateSetType</computeroutput> finalState   </para>
+</entry><entry thead="no"><para>the final states reached when (the substring of) the input was accepted.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>Indecies</computeroutput> indecies   </para>
+</entry><entry thead="no"><para>the indecies of the matched (substring from the) input.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>std::string_view</computeroutput> input   </para>
+</entry><entry thead="no"><para>the input against which the simulation has been run.   </para>
+</entry></row>
+</table>
+</para>
+<para><table rows="4" cols="2"><row>
+<entry thead="yes"><para>method   </para>
+</entry><entry thead="yes"><para>definition    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>size_t</computeroutput> size() const   </para>
+</entry><entry thead="no"><para>the size of the matched substring. equivalent to <computeroutput>indecies.end - indecies.start</computeroutput>.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>std::string_view</computeroutput> getMatch() const   </para>
+</entry><entry thead="no"><para>returns the matched substring from input.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>Indecies</computeroutput> getIndecies() const   </para>
+</entry><entry thead="no"><para>returns <computeroutput>this-&gt;indecies</computeroutput>.   </para>
+</entry></row>
+</table>
+</para>
+<para><table rows="2" cols="2"><row>
+<entry thead="yes"><para>function   </para>
+</entry><entry thead="yes"><para>definition    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>std::ostream&lt;&lt;(Result res)</computeroutput>   </para>
+</entry><entry thead="no"><para>print <computeroutput>res</computeroutput> to <computeroutput>std::ostream</computeroutput>.   </para>
+</entry></row>
+</table>
+</para>
+</sect3>
+<sect3 id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_1autotoc_md12">
+<title>&lt;tt&gt;Indecies&lt;/tt&gt;</title>
+<para><itemizedlist>
+<listitem><para>A data structure that represents the indecies of a lexeme found during a single simulation of a <computeroutput>DFA</computeroutput> or an <computeroutput>NFA</computeroutput>.</para>
+</listitem></itemizedlist>
+</para>
+<para><table rows="3" cols="2"><row>
+<entry thead="yes"><para>field   </para>
+</entry><entry thead="yes"><para>definition    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>IndexType</computeroutput> start   </para>
+</entry><entry thead="no"><para>the start index of a found lexeme relative to the input.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>IndexType</computeroutput> end   </para>
+</entry><entry thead="no"><para>the end index of a found lexeme relative to the input.   </para>
+</entry></row>
+</table>
+</para>
+<para><table rows="4" cols="2"><row>
+<entry thead="yes"><para>method   </para>
+</entry><entry thead="yes"><para>definition    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>std::string</computeroutput> toString()   </para>
+</entry><entry thead="no"><para>method that converts the <computeroutput>Indecies</computeroutput> object to a string.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>operator std::string()</computeroutput>   </para>
+</entry><entry thead="no"><para>conversion operator that just calls <computeroutput>toString()</computeroutput>.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>Indecies</computeroutput> operator +(<computeroutput>size_t</computeroutput> x)   </para>
+</entry><entry thead="no"><para>method that adds whatever <computeroutput>x</computeroutput> to both <computeroutput>start</computeroutput> and <computeroutput>end</computeroutput>, returning a new <computeroutput>Indecies</computeroutput> object.   </para>
+</entry></row>
+</table>
+</para>
+</sect3>
+<sect3 id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_1autotoc_md13">
+<title>&lt;tt&gt;Substring&lt;T&gt;&lt;/tt&gt;</title>
+<para><itemizedlist>
+<listitem><para>Represents a single matched substring in a simulation that matches a longest substring (the data structure is mainly used internally).</para>
+</listitem></itemizedlist>
+</para>
+<para><table rows="3" cols="2"><row>
+<entry thead="yes"><para>field   </para>
+</entry><entry thead="yes"><para>definition    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>std::vector&lt;T&gt;</computeroutput> matchedStates   </para>
+</entry><entry thead="no"><para>the set of states the machine has went through to match this substring.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>Indecies</computeroutput> indecies   </para>
+</entry><entry thead="no"><para>the indecies of the matched substring within the entire string.   </para>
+</entry></row>
+</table>
+</para>
+<para><table rows="4" cols="2"><row>
+<entry thead="yes"><para>method   </para>
+</entry><entry thead="yes"><para>definition    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>begin() <computeroutput>const</computeroutput>   </para>
+</entry><entry thead="no"><para>return <computeroutput>matchedStates.begin()</computeroutput>    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>end() <computeroutput>const</computeroutput>   </para>
+</entry><entry thead="no"><para>return <computeroutput>matchedStates.end()</computeroutput>    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>size() <computeroutput>const</computeroutput>   </para>
+</entry><entry thead="no"><para>return <computeroutput>matchedStates.size()</computeroutput>   </para>
+</entry></row>
+</table>
+</para>
+</sect3>
+</sect2>
+<sect2 id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_1autotoc_md14">
+<title>Enums</title>
+<para>file: <ref refid="_finite_state_machine_8h" kindref="compound">FiniteStateMachine.h</ref></para>
+<para><programlisting filename=".C"><codeline><highlight class="normal">++</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>the<sp/>mode<sp/>of<sp/>simulation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="namespacem0st4fa_1_1fsm_1ae49367e23837069e9faaefcb6a0406f1" kindref="member">FSM_MODE</ref><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><ref refid="namespacem0st4fa_1_1fsm_1ae49367e23837069e9faaefcb6a0406f1ab7ffe915b99112ed2c95e0f8d917073a" kindref="member">MM_WHOLE_STRING</ref><sp/>=<sp/>0,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><ref refid="namespacem0st4fa_1_1fsm_1ae49367e23837069e9faaefcb6a0406f1a456b958363273312579a7e97e12c0294" kindref="member">MM_LONGEST_PREFIX</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><ref refid="namespacem0st4fa_1_1fsm_1ae49367e23837069e9faaefcb6a0406f1a9857ed071b6970f381b4163b30f857fb" kindref="member">MM_LONGEST_SUBSTRING</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><ref refid="namespacem0st4fa_1_1fsm_1ae49367e23837069e9faaefcb6a0406f1a64c00db69df99cf1af465a96444b53e6" kindref="member">MM_NONE</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/>MM_FSM_MODE_MAX,</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>type<sp/>of<sp/>the<sp/>FSM.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/>FSMType<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><ref refid="namespacem0st4fa_1_1fsm_1a824af687b77ebbcb14e1051fb902b1d8ac672dfcbdcdb9eb98050cbb825150697" kindref="member">MT_EPSILON_NFA</ref><sp/>=<sp/>0,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><ref refid="namespacem0st4fa_1_1fsm_1a824af687b77ebbcb14e1051fb902b1d8affb7f31d80464bd8892f51e554fb7aaa" kindref="member">MT_NON_EPSILON_NFA</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><ref refid="namespacem0st4fa_1_1fsm_1a824af687b77ebbcb14e1051fb902b1d8afc791e61adbabe19e3c5fc01607034fc" kindref="member">MT_DFA</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/>MT_MACHINE_TYPE_MAX,</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>flags<sp/>to<sp/>customize<sp/>the<sp/>behavior<sp/>of<sp/>the<sp/>FSM.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="namespacem0st4fa_1_1fsm_1ac882d30363c8730a12932c6982256f66" kindref="member">FSM_FLAG</ref><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><ref refid="namespacem0st4fa_1_1fsm_1ac882d30363c8730a12932c6982256f66a300a280a834c4bc1ba1ffeb70870653b" kindref="member">FF_FLAG_NONE</ref><sp/>=<sp/>0b0000000,</highlight></codeline>
+<codeline><highlight class="normal"><sp/>FF_FLAG_MAX</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_1autotoc_md15">
+<title>Main Data Structures</title>
+<sect3 id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_1autotoc_md16">
+<title>&lt;tt&gt;FSM&lt;/tt&gt;</title>
+<para>file: <ref refid="_finite_state_machine_8h" kindref="compound">FiniteStateMachine.h</ref></para>
+<para><programlisting filename=".C"><codeline><highlight class="normal"><sp/>++</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TransFuncT,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>InputT<sp/>=<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">_view&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">FiniteStateMachine<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>FiniteStateMachine()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>FiniteStateMachine(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>FSMStateSetType&amp;<sp/>fStates,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_trans_func_t" kindref="compound">TransFuncT</ref>&amp;<sp/>tranFn,<sp/>FSMType<sp/>machineType<sp/>,FSMFlag<sp/>flags);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>FiniteStateMachine&amp;<sp/>operator=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>FiniteStateMachine&amp;<sp/>rhs);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>FSMStateSetType&amp;<sp/>getFinalStates()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>FSMFlag<sp/>getFlags()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>FSMType<sp/>getMachineType()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><table rows="5" cols="2"><row>
+<entry thead="yes"><para>constructor parameter   </para>
+</entry><entry thead="yes"><para>definition    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>fStates   </para>
+</entry><entry thead="no"><para>the set of final states for this FSM.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>tranFn   </para>
+</entry><entry thead="no"><para>the transfer function for this FSM.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>machineType   </para>
+</entry><entry thead="no"><para>the type of the machine.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>flags   </para>
+</entry><entry thead="no"><para>flag to modify the behavior of the machine.   </para>
+</entry></row>
+</table>
+</para>
+<para><table rows="4" cols="2"><row>
+<entry thead="yes"><para>method   </para>
+</entry><entry thead="yes"><para>definition    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>getFinalStates()   </para>
+</entry><entry thead="no"><para>returns the set of final states of this machine; i.e. returns the value of constructor parameter fStates.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>getFlags()   </para>
+</entry><entry thead="no"><para>returns the flags of this machine.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>getMachineType()   </para>
+</entry><entry thead="no"><para>returns the machine type of this machine.   </para>
+</entry></row>
+</table>
+</para>
+</sect3>
+<sect3 id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_1autotoc_md17">
+<title>&lt;tt&gt;NFA&lt;/tt&gt;</title>
+<para>file: <ref refid="_n_f_a_8h" kindref="compound">NFA.h</ref></para>
+<para><programlisting filename=".C"><codeline><highlight class="normal"><sp/>++</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TransFuncT,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>InputT<sp/>=<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">_view&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">NonDeterFiniteAutomatan<sp/>:<sp/>FiniteStateMachine&lt;TransFuncT,<sp/>InputT&gt;<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>NonDeterFiniteAutomatan()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>NonDeterFiniteAutomatan(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>FSMStateSetType&amp;<sp/>fStates,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_trans_func_t" kindref="compound">TransFuncT</ref>&amp;<sp/>tranFn,<sp/>FSMType<sp/>machineType<sp/>=<sp/>FSMType::MT_EPSILON_NFA,<sp/>FSMFlag<sp/>flags<sp/>=<sp/>FSM_FLAG::FF_FLAG_NONE);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>FSMResult<sp/>simulate(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>InputT&amp;<sp/>input,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>FSM_MODE<sp/>mode)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+</programlisting></para>
+<para><table rows="5" cols="2"><row>
+<entry thead="yes"><para>constructor parameter   </para>
+</entry><entry thead="yes"><para>definition    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>fStates   </para>
+</entry><entry thead="no"><para>the set of final states for this FSM.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>tranFn   </para>
+</entry><entry thead="no"><para>the transfer function for this FSM.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>machineType   </para>
+</entry><entry thead="no"><para>the type of the machine. this must be either <computeroutput>FSMType::MT_EPSILON_NFA</computeroutput> or <computeroutput>FSMType::MT_NON_EPSILON_NFA</computeroutput>. if not, an exception of type <computeroutput>std::invalid_argument</computeroutput> is thrown.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>flags   </para>
+</entry><entry thead="no"><para>flag to modify the behavior of the machine.   </para>
+</entry></row>
+</table>
+</para>
+<para><table rows="2" cols="2"><row>
+<entry thead="yes"><para>method   </para>
+</entry><entry thead="yes"><para>definition    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>simulate()   </para>
+</entry><entry thead="no"><para>simulates the string given to it as input, according to the simulation mode and returns the result as a <computeroutput>FSMResult</computeroutput>.   </para>
+</entry></row>
+</table>
+</para>
+<para><itemizedlist>
+<listitem><para><bold>Note</bold>: types of simulation will be discussed at the end of this documentation.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+<sect3 id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_1autotoc_md18">
+<title>&lt;tt&gt;DFA&lt;/tt&gt;</title>
+<para>file: <ref refid="_d_f_a_8h" kindref="compound">DFA.h</ref></para>
+<para><programlisting filename=".C"><codeline><highlight class="normal"><sp/>++</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TransFuncT,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>InputT<sp/>=<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">_view&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">DeterFiniteAutomatan:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>FiniteStateMachine&lt;TransFuncT,<sp/>InputT&gt;<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>DeterFiniteAutomatan()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>DeterFiniteAutomatan(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>FSMStateSetType&amp;<sp/>fStates,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_trans_func_t" kindref="compound">TransFuncT</ref>&amp;<sp/>tranFn,<sp/>FSMFlag<sp/>flags<sp/>=<sp/>FSM_FLAG::FF_FLAG_NONE);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>DeterFiniteAutomatan&amp;<sp/>operator=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DeterFiniteAutomatan&amp;<sp/>rhs);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>FSMResult<sp/>simulate(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>InputT&amp;<sp/>input,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>FSM_MODE<sp/>mode)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>};</highlight></codeline>
+</programlisting></para>
+<para><table rows="4" cols="2"><row>
+<entry thead="yes"><para>constructor parameter   </para>
+</entry><entry thead="yes"><para>definition    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>fStates   </para>
+</entry><entry thead="no"><para>the set of final states for this FSM.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>tranFn   </para>
+</entry><entry thead="no"><para>the transfer function for this FSM.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>flags   </para>
+</entry><entry thead="no"><para>flag to modify the behavior of the machine.   </para>
+</entry></row>
+</table>
+</para>
+<para><table rows="2" cols="2"><row>
+<entry thead="yes"><para>method   </para>
+</entry><entry thead="yes"><para>definition    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>simulate()   </para>
+</entry><entry thead="no"><para>simulates the string given to it as input, according to the simulation mode and returns the result as a <computeroutput>FSMResult</computeroutput>.   </para>
+</entry></row>
+</table>
+</para>
+</sect3>
+</sect2>
+<sect2 id="md__c_1_2_users_2mosta_2_desktop_2_projects_2_programming_2_s_d_ks_2_f_s_m_2_r_e_a_d_1autotoc_md19">
+<title>About Simulation Types</title>
+<para><table rows="4" cols="2"><row>
+<entry thead="yes"><para>simulation type   </para>
+</entry><entry thead="yes"><para>definition    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>whole string   </para>
+</entry><entry thead="no"><para>checks whether the entire input string is accepted or not, and returns positive result iff it is accepted.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>longest prefix   </para>
+</entry><entry thead="no"><para>checks for the longest accepted prefix of the input string, and returns positive resulf for it. otherwise, it returns negative result.    </para>
+</entry></row>
+<row>
+<entry thead="no"><para>longest substring   </para>
+</entry><entry thead="no"><para>checks for the longest accepted substring of the input string, and returns positive resulf for it. otherwise, it returns negative result.   </para>
+</entry></row>
+</table>
+</para>
+</sect2>
+</sect1>
+    </detaileddescription>
+    <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/READ.md"/>
+  </compounddef>
+</doxygen>

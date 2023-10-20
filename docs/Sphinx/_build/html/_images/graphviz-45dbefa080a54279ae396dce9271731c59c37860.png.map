@@ -1,0 +1,20 @@
+<map id="%3" name="%3">
+<area shape="rect" id="node1" title="FSM_TYPE" alt="" coords="5,101,122,149"/>
+<area shape="rect" id="node2" title="K" alt="" coords="489,389,561,437"/>
+<area shape="rect" id="node3" title="Logger" alt="" coords="146,101,221,149"/>
+<area shape="rect" id="node4" title="TransFuncT" alt="" coords="245,101,359,149"/>
+<area shape="rect" id="node5" title="m0st4fa::fsm::FSMStateSetType" alt="" coords="383,101,645,149"/>
+<area shape="rect" id="node7" title="std::set&lt; FSMStateType &gt;" alt="" coords="415,197,635,245"/>
+<area shape="poly" id="edge1" title="usage" alt="" coords="519,149,523,182,518,183,514,150"/>
+<area shape="rect" id="node6" title="m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;" alt="" coords="77,5,528,53"/>
+<area shape="poly" id="edge3" title="usage" alt="" coords="244,56,136,98,134,93,242,51"/>
+<area shape="poly" id="edge5" title="usage" alt="" coords="274,56,226,94,222,90,271,52"/>
+<area shape="poly" id="edge6" title="usage" alt="" coords="305,54,305,87,300,87,300,54"/>
+<area shape="poly" id="edge2" title="usage" alt="" coords="356,52,449,93,447,97,354,56"/>
+<area shape="rect" id="node9" title="unsigned" alt="" coords="623,293,710,341"/>
+<area shape="poly" id="edge4" title="usage" alt="" coords="529,51,608,71,638,84,659,100,673,120,682,143,690,191,687,239,680,280,674,279,682,238,684,191,677,144,668,122,655,103,636,88,606,76,528,56"/>
+<area shape="rect" id="node8" title="std::set&lt; K &gt;" alt="" coords="466,293,584,341"/>
+<area shape="poly" id="edge8" title="template&#45;instance" alt="" coords="528,246,528,279,522,279,522,246"/>
+<area shape="poly" id="edge7" title="usage" alt="" coords="562,244,621,283,618,287,559,248"/>
+<area shape="poly" id="edge9" title="usage" alt="" coords="528,342,528,375,522,375,522,342"/>
+</map>

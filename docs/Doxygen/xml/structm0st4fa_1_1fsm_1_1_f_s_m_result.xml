@@ -1,0 +1,212 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.7" xml:lang="en-US">
+  <compounddef id="structm0st4fa_1_1fsm_1_1_f_s_m_result" kind="struct" language="C++" prot="public">
+    <compoundname>m0st4fa::fsm::FSMResult</compoundname>
+    <includes refid="_finite_state_machine_8h" local="no">FiniteStateMachine.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structm0st4fa_1_1fsm_1_1_f_s_m_result_1a2d5ad097cea8fc385dc07e1276942075" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool m0st4fa::fsm::FSMResult::accepted</definition>
+        <argsstring></argsstring>
+        <name>accepted</name>
+        <qualifiedname>m0st4fa::fsm::FSMResult::accepted</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Whether the string was accepted by simulation. <computeroutput>true</computeroutput> if the string was accepted; <computeroutput>false</computeroutput> otherwise. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="563" column="6" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="563" bodyend="-1"/>
+        <referencedby refid="namespacem0st4fa_1_1fsm_1a049a43a65e520ebdd78baf2c61afd2f8" compoundref="_finite_state_machine_8cpp" startline="4" endline="27">m0st4fa::fsm::operator&lt;&lt;</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structm0st4fa_1_1fsm_1_1_f_s_m_result_1a9db79a6b95ea47d708e9354c03249762" prot="public" static="no" mutable="no">
+        <type><ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type" kindref="compound">FSMStateSetType</ref></type>
+        <definition>FSMStateSetType m0st4fa::fsm::FSMResult::finalState</definition>
+        <argsstring></argsstring>
+        <name>finalState</name>
+        <qualifiedname>m0st4fa::fsm::FSMResult::finalState</qualifiedname>
+        <initializer>= { <ref refid="classm0st4fa_1_1fsm_1_1_finite_state_machine" kindref="compound">FiniteStateMachine</ref>&lt;<ref refid="namespacem0st4fa_1_1fsm_1adea900ebd34b3b5d62931d51d398268d" kindref="member">FSMStateType</ref>&gt;::START_STATE }</initializer>
+        <briefdescription>
+<para>The final states used for this simulation. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="567" column="17" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="567" bodyend="-1"/>
+        <referencedby refid="namespacem0st4fa_1_1fsm_1a049a43a65e520ebdd78baf2c61afd2f8" compoundref="_finite_state_machine_8cpp" startline="4" endline="27">m0st4fa::fsm::operator&lt;&lt;</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structm0st4fa_1_1fsm_1_1_f_s_m_result_1a85f305cf097f34b6714ea8fe081623db" prot="public" static="no" mutable="no">
+        <type><ref refid="structm0st4fa_1_1fsm_1_1_indicies" kindref="compound">Indicies</ref></type>
+        <definition>Indicies m0st4fa::fsm::FSMResult::indicies</definition>
+        <argsstring></argsstring>
+        <name>indicies</name>
+        <qualifiedname>m0st4fa::fsm::FSMResult::indicies</qualifiedname>
+        <briefdescription>
+<para>The indicies of the accepting string, if any. If no string accepts, both indicies will be 0. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="571" column="10" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="571" bodyend="-1"/>
+        <referencedby refid="structm0st4fa_1_1fsm_1_1_f_s_m_result_1ac8f3b2adfdbcb7d26cbac9d801183ce2" compoundref="_finite_state_machine_8h" startline="593" endline="595">getIndecies</referencedby>
+        <referencedby refid="structm0st4fa_1_1fsm_1_1_f_s_m_result_1a42f01e27fddd5cc5ab139685bb383243" compoundref="_finite_state_machine_8h" startline="587" endline="589">getMatch</referencedby>
+        <referencedby refid="namespacem0st4fa_1_1fsm_1a049a43a65e520ebdd78baf2c61afd2f8" compoundref="_finite_state_machine_8cpp" startline="4" endline="27">m0st4fa::fsm::operator&lt;&lt;</referencedby>
+        <referencedby refid="structm0st4fa_1_1fsm_1_1_f_s_m_result_1a433f5f04aed023bf63e62013d2d2c93a" compoundref="_finite_state_machine_8h" startline="581" endline="583">size</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structm0st4fa_1_1fsm_1_1_f_s_m_result_1aa10fe4132da299e6ebe6eada766b9619" prot="public" static="no" mutable="no">
+        <type>const std::string_view</type>
+        <definition>const std::string_view m0st4fa::fsm::FSMResult::input</definition>
+        <argsstring></argsstring>
+        <name>input</name>
+        <qualifiedname>m0st4fa::fsm::FSMResult::input</qualifiedname>
+        <briefdescription>
+<para>The input string that the simulation was performed against. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="575" column="24" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="575" bodyend="-1"/>
+        <referencedby refid="namespacem0st4fa_1_1fsm_1a049a43a65e520ebdd78baf2c61afd2f8" compoundref="_finite_state_machine_8cpp" startline="4" endline="27">m0st4fa::fsm::operator&lt;&lt;</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structm0st4fa_1_1fsm_1_1_f_s_m_result_1a433f5f04aed023bf63e62013d2d2c93a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t m0st4fa::fsm::FSMResult::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <qualifiedname>m0st4fa::fsm::FSMResult::size</qualifiedname>
+        <briefdescription>
+<para>Returns the size of the matched string, if any. In case no input matches, it returns 0. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="581" column="8" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="581" bodyend="583"/>
+        <references refid="structm0st4fa_1_1fsm_1_1_indicies_1a66006d44d1326899a7e14bfe36498ffd" compoundref="_finite_state_machine_8h" startline="524">m0st4fa::fsm::Indicies::end</references>
+        <references refid="structm0st4fa_1_1fsm_1_1_f_s_m_result_1a85f305cf097f34b6714ea8fe081623db" compoundref="_finite_state_machine_8h" startline="571">indicies</references>
+        <references refid="structm0st4fa_1_1fsm_1_1_indicies_1a244dd51885862adac586860d18f2a9fa" compoundref="_finite_state_machine_8h" startline="520">m0st4fa::fsm::Indicies::start</references>
+      </memberdef>
+      <memberdef kind="function" id="structm0st4fa_1_1fsm_1_1_f_s_m_result_1a42f01e27fddd5cc5ab139685bb383243" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string_view</type>
+        <definition>std::string_view m0st4fa::fsm::FSMResult::getMatch</definition>
+        <argsstring>() const</argsstring>
+        <name>getMatch</name>
+        <qualifiedname>m0st4fa::fsm::FSMResult::getMatch</qualifiedname>
+        <briefdescription>
+<para>Gets (extracts) the matched string from the input against which the match was performed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="587" column="18" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="587" bodyend="589"/>
+        <references refid="structm0st4fa_1_1fsm_1_1_f_s_m_result_1a85f305cf097f34b6714ea8fe081623db" compoundref="_finite_state_machine_8h" startline="571">indicies</references>
+        <references refid="structm0st4fa_1_1fsm_1_1_indicies_1a244dd51885862adac586860d18f2a9fa" compoundref="_finite_state_machine_8h" startline="520">m0st4fa::fsm::Indicies::start</references>
+      </memberdef>
+      <memberdef kind="function" id="structm0st4fa_1_1fsm_1_1_f_s_m_result_1ac8f3b2adfdbcb7d26cbac9d801183ce2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structm0st4fa_1_1fsm_1_1_indicies" kindref="compound">Indicies</ref></type>
+        <definition>Indicies m0st4fa::fsm::FSMResult::getIndecies</definition>
+        <argsstring>() const</argsstring>
+        <name>getIndecies</name>
+        <qualifiedname>m0st4fa::fsm::FSMResult::getIndecies</qualifiedname>
+        <briefdescription>
+<para>Gets the indicies of the match. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="593" column="10" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="593" bodyend="595"/>
+        <references refid="structm0st4fa_1_1fsm_1_1_f_s_m_result_1a85f305cf097f34b6714ea8fe081623db" compoundref="_finite_state_machine_8h" startline="571">indicies</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>The result of a simulation by some state machine against some string. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="7">
+        <label>K</label>
+      </node>
+      <node id="2">
+        <label>bool</label>
+      </node>
+      <node id="1">
+        <label>m0st4fa::fsm::FSMResult</label>
+        <link refid="structm0st4fa_1_1fsm_1_1_f_s_m_result"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>+accepted</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>+finalState</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>+indicies</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>+input</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>m0st4fa::fsm::FSMStateSetType</label>
+        <link refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>+m_StateSet</edgelabel>
+        </childnode>
+      </node>
+      <node id="8">
+        <label>m0st4fa::fsm::Indicies</label>
+        <link refid="structm0st4fa_1_1fsm_1_1_indicies"/>
+        <childnode refid="5" relation="usage">
+          <edgelabel>+end</edgelabel>
+          <edgelabel>+start</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>std::set&lt; FSMStateType &gt;</label>
+        <childnode refid="5" relation="usage">
+          <edgelabel>+keys</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="template-instance">
+          <edgelabel>&lt; FSMStateType &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="10">
+        <label>std::basic_string_view&lt; Char &gt;</label>
+      </node>
+      <node id="6">
+        <label>std::set&lt; K &gt;</label>
+        <childnode refid="7" relation="usage">
+          <edgelabel>+keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="9">
+        <label>std::string_view</label>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>unsigned</label>
+        <link refid="classunsigned"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="557" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="557" bodyend="596"/>
+    <listofallmembers>
+      <member refid="structm0st4fa_1_1fsm_1_1_f_s_m_result_1a2d5ad097cea8fc385dc07e1276942075" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::FSMResult</scope><name>accepted</name></member>
+      <member refid="structm0st4fa_1_1fsm_1_1_f_s_m_result_1a9db79a6b95ea47d708e9354c03249762" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::FSMResult</scope><name>finalState</name></member>
+      <member refid="structm0st4fa_1_1fsm_1_1_f_s_m_result_1ac8f3b2adfdbcb7d26cbac9d801183ce2" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::FSMResult</scope><name>getIndecies</name></member>
+      <member refid="structm0st4fa_1_1fsm_1_1_f_s_m_result_1a42f01e27fddd5cc5ab139685bb383243" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::FSMResult</scope><name>getMatch</name></member>
+      <member refid="structm0st4fa_1_1fsm_1_1_f_s_m_result_1a85f305cf097f34b6714ea8fe081623db" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::FSMResult</scope><name>indicies</name></member>
+      <member refid="structm0st4fa_1_1fsm_1_1_f_s_m_result_1aa10fe4132da299e6ebe6eada766b9619" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::FSMResult</scope><name>input</name></member>
+      <member refid="structm0st4fa_1_1fsm_1_1_f_s_m_result_1a433f5f04aed023bf63e62013d2d2c93a" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::FSMResult</scope><name>size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

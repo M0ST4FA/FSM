@@ -1,0 +1,23 @@
+<map id="%3" name="%3">
+<area shape="rect" id="node1" title="FSM_TYPE" alt="" coords="5,197,122,245"/>
+<area shape="rect" id="node2" title="K" alt="" coords="489,485,561,533"/>
+<area shape="rect" id="node3" title="Logger" alt="" coords="146,197,221,245"/>
+<area shape="rect" id="node4" title="TransFuncT" alt="" coords="245,197,359,245"/>
+<area shape="rect" id="node5" title="m0st4fa::fsm::FSMStateSetType" alt="" coords="383,197,645,245"/>
+<area shape="rect" id="node8" title="std::set&lt; FSMStateType &gt;" alt="" coords="415,293,635,341"/>
+<area shape="poly" id="edge1" title="usage" alt="" coords="519,245,523,278,518,279,514,246"/>
+<area shape="rect" id="node6" title="m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;" alt="" coords="161,101,612,149"/>
+<area shape="poly" id="edge3" title="usage" alt="" coords="301,152,136,199,135,194,299,147"/>
+<area shape="poly" id="edge5" title="usage" alt="" coords="337,152,235,199,233,194,334,148"/>
+<area shape="poly" id="edge6" title="usage" alt="" coords="367,152,334,188,330,185,363,148"/>
+<area shape="poly" id="edge2" title="usage" alt="" coords="419,148,472,186,469,191,416,152"/>
+<area shape="rect" id="node10" title="unsigned" alt="" coords="639,389,726,437"/>
+<area shape="poly" id="edge4" title="usage" alt="" coords="535,147,610,168,639,181,659,195,673,216,683,238,694,287,696,335,692,376,687,375,690,334,689,287,678,240,669,219,655,199,636,185,608,173,533,153"/>
+<area shape="rect" id="node7" title="m0st4fa::fsm::NonDeterFiniteAutomaton&lt; TransFuncT, InputT &gt;" alt="" coords="264,5,770,53"/>
+<area shape="poly" id="edge7" title="public&#45;inheritance" alt="" coords="486,56,432,95,429,90,483,52"/>
+<area shape="poly" id="edge8" title="usage" alt="" coords="561,52,594,73,625,99,664,144,691,196,708,235,718,267,721,300,715,342,704,377,699,375,710,341,716,300,713,268,703,237,686,198,660,147,622,103,591,77,558,56"/>
+<area shape="rect" id="node9" title="std::set&lt; K &gt;" alt="" coords="466,389,584,437"/>
+<area shape="poly" id="edge10" title="template&#45;instance" alt="" coords="528,342,528,375,522,375,522,342"/>
+<area shape="poly" id="edge9" title="usage" alt="" coords="565,340,632,379,630,384,563,344"/>
+<area shape="poly" id="edge11" title="usage" alt="" coords="528,438,528,471,522,471,522,438"/>
+</map>

@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.7" xml:lang="en-US">
+  <compounddef id="structm0st4fa_1_1fsm_1_1_indicies" kind="struct" language="C++" prot="public">
+    <compoundname>m0st4fa::fsm::Indicies</compoundname>
+    <includes refid="_finite_state_machine_8h" local="no">FiniteStateMachine.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structm0st4fa_1_1fsm_1_1_indicies_1a244dd51885862adac586860d18f2a9fa" prot="public" static="no" mutable="no">
+        <type><ref refid="namespacem0st4fa_1_1fsm_1af46ab8df7db57ffc5e7a7492a473a981" kindref="member">IndexType</ref></type>
+        <definition>IndexType m0st4fa::fsm::Indicies::start</definition>
+        <argsstring></argsstring>
+        <name>start</name>
+        <qualifiedname>m0st4fa::fsm::Indicies::start</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>The index of the first-matched letter. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="520" column="11" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="520" bodyend="-1"/>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1a06caf80399672022c82511e19b44ac5f" compoundref="_n_f_a_8h" startline="324" endline="354">m0st4fa::fsm::NonDeterFiniteAutomaton&lt; TransFuncT, InputT &gt;::_get_longest_substring_from_matched_sets</referencedby>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_deter_finite_automaton_1a4cba6af87ed86c81807f39115a8b7289" compoundref="_d_f_a_8h" startline="159" endline="220">m0st4fa::fsm::DeterFiniteAutomaton&lt; TransFuncT, InputT &gt;::_simulate_longest_substring</referencedby>
+        <referencedby refid="structm0st4fa_1_1fsm_1_1_f_s_m_result_1a42f01e27fddd5cc5ab139685bb383243" compoundref="_finite_state_machine_8h" startline="587" endline="589">m0st4fa::fsm::FSMResult::getMatch</referencedby>
+        <referencedby refid="structm0st4fa_1_1fsm_1_1_indicies_1a7eb8e35dfd03b5a3be1eafa0a7a9d377" compoundref="_finite_state_machine_8h" startline="549" endline="551">operator+</referencedby>
+        <referencedby refid="namespacem0st4fa_1_1fsm_1a049a43a65e520ebdd78baf2c61afd2f8" compoundref="_finite_state_machine_8cpp" startline="4" endline="27">m0st4fa::fsm::operator&lt;&lt;</referencedby>
+        <referencedby refid="structm0st4fa_1_1fsm_1_1_f_s_m_result_1a433f5f04aed023bf63e62013d2d2c93a" compoundref="_finite_state_machine_8h" startline="581" endline="583">m0st4fa::fsm::FSMResult::size</referencedby>
+        <referencedby refid="structm0st4fa_1_1fsm_1_1_indicies_1a3ec257112bde0040cc6a49856e601f97" compoundref="_finite_state_machine_8h" startline="535" endline="537">toString</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structm0st4fa_1_1fsm_1_1_indicies_1a66006d44d1326899a7e14bfe36498ffd" prot="public" static="no" mutable="no">
+        <type><ref refid="namespacem0st4fa_1_1fsm_1af46ab8df7db57ffc5e7a7492a473a981" kindref="member">IndexType</ref></type>
+        <definition>IndexType m0st4fa::fsm::Indicies::end</definition>
+        <argsstring></argsstring>
+        <name>end</name>
+        <qualifiedname>m0st4fa::fsm::Indicies::end</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>The index of the letter after the last-matched letter. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="524" column="11" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="524" bodyend="-1"/>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1a06caf80399672022c82511e19b44ac5f" compoundref="_n_f_a_8h" startline="324" endline="354">m0st4fa::fsm::NonDeterFiniteAutomaton&lt; TransFuncT, InputT &gt;::_get_longest_substring_from_matched_sets</referencedby>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_deter_finite_automaton_1a4cba6af87ed86c81807f39115a8b7289" compoundref="_d_f_a_8h" startline="159" endline="220">m0st4fa::fsm::DeterFiniteAutomaton&lt; TransFuncT, InputT &gt;::_simulate_longest_substring</referencedby>
+        <referencedby refid="structm0st4fa_1_1fsm_1_1_indicies_1a7eb8e35dfd03b5a3be1eafa0a7a9d377" compoundref="_finite_state_machine_8h" startline="549" endline="551">operator+</referencedby>
+        <referencedby refid="namespacem0st4fa_1_1fsm_1a049a43a65e520ebdd78baf2c61afd2f8" compoundref="_finite_state_machine_8cpp" startline="4" endline="27">m0st4fa::fsm::operator&lt;&lt;</referencedby>
+        <referencedby refid="structm0st4fa_1_1fsm_1_1_f_s_m_result_1a433f5f04aed023bf63e62013d2d2c93a" compoundref="_finite_state_machine_8h" startline="581" endline="583">m0st4fa::fsm::FSMResult::size</referencedby>
+        <referencedby refid="structm0st4fa_1_1fsm_1_1_indicies_1a3ec257112bde0040cc6a49856e601f97" compoundref="_finite_state_machine_8h" startline="535" endline="537">toString</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structm0st4fa_1_1fsm_1_1_indicies_1a6ab215105f13a60b58bbd392d04e0d81" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>m0st4fa::fsm::Indicies::operator std::string</definition>
+        <argsstring>() const</argsstring>
+        <name>operator std::string</name>
+        <qualifiedname>m0st4fa::fsm::Indicies::string</qualifiedname>
+        <briefdescription>
+<para>Converts this <ref refid="structm0st4fa_1_1fsm_1_1_indicies" kindref="compound">Indicies</ref> object to a string. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="529" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="529" bodyend="531"/>
+        <references refid="structm0st4fa_1_1fsm_1_1_indicies_1a3ec257112bde0040cc6a49856e601f97" compoundref="_finite_state_machine_8h" startline="535" endline="537">toString</references>
+      </memberdef>
+      <memberdef kind="function" id="structm0st4fa_1_1fsm_1_1_indicies_1a3ec257112bde0040cc6a49856e601f97" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string m0st4fa::fsm::Indicies::toString</definition>
+        <argsstring>() const</argsstring>
+        <name>toString</name>
+        <qualifiedname>m0st4fa::fsm::Indicies::toString</qualifiedname>
+        <briefdescription>
+<para>Converts this <ref refid="structm0st4fa_1_1fsm_1_1_indicies" kindref="compound">Indicies</ref> object to a string. Uses the <computeroutput>Indicies::operator std::string() const</computeroutput> behind the scenes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="535" column="13" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="535" bodyend="537"/>
+        <references refid="structm0st4fa_1_1fsm_1_1_indicies_1a66006d44d1326899a7e14bfe36498ffd" compoundref="_finite_state_machine_8h" startline="524">end</references>
+        <references refid="structm0st4fa_1_1fsm_1_1_indicies_1a244dd51885862adac586860d18f2a9fa" compoundref="_finite_state_machine_8h" startline="520">start</references>
+        <referencedby refid="structm0st4fa_1_1fsm_1_1_indicies_1a6ab215105f13a60b58bbd392d04e0d81" compoundref="_finite_state_machine_8h" startline="529" endline="531">operator std::string</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="structm0st4fa_1_1fsm_1_1_indicies_1aa74a944fe6a4ab2a13be462ee3ffa57b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool m0st4fa::fsm::Indicies::operator==</definition>
+        <argsstring>(const Indicies &amp;) const =default</argsstring>
+        <name>operator==</name>
+        <qualifiedname>m0st4fa::fsm::Indicies::operator==</qualifiedname>
+        <param>
+          <type>const <ref refid="structm0st4fa_1_1fsm_1_1_indicies" kindref="compound">Indicies</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Compares this <ref refid="structm0st4fa_1_1fsm_1_1_indicies" kindref="compound">Indicies</ref> object with another for equality. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="542" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="structm0st4fa_1_1fsm_1_1_indicies_1a7eb8e35dfd03b5a3be1eafa0a7a9d377" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structm0st4fa_1_1fsm_1_1_indicies" kindref="compound">Indicies</ref></type>
+        <definition>Indicies m0st4fa::fsm::Indicies::operator+</definition>
+        <argsstring>(const size_t num) const</argsstring>
+        <name>operator+</name>
+        <qualifiedname>m0st4fa::fsm::Indicies::operator+</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>num</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new <ref refid="structm0st4fa_1_1fsm_1_1_indicies" kindref="compound">Indicies</ref> object whose indicies equal the indicies of this object + <computeroutput>num</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">num</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number that will offset <computeroutput>start</computeroutput> and <computeroutput>end</computeroutput> of this <ref refid="structm0st4fa_1_1fsm_1_1_indicies" kindref="compound">Indicies</ref> object in the new object. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A new <ref refid="structm0st4fa_1_1fsm_1_1_indicies" kindref="compound">Indicies</ref> object with <computeroutput>start = this-&gt;start + num</computeroutput> and <computeroutput>end = this-&gt;end + num</computeroutput>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="549" column="10" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="549" bodyend="551"/>
+        <references refid="structm0st4fa_1_1fsm_1_1_indicies_1a66006d44d1326899a7e14bfe36498ffd" compoundref="_finite_state_machine_8h" startline="524">end</references>
+        <references refid="structm0st4fa_1_1fsm_1_1_indicies_1a244dd51885862adac586860d18f2a9fa" compoundref="_finite_state_machine_8h" startline="520">start</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="structm0st4fa_1_1fsm_1_1_indicies" kindref="compound">Indicies</ref> of matches by an FSM. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>m0st4fa::fsm::Indicies</label>
+        <link refid="structm0st4fa_1_1fsm_1_1_indicies"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>+end</edgelabel>
+          <edgelabel>+start</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>unsigned</label>
+        <link refid="classunsigned"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="516" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="516" bodyend="552"/>
+    <listofallmembers>
+      <member refid="structm0st4fa_1_1fsm_1_1_indicies_1a66006d44d1326899a7e14bfe36498ffd" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::Indicies</scope><name>end</name></member>
+      <member refid="structm0st4fa_1_1fsm_1_1_indicies_1a6ab215105f13a60b58bbd392d04e0d81" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::Indicies</scope><name>operator std::string</name></member>
+      <member refid="structm0st4fa_1_1fsm_1_1_indicies_1a7eb8e35dfd03b5a3be1eafa0a7a9d377" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::Indicies</scope><name>operator+</name></member>
+      <member refid="structm0st4fa_1_1fsm_1_1_indicies_1aa74a944fe6a4ab2a13be462ee3ffa57b" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::Indicies</scope><name>operator==</name></member>
+      <member refid="structm0st4fa_1_1fsm_1_1_indicies_1a244dd51885862adac586860d18f2a9fa" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::Indicies</scope><name>start</name></member>
+      <member refid="structm0st4fa_1_1fsm_1_1_indicies_1a3ec257112bde0040cc6a49856e601f97" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::Indicies</scope><name>toString</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

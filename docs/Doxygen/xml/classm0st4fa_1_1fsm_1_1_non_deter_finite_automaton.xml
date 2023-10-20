@@ -1,0 +1,645 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.7" xml:lang="en-US">
+  <compounddef id="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton" kind="class" language="C++" prot="public">
+    <compoundname>m0st4fa::fsm::NonDeterFiniteAutomaton</compoundname>
+    <basecompoundref refid="classm0st4fa_1_1fsm_1_1_finite_state_machine" prot="public" virt="non-virtual">m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, std::string_view &gt;</basecompoundref>
+    <includes refid="_n_f_a_8h" local="no">NFA.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename <ref refid="class_trans_func_t" kindref="compound">TransFuncT</ref></type>
+      </param>
+      <param>
+        <type>typename InputT</type>
+        <defval>std::string_view</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1af292d6aa403b78e0c201b88dc211100b" prot="private" static="no">
+        <type><ref refid="classm0st4fa_1_1fsm_1_1_finite_state_machine" kindref="compound">FiniteStateMachine</ref>&lt; <ref refid="class_trans_func_t" kindref="compound">TransFuncT</ref>, InputT &gt;</type>
+        <definition>using m0st4fa::fsm::NonDeterFiniteAutomaton&lt; TransFuncT, InputT &gt;::Base =  FiniteStateMachine&lt;TransFuncT, InputT&gt;</definition>
+        <argsstring></argsstring>
+        <name>Base</name>
+        <qualifiedname>m0st4fa::fsm::NonDeterFiniteAutomaton::Base</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" line="19" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1ab96f3a2a6e04360af9a76d6cf90fa024" prot="private" static="no">
+        <type><ref refid="structm0st4fa_1_1fsm_1_1_substring" kindref="compound">Substring</ref>&lt; <ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type" kindref="compound">FSMStateSetType</ref> &gt;</type>
+        <definition>using m0st4fa::fsm::NonDeterFiniteAutomaton&lt; TransFuncT, InputT &gt;::SubstringType =  Substring&lt;FSMStateSetType&gt;</definition>
+        <argsstring></argsstring>
+        <name>SubstringType</name>
+        <qualifiedname>m0st4fa::fsm::NonDeterFiniteAutomaton::SubstringType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" line="20" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1aeee05ef4919636125a6008f9a9f8e551" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="namespacem0st4fa_1_1fsm_1adea900ebd34b3b5d62931d51d398268d" kindref="member">FSMStateType</ref></type>
+        <definition>constexpr FSMStateType m0st4fa::fsm::NonDeterFiniteAutomaton&lt; TransFuncT, InputT &gt;::DEAD_STATE</definition>
+        <argsstring></argsstring>
+        <name>DEAD_STATE</name>
+        <qualifiedname>m0st4fa::fsm::NonDeterFiniteAutomaton::DEAD_STATE</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>The dead state used by the NFA simulation methods. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" line="26" column="31" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1a3bb8223429c12002fb6357de46c00b9b" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_result" kindref="compound">FSMResult</ref></type>
+        <definition>FSMResult m0st4fa::fsm::NonDeterFiniteAutomaton&lt; TransFuncT, InputT &gt;::_simulate_whole_string</definition>
+        <argsstring>(const InputT &amp;) const</argsstring>
+        <name>_simulate_whole_string</name>
+        <qualifiedname>m0st4fa::fsm::NonDeterFiniteAutomaton::_simulate_whole_string</qualifiedname>
+        <param>
+          <type>const InputT &amp;</type>
+          <defname>input</defname>
+        </param>
+        <briefdescription>
+<para>Simulate against whole string. The simulation returns true if and only if the whole string accepts. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">input</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The input string against which the simulation will run. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_result" kindref="compound">FSMResult</ref> object that indicates the result of the simulation. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+<para>Follow a path through the machine using the characters of the string. Break if you hit a dead state since it is dead.</para>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" line="31" column="11" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" bodystart="92" bodyend="114"/>
+        <references refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type_1a22812a634242303fadc3ebb54bbd5732" compoundref="_finite_state_machine_8h" startline="112" endline="114">m0st4fa::fsm::FSMStateSetType::empty</references>
+        <references refid="namespacem0st4fa_1_1fsm_1a824af687b77ebbcb14e1051fb902b1d8affb7f31d80464bd8892f51e554fb7aaa">m0st4fa::fsm::MT_NON_EPSILON_NFA</references>
+        <references refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type_1ac0b0973f8f618caa79fdd26f61cf7d74" compoundref="_finite_state_machine_8h" startline="109" endline="111">m0st4fa::fsm::FSMStateSetType::size</references>
+      </memberdef>
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1a79a3fd4f2bc6dfe31202e76f8bdd294a" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_result" kindref="compound">FSMResult</ref></type>
+        <definition>FSMResult m0st4fa::fsm::NonDeterFiniteAutomaton&lt; TransFuncT, InputT &gt;::_simulate_longest_prefix</definition>
+        <argsstring>(const InputT &amp;) const</argsstring>
+        <name>_simulate_longest_prefix</name>
+        <qualifiedname>m0st4fa::fsm::NonDeterFiniteAutomaton::_simulate_longest_prefix</qualifiedname>
+        <param>
+          <type>const InputT &amp;</type>
+          <defname>input</defname>
+        </param>
+        <briefdescription>
+<para>Simulates the NFA against <computeroutput>input</computeroutput> looking for the longest prefix only. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">input</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The input string against which the simulation will run. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_result" kindref="compound">FSMResult</ref> object that indicates the result of the simulation. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+<para>keeps track of the path taken through the machine. Will be used to figure out the longest matched prefix, if any.</para>
+<para>Follow a path through the machine using the characters of the string. Keep track of that path in order to be able to find the longest prefix if the whole string is not accepted.</para>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" line="32" column="11" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" bodystart="122" bodyend="162"/>
+        <references refid="namespacem0st4fa_1_1fsm_1a824af687b77ebbcb14e1051fb902b1d8affb7f31d80464bd8892f51e554fb7aaa">m0st4fa::fsm::MT_NON_EPSILON_NFA</references>
+      </memberdef>
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1a88967c227087bd96034255f60703ec9b" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_result" kindref="compound">FSMResult</ref></type>
+        <definition>FSMResult m0st4fa::fsm::NonDeterFiniteAutomaton&lt; TransFuncT, InputT &gt;::_simulate_longest_substring</definition>
+        <argsstring>(const InputT &amp;) const</argsstring>
+        <name>_simulate_longest_substring</name>
+        <qualifiedname>m0st4fa::fsm::NonDeterFiniteAutomaton::_simulate_longest_substring</qualifiedname>
+        <param>
+          <type>const InputT &amp;</type>
+          <defname>input</defname>
+        </param>
+        <briefdescription>
+<para>Simulates the NFA against <computeroutput>input</computeroutput> looking for the longest substring, which might be the entire string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">input</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The input string against which the simulation will run. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_result" kindref="compound">FSMResult</ref> object that indicates the result of the simulation. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" line="33" column="11" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" bodystart="170" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1aa809775335cff226d001f7a344a90b76" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool m0st4fa::fsm::NonDeterFiniteAutomaton&lt; TransFuncT, InputT &gt;::_check_accepted_longest_prefix</definition>
+        <argsstring>(const std::vector&lt; FSMStateSetType &gt; &amp;, size_t &amp;) const</argsstring>
+        <name>_check_accepted_longest_prefix</name>
+        <qualifiedname>m0st4fa::fsm::NonDeterFiniteAutomaton::_check_accepted_longest_prefix</qualifiedname>
+        <param>
+          <type>const std::vector&lt; <ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type" kindref="compound">FSMStateSetType</ref> &gt; &amp;</type>
+          <defname>matchedStates</defname>
+        </param>
+        <param>
+          <type>size_t &amp;</type>
+          <defname>charIndex</defname>
+        </param>
+        <briefdescription>
+<para>Simulates the DFA against <computeroutput>input</computeroutput> looking for the longest prefix. It also updates <computeroutput>charIndex</computeroutput> to the index of the last character of that prefix. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">matchedStates</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A set of states that constitute a path through the NFA, following <computeroutput>input</computeroutput> character by character starting from the start state of the NFA. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">charIndex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the last character of the matched prefix, if found; otherwise, 0. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if a prefix matches, <computeroutput>false</computeroutput> otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+<para>Loop through the path from the end seeking the closes final state. Update the character index as you do so.</para>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" line="36" column="6" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" bodystart="191" bodyend="213"/>
+      </memberdef>
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1a579f8be6ebdaa19079c83ea0b7c35265" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool m0st4fa::fsm::NonDeterFiniteAutomaton&lt; TransFuncT, InputT &gt;::_check_accepted_substring</definition>
+        <argsstring>(const InputT &amp;, std::vector&lt; FSMStateSetType &gt; &amp;, const size_t, size_t &amp;) const</argsstring>
+        <name>_check_accepted_substring</name>
+        <qualifiedname>m0st4fa::fsm::NonDeterFiniteAutomaton::_check_accepted_substring</qualifiedname>
+        <param>
+          <type>const InputT &amp;</type>
+          <defname>input</defname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type" kindref="compound">FSMStateSetType</ref> &gt; &amp;</type>
+          <defname>matchedStates</defname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <defname>startIndex</defname>
+        </param>
+        <param>
+          <type>size_t &amp;</type>
+          <defname>charIndex</defname>
+        </param>
+        <briefdescription>
+<para>Checks whether the substring starting from <computeroutput>startIndex</computeroutput> accepts. It also updates <computeroutput>charIndex</computeroutput> to the index of the last character of that substring. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">matchedStates</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The set of states that form the path taken through the machine after simulating the machine against <computeroutput>input</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">startIndex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index, within <computeroutput>input</computeroutput>, at which the substring starts. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">charIndex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the last checked character (the last that didn&apos;t result in a dead state). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if a substring starting from startIndex has accepted; <computeroutput>false</computeroutput> otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+<para>Follow a path through the machine using the characters of the string. Keep track of that path in order to be able to find the longest prefix if the whole string is not accepted.</para>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" line="38" column="6" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" bodystart="223" bodyend="271"/>
+        <references refid="namespacem0st4fa_1_1fsm_1a824af687b77ebbcb14e1051fb902b1d8affb7f31d80464bd8892f51e554fb7aaa">m0st4fa::fsm::MT_NON_EPSILON_NFA</references>
+      </memberdef>
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1a3bd95ec11b46bb0c8e18b311b83cfac2" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1ab96f3a2a6e04360af9a76d6cf90fa024" kindref="member">SubstringType</ref> &gt;</type>
+        <definition>std::vector&lt; Substring&lt; FSMStateSetType &gt; &gt; m0st4fa::fsm::NonDeterFiniteAutomaton&lt; TransFuncT, InputT &gt;::_extract_matching_substrings</definition>
+        <argsstring>(const InputT) const</argsstring>
+        <name>_extract_matching_substrings</name>
+        <qualifiedname>m0st4fa::fsm::NonDeterFiniteAutomaton::_extract_matching_substrings</qualifiedname>
+        <param>
+          <type>const InputT</type>
+          <defname>input</defname>
+        </param>
+        <briefdescription>
+<para>Extracts all matched substrings in <computeroutput>input</computeroutput>, if any, and returns them. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">input</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The input out of which the substrings will be extracted. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The set of substrings extracted out of <computeroutput>input</computeroutput>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" line="39" column="20" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" bodystart="279" bodyend="315"/>
+      </memberdef>
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1a06caf80399672022c82511e19b44ac5f" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_result" kindref="compound">FSMResult</ref></type>
+        <definition>FSMResult m0st4fa::fsm::NonDeterFiniteAutomaton&lt; TransFuncT, InputT &gt;::_get_longest_substring_from_matched_sets</definition>
+        <argsstring>(const InputT, const std::vector&lt; SubstringType &gt; &amp;) const</argsstring>
+        <name>_get_longest_substring_from_matched_sets</name>
+        <qualifiedname>m0st4fa::fsm::NonDeterFiniteAutomaton::_get_longest_substring_from_matched_sets</qualifiedname>
+        <param>
+          <type>const InputT</type>
+          <defname>input</defname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1ab96f3a2a6e04360af9a76d6cf90fa024" kindref="member">SubstringType</ref> &gt; &amp;</type>
+          <defname>substrings</defname>
+        </param>
+        <briefdescription>
+<para>Gets the longest substring from a set of matching substrings. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">input</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The input string to the simulation method (the matching substrings are substrings of this input string). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">substrings</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The set of matching substrings. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_result" kindref="compound">FSMResult</ref> object representing the longest matching substring from the set of matching substrings given to it. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" line="40" column="11" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" bodystart="324" bodyend="354"/>
+        <references refid="structm0st4fa_1_1fsm_1_1_indicies_1a66006d44d1326899a7e14bfe36498ffd" compoundref="_finite_state_machine_8h" startline="524">m0st4fa::fsm::Indicies::end</references>
+        <references refid="structm0st4fa_1_1fsm_1_1_substring_1a8c1557f5a490aa868a11435ccdac5674" compoundref="_finite_state_machine_8h" startline="611">m0st4fa::fsm::Substring&lt; T &gt;::indicies</references>
+        <references refid="structm0st4fa_1_1fsm_1_1_substring_1a1c2c176f54b01b75afa2a46408d290ef" compoundref="_finite_state_machine_8h" startline="607">m0st4fa::fsm::Substring&lt; T &gt;::matchedStates</references>
+        <references refid="structm0st4fa_1_1fsm_1_1_substring_1a1cef219ef9c89c06006236ffeccd7149" compoundref="_finite_state_machine_8h" startline="629" endline="631">m0st4fa::fsm::Substring&lt; T &gt;::size</references>
+        <references refid="structm0st4fa_1_1fsm_1_1_indicies_1a244dd51885862adac586860d18f2a9fa" compoundref="_finite_state_machine_8h" startline="520">m0st4fa::fsm::Indicies::start</references>
+      </memberdef>
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1a2410c8827db5aa610e1ab1c6afbf80e0" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type" kindref="compound">FSMStateSetType</ref></type>
+        <definition>FSMStateSetType m0st4fa::fsm::NonDeterFiniteAutomaton&lt; TransFuncT, InputT &gt;::_epsilon_closure</definition>
+        <argsstring>(const FSMStateSetType &amp;) const</argsstring>
+        <name>_epsilon_closure</name>
+        <qualifiedname>m0st4fa::fsm::NonDeterFiniteAutomaton::_epsilon_closure</qualifiedname>
+        <param>
+          <type>const <ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type" kindref="compound">FSMStateSetType</ref> &amp;</type>
+          <defname>set</defname>
+        </param>
+        <briefdescription>
+<para>Calculate the epsilon closure of a set of states. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">set</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The set for which epsilon closure will be calculated. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The set that represents the epsilon closure of <computeroutput>set</computeroutput>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" line="42" column="17" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" bodystart="362" bodyend="398"/>
+        <references refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type_1aabf7cc7baa5c6e1a289fa4e635466cac" compoundref="_finite_state_machine_8h" startline="92" endline="94">m0st4fa::fsm::FSMStateSetType::begin</references>
+        <references refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type_1a22812a634242303fadc3ebb54bbd5732" compoundref="_finite_state_machine_8h" startline="112" endline="114">m0st4fa::fsm::FSMStateSetType::empty</references>
+        <references refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type_1a992bc9289d334ffd6b5ce4af99dea260" compoundref="_finite_state_machine_8h" startline="95" endline="97">m0st4fa::fsm::FSMStateSetType::end</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1a59bec9e87e7c5f108da3ea6372dfe3b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>m0st4fa::fsm::NonDeterFiniteAutomaton&lt; TransFuncT, InputT &gt;::NonDeterFiniteAutomaton</definition>
+        <argsstring>()=default</argsstring>
+        <name>NonDeterFiniteAutomaton</name>
+        <qualifiedname>m0st4fa::fsm::NonDeterFiniteAutomaton::NonDeterFiniteAutomaton</qualifiedname>
+        <briefdescription>
+<para>Default constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" line="48" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1a87f07215bcf4b67f564753d2c71ba26e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>m0st4fa::fsm::NonDeterFiniteAutomaton&lt; TransFuncT, InputT &gt;::NonDeterFiniteAutomaton</definition>
+        <argsstring>(const FSMStateSetType &amp;fStates, const TransFuncT &amp;tranFn, FSM_TYPE machineType=FSM_TYPE::MT_EPSILON_NFA, FlagsType flags=FSM_FLAG::FF_FLAG_NONE)</argsstring>
+        <name>NonDeterFiniteAutomaton</name>
+        <qualifiedname>m0st4fa::fsm::NonDeterFiniteAutomaton::NonDeterFiniteAutomaton</qualifiedname>
+        <param>
+          <type>const <ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type" kindref="compound">FSMStateSetType</ref> &amp;</type>
+          <declname>fStates</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_trans_func_t" kindref="compound">TransFuncT</ref> &amp;</type>
+          <declname>tranFn</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacem0st4fa_1_1fsm_1a824af687b77ebbcb14e1051fb902b1d8" kindref="member">FSM_TYPE</ref></type>
+          <declname>machineType</declname>
+          <defval><ref refid="namespacem0st4fa_1_1fsm_1a824af687b77ebbcb14e1051fb902b1d8ac672dfcbdcdb9eb98050cbb825150697" kindref="member">FSM_TYPE::MT_EPSILON_NFA</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="namespacem0st4fa_1_1fsm_1a9daf74accff16baed24fc902eaf5e0d2" kindref="member">FlagsType</ref></type>
+          <declname>flags</declname>
+          <defval><ref refid="namespacem0st4fa_1_1fsm_1ac882d30363c8730a12932c6982256f66a300a280a834c4bc1ba1ffeb70870653b" kindref="member">FSM_FLAG::FF_FLAG_NONE</ref></defval>
+        </param>
+        <briefdescription>
+<para>Initialize a new NFA object. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">fStates</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The set of final states of the new NFA object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tranFn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The transition function of the new NFA object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">machineType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the NFA. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">flags</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The flags given to the new NFA object. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para>See <ref refid="namespacem0st4fa_1_1fsm_1a824af687b77ebbcb14e1051fb902b1d8" kindref="member">m0st4fa::fsm::FSM_TYPE</ref> for setting the type of the machine and <ref refid="namespacem0st4fa_1_1fsm_1a9daf74accff16baed24fc902eaf5e0d2" kindref="member">m0st4fa::fsm::FlagsType</ref> for determining flags. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" line="57" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" bodystart="57" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1ac445ee45e6b9661ddfa4c0728d992b40" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_result" kindref="compound">FSMResult</ref></type>
+        <definition>FSMResult m0st4fa::fsm::NonDeterFiniteAutomaton&lt; TransFuncT, InputT &gt;::simulate</definition>
+        <argsstring>(const InputT &amp;, const FSM_MODE) const</argsstring>
+        <name>simulate</name>
+        <qualifiedname>m0st4fa::fsm::NonDeterFiniteAutomaton::simulate</qualifiedname>
+        <param>
+          <type>const InputT &amp;</type>
+          <defname>input</defname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacem0st4fa_1_1fsm_1ae49367e23837069e9faaefcb6a0406f1" kindref="member">FSM_MODE</ref></type>
+          <defname>mode</defname>
+        </param>
+        <briefdescription>
+<para>Simulate the given input string using the given simulation method. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">input</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The input string to be simulated. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The simulation mode. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="structm0st4fa_1_1fsm_1_1_unrecognized_sim_mode_exception" kindref="compound">UnrecognizedSimModeException</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Thrown in case an incorrect simulation mode is entered, which is in fact unreachable. Thus, this exception is almost impossible to throw under normal conditions. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_result" kindref="compound">FSMResult</ref> object indicating the result of the simulation. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" line="72" column="11" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" bodystart="408" bodyend="422"/>
+        <references refid="namespacem0st4fa_1_1fsm_1ae49367e23837069e9faaefcb6a0406f1a456b958363273312579a7e97e12c0294">m0st4fa::fsm::MM_LONGEST_PREFIX</references>
+        <references refid="namespacem0st4fa_1_1fsm_1ae49367e23837069e9faaefcb6a0406f1a9857ed071b6970f381b4163b30f857fb">m0st4fa::fsm::MM_LONGEST_SUBSTRING</references>
+        <references refid="namespacem0st4fa_1_1fsm_1ae49367e23837069e9faaefcb6a0406f1ab7ffe915b99112ed2c95e0f8d917073a">m0st4fa::fsm::MM_WHOLE_STRING</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An NFA that can be used to match strings. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;</label>
+        <link refid="classm0st4fa_1_1fsm_1_1_finite_state_machine"/>
+      </node>
+      <node id="1">
+        <label>m0st4fa::fsm::NonDeterFiniteAutomaton&lt; TransFuncT, InputT &gt;</label>
+        <link refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="8">
+        <label>FSM_TYPE</label>
+      </node>
+      <node id="7">
+        <label>K</label>
+      </node>
+      <node id="9">
+        <label>Logger</label>
+        <link refid="class_logger"/>
+      </node>
+      <node id="10">
+        <label>TransFuncT</label>
+        <link refid="class_trans_func_t"/>
+      </node>
+      <node id="3">
+        <label>m0st4fa::fsm::FSMStateSetType</label>
+        <link refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>+m_StateSet</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>m0st4fa::fsm::FiniteStateMachine&lt; TransFuncT, InputT &gt;</label>
+        <link refid="classm0st4fa_1_1fsm_1_1_finite_state_machine"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>-m_FinalStates</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>-m_MachineType</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>#START_STATE</edgelabel>
+          <edgelabel>-m_Flags</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>#m_Logger</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>#m_TransitionFunc</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>m0st4fa::fsm::NonDeterFiniteAutomaton&lt; TransFuncT, InputT &gt;</label>
+        <link refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>-DEAD_STATE</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>std::set&lt; FSMStateType &gt;</label>
+        <childnode refid="5" relation="usage">
+          <edgelabel>+keys</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="template-instance">
+          <edgelabel>&lt; FSMStateType &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>std::set&lt; K &gt;</label>
+        <childnode refid="7" relation="usage">
+          <edgelabel>+keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>unsigned</label>
+        <link refid="classunsigned"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" line="18" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" bodystart="18" bodyend="74"/>
+    <listofallmembers>
+      <member refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1aa809775335cff226d001f7a344a90b76" prot="private" virt="non-virtual"><scope>m0st4fa::fsm::NonDeterFiniteAutomaton</scope><name>_check_accepted_longest_prefix</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1a579f8be6ebdaa19079c83ea0b7c35265" prot="private" virt="non-virtual"><scope>m0st4fa::fsm::NonDeterFiniteAutomaton</scope><name>_check_accepted_substring</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1a2410c8827db5aa610e1ab1c6afbf80e0" prot="private" virt="non-virtual"><scope>m0st4fa::fsm::NonDeterFiniteAutomaton</scope><name>_epsilon_closure</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1a3bd95ec11b46bb0c8e18b311b83cfac2" prot="private" virt="non-virtual"><scope>m0st4fa::fsm::NonDeterFiniteAutomaton</scope><name>_extract_matching_substrings</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a7d866f7d6701ce070aae3f0a88b47047" prot="protected" virt="non-virtual"><scope>m0st4fa::fsm::NonDeterFiniteAutomaton</scope><name>_get_final_states_from_state_set</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1a06caf80399672022c82511e19b44ac5f" prot="private" virt="non-virtual"><scope>m0st4fa::fsm::NonDeterFiniteAutomaton</scope><name>_get_longest_substring_from_matched_sets</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a605a16645ce198a8a571ac2e3ddb4a5e" prot="protected" virt="non-virtual"><scope>m0st4fa::fsm::NonDeterFiniteAutomaton</scope><name>_is_state_final</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1a79a3fd4f2bc6dfe31202e76f8bdd294a" prot="private" virt="non-virtual"><scope>m0st4fa::fsm::NonDeterFiniteAutomaton</scope><name>_simulate_longest_prefix</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1a88967c227087bd96034255f60703ec9b" prot="private" virt="non-virtual"><scope>m0st4fa::fsm::NonDeterFiniteAutomaton</scope><name>_simulate_longest_substring</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1a3bb8223429c12002fb6357de46c00b9b" prot="private" virt="non-virtual"><scope>m0st4fa::fsm::NonDeterFiniteAutomaton</scope><name>_simulate_whole_string</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1af292d6aa403b78e0c201b88dc211100b" prot="private" virt="non-virtual"><scope>m0st4fa::fsm::NonDeterFiniteAutomaton</scope><name>Base</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1aeee05ef4919636125a6008f9a9f8e551" prot="private" virt="non-virtual"><scope>m0st4fa::fsm::NonDeterFiniteAutomaton</scope><name>DEAD_STATE</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a247d21b7b8a25f7a75b3d3444cd8a9c0" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::NonDeterFiniteAutomaton</scope><name>FiniteStateMachine</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a6cc82307f218ab8bd807751dcd9f13d0" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::NonDeterFiniteAutomaton</scope><name>FiniteStateMachine</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1af27589cf2239dd94d87f252effb43f84" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::NonDeterFiniteAutomaton</scope><name>getFinalStates</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1aeeb4b2093840ab12624d034be708fc10" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::NonDeterFiniteAutomaton</scope><name>getFlags</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1adcd2de25e74e415309594a6dddd23d51" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::NonDeterFiniteAutomaton</scope><name>getMachineType</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a671dac4b92a9737963fc11d80c790d65" prot="private" virt="non-virtual"><scope>m0st4fa::fsm::NonDeterFiniteAutomaton</scope><name>m_FinalStates</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a4c3312d267bd2288d28965078a9329a2" prot="private" virt="non-virtual"><scope>m0st4fa::fsm::NonDeterFiniteAutomaton</scope><name>m_Flags</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a5155c91b2dcd709e41f2845e79d1e1fd" prot="protected" virt="non-virtual"><scope>m0st4fa::fsm::NonDeterFiniteAutomaton</scope><name>m_Logger</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a6298a230a79036e1079049ae415c8d0d" prot="private" virt="non-virtual"><scope>m0st4fa::fsm::NonDeterFiniteAutomaton</scope><name>m_MachineType</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a0c61563a5042149aeaf6b0b06b6b37f8" prot="protected" virt="non-virtual"><scope>m0st4fa::fsm::NonDeterFiniteAutomaton</scope><name>m_TransitionFunc</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1a59bec9e87e7c5f108da3ea6372dfe3b0" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::NonDeterFiniteAutomaton</scope><name>NonDeterFiniteAutomaton</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1a87f07215bcf4b67f564753d2c71ba26e" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::NonDeterFiniteAutomaton</scope><name>NonDeterFiniteAutomaton</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1a379192050bd13f35664b5960ea465c80" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::NonDeterFiniteAutomaton</scope><name>operator=</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1ac445ee45e6b9661ddfa4c0728d992b40" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::NonDeterFiniteAutomaton</scope><name>simulate</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_finite_state_machine_1af5fa6501d388a47f8625a9af2fa1205c" prot="protected" virt="non-virtual"><scope>m0st4fa::fsm::NonDeterFiniteAutomaton</scope><name>START_STATE</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1ab96f3a2a6e04360af9a76d6cf90fa024" prot="private" virt="non-virtual"><scope>m0st4fa::fsm::NonDeterFiniteAutomaton</scope><name>SubstringType</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

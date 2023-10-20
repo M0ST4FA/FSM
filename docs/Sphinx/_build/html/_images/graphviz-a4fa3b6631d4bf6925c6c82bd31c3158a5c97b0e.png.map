@@ -1,0 +1,11 @@
+<map id="%3" name="%3">
+<area shape="rect" id="node1" title="K" alt="" coords="38,293,110,341"/>
+<area shape="rect" id="node2" title="m0st4fa::fsm::FSMStateSetType" alt="" coords="5,5,268,53"/>
+<area shape="rect" id="node3" title="std::set&lt; FSMStateType &gt;" alt="" coords="27,101,246,149"/>
+<area shape="poly" id="edge1" title="usage" alt="" coords="139,54,139,87,134,87,134,54"/>
+<area shape="rect" id="node4" title="std::set&lt; K &gt;" alt="" coords="15,197,133,245"/>
+<area shape="poly" id="edge3" title="template&#45;instance" alt="" coords="123,151,99,187,95,184,119,148"/>
+<area shape="rect" id="node5" title="unsigned" alt="" coords="157,197,244,245"/>
+<area shape="poly" id="edge2" title="usage" alt="" coords="155,148,179,184,175,187,150,151"/>
+<area shape="poly" id="edge4" title="usage" alt="" coords="77,246,77,279,71,279,71,246"/>
+</map>

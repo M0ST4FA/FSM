@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.7" xml:lang="en-US">
+  <compounddef id="structm0st4fa_1_1fsm_1_1_unrecognized_sim_mode_exception" kind="struct" language="C++" prot="public">
+    <compoundname>m0st4fa::fsm::UnrecognizedSimModeException</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::runtime_error</basecompoundref>
+    <includes refid="_finite_state_machine_8h" local="no">FiniteStateMachine.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structm0st4fa_1_1fsm_1_1_unrecognized_sim_mode_exception_1acbd34a04f3833e511ef34c29538a2fea" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>m0st4fa::fsm::UnrecognizedSimModeException::UnrecognizedSimModeException</definition>
+        <argsstring>()</argsstring>
+        <name>UnrecognizedSimModeException</name>
+        <qualifiedname>m0st4fa::fsm::UnrecognizedSimModeException::UnrecognizedSimModeException</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="32" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="32" bodyend="32"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>The exception thrown when there is an unrecognized simulation mode. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1ac445ee45e6b9661ddfa4c0728d992b40" kindref="member">NonDeterFiniteAutomaton&lt;TransFuncT, InputT&gt;::simulate(const InputT&amp; input, FSM_MODE mode) const</ref>; </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classm0st4fa_1_1fsm_1_1_deter_finite_automaton_1ab52816310d2634d033d044ea8d5343b7" kindref="member">DeterFiniteAutomaton&lt;TransFuncT, InputT&gt;::simulate(const InputT&amp; input, FSM_MODE mode) const</ref>; </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>m0st4fa::fsm::UnrecognizedSimModeException</label>
+        <link refid="structm0st4fa_1_1fsm_1_1_unrecognized_sim_mode_exception"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::exception</label>
+      </node>
+      <node id="2">
+        <label>std::runtime_error</label>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>m0st4fa::fsm::UnrecognizedSimModeException</label>
+        <link refid="structm0st4fa_1_1fsm_1_1_unrecognized_sim_mode_exception"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::exception</label>
+      </node>
+      <node id="2">
+        <label>std::runtime_error</label>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="30" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="30" bodyend="34"/>
+    <listofallmembers>
+      <member refid="structm0st4fa_1_1fsm_1_1_unrecognized_sim_mode_exception_1acbd34a04f3833e511ef34c29538a2fea" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::UnrecognizedSimModeException</scope><name>UnrecognizedSimModeException</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

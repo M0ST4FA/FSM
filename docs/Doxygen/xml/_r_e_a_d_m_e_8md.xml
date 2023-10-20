@@ -1,0 +1,264 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.7" xml:lang="en-US">
+  <compounddef id="_r_e_a_d_m_e_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">&lt;!--<sp/>Improved<sp/>compatibility<sp/>of<sp/>back<sp/>to<sp/>top<sp/>link:<sp/>See:<sp/>https://github.com/othneildrew/Best-README-Template/pull/73<sp/>--&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;a<sp/>name=&quot;readme-top&quot;&gt;&lt;/a&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;!--</highlight></codeline>
+<codeline><highlight class="normal">***<sp/>Thanks<sp/>for<sp/>checking<sp/>out<sp/>the<sp/>Best-README-Template.<sp/>If<sp/>you<sp/>have<sp/>a<sp/>suggestion</highlight></codeline>
+<codeline><highlight class="normal">***<sp/>that<sp/>would<sp/>make<sp/>this<sp/>better,<sp/>please<sp/>fork<sp/>the<sp/>repo<sp/>and<sp/>create<sp/>a<sp/>pull<sp/>request</highlight></codeline>
+<codeline><highlight class="normal">***<sp/>or<sp/>simply<sp/>open<sp/>an<sp/>issue<sp/>with<sp/>the<sp/>tag<sp/>&quot;enhancement&quot;.</highlight></codeline>
+<codeline><highlight class="normal">***<sp/>Don&apos;t<sp/>forget<sp/>to<sp/>give<sp/>the<sp/>project<sp/>a<sp/>star!</highlight></codeline>
+<codeline><highlight class="normal">***<sp/>Thanks<sp/>again!<sp/>Now<sp/>go<sp/>create<sp/>something<sp/>AMAZING!<sp/>:D</highlight></codeline>
+<codeline><highlight class="normal">--&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>PROJECT<sp/>SHIELDS<sp/>--&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;!--</highlight></codeline>
+<codeline><highlight class="normal">***<sp/>I&apos;m<sp/>using<sp/>markdown<sp/>&quot;reference<sp/>style&quot;<sp/>links<sp/>for<sp/>readability.</highlight></codeline>
+<codeline><highlight class="normal">***<sp/>Reference<sp/>links<sp/>are<sp/>enclosed<sp/>in<sp/>brackets<sp/>[<sp/>]<sp/>instead<sp/>of<sp/>parentheses<sp/>(<sp/>).</highlight></codeline>
+<codeline><highlight class="normal">***<sp/>See<sp/>the<sp/>bottom<sp/>of<sp/>this<sp/>document<sp/>for<sp/>the<sp/>declaration<sp/>of<sp/>the<sp/>reference<sp/>variables</highlight></codeline>
+<codeline><highlight class="normal">***<sp/>for<sp/>contributors-url,<sp/>forks-url,<sp/>etc.<sp/>This<sp/>is<sp/>an<sp/>optional,<sp/>concise<sp/>syntax<sp/>you<sp/>may<sp/>use.</highlight></codeline>
+<codeline><highlight class="normal">***<sp/>https://www.markdownguide.org/basic-syntax/#reference-style-links</highlight></codeline>
+<codeline><highlight class="normal">--&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>[![Contributors][contributors-shield]][contributors-url]<sp/>--&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>[![Forks][forks-shield]][forks-url]<sp/>--&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>[![Stargazers][stars-shield]][stars-url]<sp/>--&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>[![Issues][issues-shield]][issues-url]<sp/>--&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>[![MIT<sp/>License][license-shield]][license-url]<sp/>--&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>[![LinkedIn][linkedin-shield]][linkedin-url]<sp/>--&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>PROJECT<sp/>LOGO<sp/>--&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;br<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;div<sp/>align=&quot;center&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;a<sp/>href=&quot;https://github.com/M0sT4fa/FSM&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;img<sp/>src=&quot;resources/logo<sp/>1.jpeg&quot;<sp/>alt=&quot;Logo&quot;<sp/>width=&quot;80&quot;<sp/>height=&quot;80&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;/a&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;h3<sp/>align=&quot;center&quot;&gt;FSM&lt;/h3&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;p<sp/>align=&quot;center&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Finite<sp/>state<sp/>machine<sp/>library<sp/>written<sp/>in<sp/>C++<sp/>for<sp/>designing<sp/>compilers.<sp/>Might<sp/>be<sp/>extended<sp/>in<sp/>the<sp/>future.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;br<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;a<sp/>href=&quot;https://fsm.readthedocs.io/en/latest/&quot;&gt;&lt;strong&gt;Explore<sp/>the<sp/>docs<sp/>»&lt;/strong&gt;&lt;/a&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;br<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;br<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;a<sp/>href=&quot;https://github.com/M0sT4fa/FSM&quot;&gt;View<sp/>Demo&lt;/a&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>·</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;a<sp/>href=&quot;https://github.com/M0sT4fa/FSM/issues&quot;&gt;Report<sp/>Bug&lt;/a&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>·</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;a<sp/>href=&quot;https://github.com/M0sT4fa/FSM/issues&quot;&gt;Request<sp/>Feature&lt;/a&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;/p&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;/div&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>TABLE<sp/>OF<sp/>CONTENTS<sp/>--&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;details&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;summary&gt;Table<sp/>of<sp/>Contents&lt;/summary&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;ol&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;a<sp/>href=&quot;#about-the-project&quot;&gt;About<sp/>The<sp/>Project&lt;/a&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;!--<sp/>&lt;ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;li&gt;&lt;a<sp/>href=&quot;#built-with&quot;&gt;Built<sp/>With&lt;/a&gt;&lt;/li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;/ul&gt;<sp/>--&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;/li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;a<sp/>href=&quot;#getting-started&quot;&gt;Getting<sp/>Started&lt;/a&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;li&gt;&lt;a<sp/>href=&quot;#prerequisites&quot;&gt;Prerequisites&lt;/a&gt;&lt;/li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;li&gt;&lt;a<sp/>href=&quot;#installation&quot;&gt;Installation&lt;/a&gt;&lt;/li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;li&gt;&lt;a<sp/>href=&quot;#building-documentation&quot;&gt;Building<sp/>Documentation&lt;/a&gt;&lt;/li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;/ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;/li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;li&gt;&lt;a<sp/>href=&quot;#usage&quot;&gt;Usage&lt;/a&gt;&lt;/li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;li&gt;&lt;a<sp/>href=&quot;#roadmap&quot;&gt;Roadmap&lt;/a&gt;&lt;/li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;li&gt;&lt;a<sp/>href=&quot;#contributing&quot;&gt;Contributing&lt;/a&gt;&lt;/li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;li&gt;&lt;a<sp/>href=&quot;#license&quot;&gt;License&lt;/a&gt;&lt;/li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;li&gt;&lt;a<sp/>href=&quot;#contact&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;!--<sp/>&lt;li&gt;&lt;a<sp/>href=&quot;#acknowledgments&quot;&gt;Acknowledgments&lt;/a&gt;&lt;/li&gt;<sp/>--&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;/ol&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;/details&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>ABOUT<sp/>THE<sp/>PROJECT<sp/>--&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>About<sp/>The<sp/>Project</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>[![Product<sp/>Name<sp/>Screen<sp/>Shot][product-screenshot]](https://example.com)<sp/>--&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Finite<sp/>state<sp/>machine<sp/>library<sp/>written<sp/>in<sp/>C++<sp/>for<sp/>designing<sp/>compilers.<sp/>Might<sp/>be<sp/>extended<sp/>in<sp/>the<sp/>future.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;p<sp/>align=&quot;right&quot;&gt;(&lt;a<sp/>href=&quot;#readme-top&quot;&gt;back<sp/>to<sp/>top&lt;/a&gt;)&lt;/p&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>GETTING<sp/>STARTED<sp/>--&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Getting<sp/>Started</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>This<sp/>is<sp/>an<sp/>example<sp/>of<sp/>how<sp/>you<sp/>may<sp/>give<sp/>instructions<sp/>on<sp/>setting<sp/>up<sp/>your<sp/>project<sp/>locally.</highlight></codeline>
+<codeline><highlight class="normal">To<sp/>get<sp/>a<sp/>local<sp/>copy<sp/>up<sp/>and<sp/>running<sp/>follow<sp/>these<sp/>simple<sp/>example<sp/>steps.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>project<sp/>uses<sp/>CMake.<sp/>Therefore,<sp/>to<sp/>incorporate<sp/>it<sp/>into<sp/>your<sp/>project,<sp/>you<sp/>need<sp/>to<sp/>clone<sp/>this<sp/>project<sp/>into<sp/>some<sp/>subdirectory<sp/>within<sp/>your<sp/>project.<sp/>This<sp/>is<sp/>typically<sp/>done<sp/>using<sp/>`git<sp/>submodule`<sp/>or<sp/>using<sp/>CMake&apos;s<sp/>`FetchContent`<sp/>or<sp/>`ExternalProject_Add`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">In<sp/>the<sp/>first<sp/>two<sp/>cases,<sp/>you<sp/>need<sp/>to<sp/>call<sp/>`add_subdirectory()`<sp/>on<sp/>the<sp/>subdirectory<sp/>in<sp/>which<sp/>the<sp/>project<sp/>was<sp/>fetched.<sp/>In<sp/>the<sp/>case<sp/>of<sp/>`ExternalProject_Add`,<sp/>the<sp/>CMake<sp/>command<sp/>itself<sp/>will<sp/>do<sp/>everything<sp/>for<sp/>you.<sp/>--&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Prerequisites</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>This<sp/>is<sp/>an<sp/>example<sp/>of<sp/>how<sp/>to<sp/>list<sp/>things<sp/>you<sp/>need<sp/>to<sp/>use<sp/>the<sp/>software<sp/>and<sp/>how<sp/>to<sp/>install<sp/>them.<sp/>--&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>project<sp/>is<sp/>built<sp/>with<sp/>CMake.<sp/>To<sp/>include<sp/>it<sp/>in<sp/>one<sp/>of<sp/>your<sp/>projects,<sp/>your<sp/>project<sp/>must<sp/>be<sp/>CMake-based<sp/>or<sp/>otherwise<sp/>be<sp/>able<sp/>to<sp/>include<sp/>CMake<sp/>projects.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Install<sp/>CMake<sp/>on<sp/>Windows<sp/>using<sp/>`winget`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>```pwsh</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>winget<sp/>install<sp/>--id<sp/>&quot;Kitware.CMake&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Install<sp/>CMake<sp/>for<sp/>Windows<sp/>and<sp/>Other<sp/>OSes<sp/>from<sp/>the<sp/>[Official<sp/>CMake<sp/>Download<sp/>Webiste].</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Installation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">There<sp/>are<sp/>many<sp/>ways<sp/>to<sp/>incorporate<sp/>this<sp/>project<sp/>into<sp/>your<sp/>project.<sp/>The<sp/>simples<sp/>is<sp/>using<sp/>`git<sp/>submodule`<sp/>(which<sp/>is<sp/>the<sp/>one<sp/>listed<sp/>here),<sp/>but<sp/>you<sp/>can<sp/>also<sp/>use<sp/>`FetchContent()`<sp/>and<sp/>`ExternalProject_Add()`<sp/>Cmake<sp/>commands.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">I<sp/>assume<sp/>that<sp/>your<sp/>project<sp/>puts<sp/>external<sp/>libraries<sp/>in<sp/>a<sp/>top<sp/>level<sp/>directory<sp/>named<sp/>external.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>Submodule<sp/>the<sp/>repo<sp/>into<sp/>your<sp/>project</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>```powershell</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>git<sp/>submodule<sp/>add<sp/>https://github.com/M0sT4fa/FSM.git<sp/>external/FSM<sp/>--recursive</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>**⚠️Warning**:<sp/>The<sp/>`--recursive`<sp/>option<sp/>is<sp/>extremely<sp/>important.<sp/>It<sp/>makes<sp/>sure<sp/>dependencies<sp/>of<sp/>this<sp/>project<sp/>are<sp/>fetched<sp/>with<sp/>it.<sp/>If<sp/>you<sp/>didn&apos;t<sp/>include<sp/>it,<sp/>run<sp/>this<sp/>command<sp/>from<sp/>the<sp/>root<sp/>directory<sp/>of<sp/>your<sp/>project:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>```powershell</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>git<sp/>submodule<sp/>--remote<sp/>external/FSM</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">2.<sp/>Within<sp/>`CMakeLists.txt`,<sp/>add<sp/>`add_subdirectory()`<sp/>command<sp/>with<sp/>`external/FSM`<sp/>directory<sp/>as<sp/>its<sp/>argument.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>```CMake</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>#<sp/>Add<sp/>the<sp/>following<sp/>command<sp/>to<sp/>your<sp/>top-level<sp/>CMakeLists.txt</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>add_subdirectory(&quot;${CMAKE_SOURCE_DIR}/external/FSM&quot;)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;p<sp/>align=&quot;right&quot;&gt;(&lt;a<sp/>href=&quot;#readme-top&quot;&gt;back<sp/>to<sp/>top&lt;/a&gt;)&lt;/p&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>USAGE<sp/>EXAMPLES<sp/>--&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Usage</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>main<sp/>target<sp/>is<sp/>`fsm`.<sp/>This<sp/>target<sp/>represents<sp/>the<sp/>library.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Another<sp/>target<sp/>is<sp/>[`utility`](&apos;https://github.com/M0sT4fa/utility.git&apos;).<sp/>This<sp/>target<sp/>represents<sp/>a<sp/>library<sp/>that<sp/>is<sp/>a<sp/>dependency<sp/>of<sp/>this<sp/>library.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">For<sp/>example,<sp/>assume<sp/>you<sp/>have<sp/>an<sp/>executable<sp/>target<sp/>named<sp/>`foo`<sp/>and<sp/>you<sp/>want<sp/>to<sp/>link<sp/>this<sp/>library<sp/>to<sp/>it.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```CMake</highlight></codeline>
+<codeline><highlight class="normal">target_link_libraries(foo<sp/>PRIVATE<sp/>fsm)</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">_For<sp/>more<sp/>examples,<sp/>please<sp/>refer<sp/>to<sp/>the<sp/>Documentation._</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Building<sp/>Documentation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>documentation<sp/>is<sp/>built<sp/>automatically<sp/>if<sp/>you<sp/>set<sp/>the<sp/>CMake<sp/>cache<sp/>variable<sp/>`BUILD_DOCUMENTATION`.<sp/>It<sp/>is<sp/>built<sp/>in<sp/>the<sp/>directory<sp/>`${CMAKE_BUILD_DIRECTORY}/docs/sphinx/`.<sp/>Open<sp/>it<sp/>using<sp/>`index.html`<sp/>in<sp/>that<sp/>directory<sp/>after<sp/>it<sp/>is<sp/>built.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Conversly,<sp/>you<sp/>can<sp/>run<sp/>the<sp/>following<sp/>pwershell<sp/>script<sp/>on<sp/>the<sp/>root<sp/>directory:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```powershell</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Build<sp/>directory</highlight></codeline>
+<codeline><highlight class="normal">$BuildDirectory<sp/>=<sp/>&quot;.\out\build\x64-Debug\&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Build<sp/>the<sp/>documentation<sp/>targets</highlight></codeline>
+<codeline><highlight class="normal">cmake.exe<sp/>--build<sp/>$BuildDirectory<sp/>--target<sp/>Doxygen<sp/>&amp;&amp;<sp/>cmake.exe<sp/>--build<sp/>$BuildDirectory<sp/>--target<sp/>Sphinx</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Run<sp/>the<sp/>documentation</highlight></codeline>
+<codeline><highlight class="normal">&amp;<sp/>&quot;$BuildDirectory\docs\Sphinx\index.html&quot;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>script<sp/>will<sp/>automatically<sp/>build<sp/>and<sp/>run<sp/>the<sp/>documentation,<sp/>assuming<sp/>your<sp/>build<sp/>directory<sp/>is<sp/>&quot;.\out\build\x64-Debug\&quot;.<sp/>Note<sp/>that<sp/>the<sp/>build<sp/>directory<sp/>can<sp/>be<sp/>different,<sp/>and<sp/>in<sp/>this<sp/>case,<sp/>this<sp/>script<sp/>will<sp/>not<sp/>be<sp/>successful.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;p<sp/>align=&quot;right&quot;&gt;(&lt;a<sp/>href=&quot;#readme-top&quot;&gt;back<sp/>to<sp/>top&lt;/a&gt;)&lt;/p&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>ROADMAP<sp/>--&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Roadmap</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Nothing<sp/>in<sp/>mind<sp/>currently,<sp/>although<sp/>I<sp/>want<sp/>to<sp/>make<sp/>the<sp/>library<sp/>more<sp/>general.<sp/>This<sp/>library<sp/>has<sp/>come<sp/>out<sp/>of<sp/>my<sp/>own<sp/>needs<sp/>and<sp/>I<sp/>will<sp/>likely<sp/>add<sp/>features<sp/>as<sp/>I<sp/>need<sp/>them.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">See<sp/>the<sp/>[open<sp/>issues](https://github.com/M0sT4fa/FSM/issues)<sp/>for<sp/>a<sp/>full<sp/>list<sp/>of<sp/>proposed<sp/>features<sp/>(and<sp/>known<sp/>issues).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;p<sp/>align=&quot;right&quot;&gt;(&lt;a<sp/>href=&quot;#readme-top&quot;&gt;back<sp/>to<sp/>top&lt;/a&gt;)&lt;/p&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>CONTRIBUTING<sp/>--&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Contributing</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Contributions<sp/>are<sp/>what<sp/>make<sp/>the<sp/>open<sp/>source<sp/>community<sp/>such<sp/>an<sp/>amazing<sp/>place<sp/>to<sp/>learn,<sp/>inspire,<sp/>and<sp/>create.<sp/>Any<sp/>contributions<sp/>you<sp/>make<sp/>are<sp/>**greatly<sp/>appreciated**.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">If<sp/>you<sp/>have<sp/>a<sp/>suggestion<sp/>that<sp/>would<sp/>make<sp/>this<sp/>better,<sp/>please<sp/>fork<sp/>the<sp/>repo<sp/>and<sp/>create<sp/>a<sp/>pull<sp/>request.<sp/>You<sp/>can<sp/>also<sp/>simply<sp/>open<sp/>an<sp/>issue<sp/>with<sp/>the<sp/>tag<sp/>&quot;enhancement&quot;.</highlight></codeline>
+<codeline><highlight class="normal">Don&apos;t<sp/>forget<sp/>to<sp/>give<sp/>the<sp/>project<sp/>a<sp/>star!<sp/>Thanks<sp/>again!</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>Fork<sp/>the<sp/>Project</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>Create<sp/>your<sp/>Feature<sp/>Branch<sp/>(`git<sp/>checkout<sp/>-b<sp/>feature/AmazingFeature`)</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>Commit<sp/>your<sp/>Changes<sp/>(`git<sp/>commit<sp/>-m<sp/>&apos;Add<sp/>some<sp/>AmazingFeature&apos;`)</highlight></codeline>
+<codeline><highlight class="normal">4.<sp/>Push<sp/>to<sp/>the<sp/>Branch<sp/>(`git<sp/>push<sp/>origin<sp/>feature/AmazingFeature`)</highlight></codeline>
+<codeline><highlight class="normal">5.<sp/>Open<sp/>a<sp/>Pull<sp/>Request</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;p<sp/>align=&quot;right&quot;&gt;(&lt;a<sp/>href=&quot;#readme-top&quot;&gt;back<sp/>to<sp/>top&lt;/a&gt;)&lt;/p&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>LICENSE<sp/>--&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>License</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Distributed<sp/>under<sp/>the<sp/>MIT<sp/>License.<sp/>See<sp/>`LICENSE.txt`<sp/>for<sp/>more<sp/>information.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;p<sp/>align=&quot;right&quot;&gt;(&lt;a<sp/>href=&quot;#readme-top&quot;&gt;back<sp/>to<sp/>top&lt;/a&gt;)&lt;/p&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>CONTACT<sp/>--&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Contact</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Mostafa<sp/>Bideer<sp/>-<sp/>mostafa2018a3s@gmail.com</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>⚠️**Warning**:<sp/>I&apos;m<sp/>very<sp/>likely<sp/>to<sp/>not<sp/>respond,<sp/>at<sp/>least<sp/>now,<sp/>as<sp/>medical<sp/>school<sp/>is<sp/>taking<sp/>most<sp/>of<sp/>my<sp/>time.<sp/>--&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Project<sp/>Link:<sp/>[https://github.com/M0sT4fa/FSM](https://github.com/M0sT4fa/FSM)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;p<sp/>align=&quot;right&quot;&gt;(&lt;a<sp/>href=&quot;#readme-top&quot;&gt;back<sp/>to<sp/>top&lt;/a&gt;)&lt;/p&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>ACKNOWLEDGMENTS<sp/>--&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>##<sp/>Acknowledgments</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>[]()</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[]()</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[]()</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;p<sp/>align=&quot;right&quot;&gt;(&lt;a<sp/>href=&quot;#readme-top&quot;&gt;back<sp/>to<sp/>top&lt;/a&gt;)&lt;/p&gt;<sp/>--&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>MARKDOWN<sp/>LINKS<sp/>&amp;<sp/>IMAGES<sp/>--&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>https://www.markdownguide.org/basic-syntax/#reference-style-links<sp/>--&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">[Official<sp/>CMake<sp/>Download<sp/>Webiste]:<sp/>https://cmake.org/download</highlight></codeline>
+<codeline><highlight class="normal">[contributors-shield]:<sp/>https://img.shields.io/github/contributors/M0sT4fa/FSM.svg?style=for-the-badge</highlight></codeline>
+<codeline><highlight class="normal">[contributors-url]:<sp/>https://github.com/M0sT4fa/FSM/graphs/contributors</highlight></codeline>
+<codeline><highlight class="normal">[forks-shield]:<sp/>https://img.shields.io/github/forks/M0sT4fa/FSM.svg?style=for-the-badge</highlight></codeline>
+<codeline><highlight class="normal">[forks-url]:<sp/>https://github.com/M0sT4fa/FSM/network/members</highlight></codeline>
+<codeline><highlight class="normal">[stars-shield]:<sp/>https://img.shields.io/github/stars/M0sT4fa/FSM.svg?style=for-the-badge</highlight></codeline>
+<codeline><highlight class="normal">[stars-url]:<sp/>https://github.com/M0sT4fa/FSM/stargazers</highlight></codeline>
+<codeline><highlight class="normal">[issues-shield]:<sp/>https://img.shields.io/github/issues/M0sT4fa/FSM.svg?style=for-the-badge</highlight></codeline>
+<codeline><highlight class="normal">[issues-url]:<sp/>https://github.com/M0sT4fa/FSM/issues</highlight></codeline>
+<codeline><highlight class="normal">[license-shield]:<sp/>https://img.shields.io/github/license/M0sT4fa/FSM.svg?style=for-the-badge</highlight></codeline>
+<codeline><highlight class="normal">[license-url]:<sp/>https://github.com/M0sT4fa/FSM/blob/master/LICENSE.txt</highlight></codeline>
+<codeline><highlight class="normal">[linkedin-shield]:<sp/>https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&amp;logo=linkedin&amp;colorB=555</highlight></codeline>
+<codeline><highlight class="normal">[linkedin-url]:<sp/>https://linkedin.com/in/linkedin_username</highlight></codeline>
+<codeline><highlight class="normal">[product-screenshot]:<sp/>images/screenshot.png</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/README.md"/>
+  </compounddef>
+</doxygen>

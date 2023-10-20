@@ -1,0 +1,354 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.7" xml:lang="en-US">
+  <compounddef id="namespacem0st4fa_1_1fsm" kind="namespace" language="C++">
+    <compoundname>m0st4fa::fsm</compoundname>
+    <innerclass refid="classm0st4fa_1_1fsm_1_1_deter_finite_automaton" prot="public">m0st4fa::fsm::DeterFiniteAutomaton</innerclass>
+    <innerclass refid="classm0st4fa_1_1fsm_1_1_finite_state_machine" prot="public">m0st4fa::fsm::FiniteStateMachine</innerclass>
+    <innerclass refid="structm0st4fa_1_1fsm_1_1_f_s_m_result" prot="public">m0st4fa::fsm::FSMResult</innerclass>
+    <innerclass refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type" prot="public">m0st4fa::fsm::FSMStateSetType</innerclass>
+    <innerclass refid="classm0st4fa_1_1fsm_1_1_f_s_m_table" prot="public">m0st4fa::fsm::FSMTable</innerclass>
+    <innerclass refid="structm0st4fa_1_1fsm_1_1_indicies" prot="public">m0st4fa::fsm::Indicies</innerclass>
+    <innerclass refid="structm0st4fa_1_1fsm_1_1_invalid_state_machine_arguments_exception" prot="public">m0st4fa::fsm::InvalidStateMachineArgumentsException</innerclass>
+    <innerclass refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton" prot="public">m0st4fa::fsm::NonDeterFiniteAutomaton</innerclass>
+    <innerclass refid="structm0st4fa_1_1fsm_1_1_substring" prot="public">m0st4fa::fsm::Substring</innerclass>
+    <innerclass refid="classm0st4fa_1_1fsm_1_1_transition_function" prot="public">m0st4fa::fsm::TransitionFunction</innerclass>
+    <innerclass refid="structm0st4fa_1_1fsm_1_1_unrecognized_sim_mode_exception" prot="public">m0st4fa::fsm::UnrecognizedSimModeException</innerclass>
+    <innerconcept refid="conceptm0st4fa_1_1fsm_1_1_state_set_concept">m0st4fa::fsm::StateSetConcept</innerconcept>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespacem0st4fa_1_1fsm_1ae49367e23837069e9faaefcb6a0406f1" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>FSM_MODE</name>
+        <qualifiedname>m0st4fa::fsm::FSM_MODE</qualifiedname>
+        <enumvalue id="namespacem0st4fa_1_1fsm_1ae49367e23837069e9faaefcb6a0406f1ab7ffe915b99112ed2c95e0f8d917073a" prot="public">
+          <name>MM_WHOLE_STRING</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>The simulation returns true if and only if the whole string accepts. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacem0st4fa_1_1fsm_1ae49367e23837069e9faaefcb6a0406f1a456b958363273312579a7e97e12c0294" prot="public">
+          <name>MM_LONGEST_PREFIX</name>
+          <briefdescription>
+<para>Look for the longest prefix only. Once found, the string accepts. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacem0st4fa_1_1fsm_1ae49367e23837069e9faaefcb6a0406f1a9857ed071b6970f381b4163b30f857fb" prot="public">
+          <name>MM_LONGEST_SUBSTRING</name>
+          <briefdescription>
+<para>Look for the longest substring, which might be the entire string. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacem0st4fa_1_1fsm_1ae49367e23837069e9faaefcb6a0406f1a64c00db69df99cf1af465a96444b53e6" prot="public">
+          <name>MM_NONE</name>
+          <briefdescription>
+<para>The default value. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacem0st4fa_1_1fsm_1ae49367e23837069e9faaefcb6a0406f1ad2bf4503b44b6e829bc1077125163c78" prot="public">
+          <name>MM_FSM_MODE_COUNT</name>
+          <briefdescription>
+<para>The number of enumerators that this enumeration has. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The simulation mode that simulation functions use. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton_1ac445ee45e6b9661ddfa4c0728d992b40" kindref="member">NonDeterFiniteAutomaton&lt;TransFuncT, InputT&gt;::simulate(const InputT&amp; input, FSM_MODE mode) const</ref>; </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classm0st4fa_1_1fsm_1_1_deter_finite_automaton_1ab52816310d2634d033d044ea8d5343b7" kindref="member">DeterFiniteAutomaton&lt;TransFuncT, InputT&gt;::simulate(const InputT&amp; input, FSM_MODE mode) const</ref>; </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="170" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="170" bodyend="186"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacem0st4fa_1_1fsm_1a824af687b77ebbcb14e1051fb902b1d8" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>FSM_TYPE</name>
+        <qualifiedname>m0st4fa::fsm::FSM_TYPE</qualifiedname>
+        <enumvalue id="namespacem0st4fa_1_1fsm_1a824af687b77ebbcb14e1051fb902b1d8ac672dfcbdcdb9eb98050cbb825150697" prot="public">
+          <name>MT_EPSILON_NFA</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>This sets the NFA that the <ref refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton" kindref="compound">NonDeterFiniteAutomaton</ref> object simulates to an epsilon NFA. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacem0st4fa_1_1fsm_1a824af687b77ebbcb14e1051fb902b1d8affb7f31d80464bd8892f51e554fb7aaa" prot="public">
+          <name>MT_NON_EPSILON_NFA</name>
+          <briefdescription>
+<para>This sets the NFA that the <ref refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton" kindref="compound">NonDeterFiniteAutomaton</ref> object simulates to a non-epsilon NFA. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacem0st4fa_1_1fsm_1a824af687b77ebbcb14e1051fb902b1d8afc791e61adbabe19e3c5fc01607034fc" prot="public">
+          <name>MT_DFA</name>
+          <briefdescription>
+<para>The type of a <ref refid="classm0st4fa_1_1fsm_1_1_deter_finite_automaton" kindref="compound">DeterFiniteAutomaton</ref>. This is set automatically for every <ref refid="classm0st4fa_1_1fsm_1_1_deter_finite_automaton" kindref="compound">DeterFiniteAutomaton</ref> object created. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacem0st4fa_1_1fsm_1a824af687b77ebbcb14e1051fb902b1d8aa3712c2dc4c9d906dfe5f99e6d6c6dc0" prot="public">
+          <name>MT_MACHINE_TYPE_COUNT</name>
+          <briefdescription>
+<para>The number of enumerators that this enumeration has. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The type of the <ref refid="classm0st4fa_1_1fsm_1_1_finite_state_machine" kindref="compound">FiniteStateMachine</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton" kindref="compound">NonDeterFiniteAutomaton</ref> </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classm0st4fa_1_1fsm_1_1_deter_finite_automaton" kindref="compound">DeterFiniteAutomaton</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="193" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="193" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacem0st4fa_1_1fsm_1ac882d30363c8730a12932c6982256f66" prot="public" static="no" strong="no">
+        <type></type>
+        <name>FSM_FLAG</name>
+        <qualifiedname>m0st4fa::fsm::FSM_FLAG</qualifiedname>
+        <enumvalue id="namespacem0st4fa_1_1fsm_1ac882d30363c8730a12932c6982256f66a300a280a834c4bc1ba1ffeb70870653b" prot="public">
+          <name>FF_FLAG_NONE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>The default value. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacem0st4fa_1_1fsm_1ac882d30363c8730a12932c6982256f66a938e7282bc27f546851a6b2ff94ac0d0" prot="public">
+          <name>FF_FLAG_COUNT</name>
+          <briefdescription>
+<para>The number of enumerators that this enumeration has. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Flags to customize the behavior of the FSM. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Right now, they are not implemented. </para>
+</simplesect>
+<xrefsect id="todo_1_todo000001"><xreftitle>Todo</xreftitle><xrefdescription><para>Implement the commented out flags (in the source code) in the state machines. </para>
+</xrefdescription></xrefsect><simplesect kind="see"><para><ref refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton" kindref="compound">NonDeterFiniteAutomaton</ref> </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classm0st4fa_1_1fsm_1_1_deter_finite_automaton" kindref="compound">DeterFiniteAutomaton</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="214" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="214" bodyend="223"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespacem0st4fa_1_1fsm_1ac06ac9086f715e8f047e4dcd130fb5eb" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename <ref refid="class_trans_func_t" kindref="compound">TransFuncT</ref></type>
+          </param>
+          <param>
+            <type>typename InputT</type>
+            <defval>std::string</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classm0st4fa_1_1fsm_1_1_deter_finite_automaton" kindref="compound">DeterFiniteAutomaton</ref>&lt; <ref refid="class_trans_func_t" kindref="compound">TransFuncT</ref>, InputT &gt;</type>
+        <definition>using m0st4fa::fsm::DFA = typedef DeterFiniteAutomaton&lt;TransFuncT, InputT&gt;</definition>
+        <argsstring></argsstring>
+        <name>DFA</name>
+        <qualifiedname>m0st4fa::fsm::DFA</qualifiedname>
+        <briefdescription>
+<para>An alias type for <ref refid="classm0st4fa_1_1fsm_1_1_deter_finite_automaton" kindref="compound">DeterFiniteAutomaton</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/DFA.h" line="63" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/DFA.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacem0st4fa_1_1fsm_1adea900ebd34b3b5d62931d51d398268d" prot="public" static="no">
+        <type><ref refid="classunsigned" kindref="compound">unsigned</ref></type>
+        <definition>using m0st4fa::fsm::FSMStateType = typedef unsigned</definition>
+        <argsstring></argsstring>
+        <name>FSMStateType</name>
+        <qualifiedname>m0st4fa::fsm::FSMStateType</qualifiedname>
+        <briefdescription>
+<para>A finite state machine state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="remark"><para>It is used by <ref refid="classm0st4fa_1_1fsm_1_1_finite_state_machine" kindref="compound">FiniteStateMachine</ref> objects and their descendants (objects of derived classes). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="45" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacem0st4fa_1_1fsm_1a9daf74accff16baed24fc902eaf5e0d2" prot="public" static="no">
+        <type><ref refid="classunsigned" kindref="compound">unsigned</ref></type>
+        <definition>using m0st4fa::fsm::FlagsType = typedef unsigned</definition>
+        <argsstring></argsstring>
+        <name>FlagsType</name>
+        <qualifiedname>m0st4fa::fsm::FlagsType</qualifiedname>
+        <briefdescription>
+<para>Flags given to finite state machine upon initialization. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Not implemented yet. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="122" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacem0st4fa_1_1fsm_1af46ab8df7db57ffc5e7a7492a473a981" prot="public" static="no">
+        <type><ref refid="classunsigned" kindref="compound">unsigned</ref> long long</type>
+        <definition>using m0st4fa::fsm::IndexType = typedef unsigned long long</definition>
+        <argsstring></argsstring>
+        <name>IndexType</name>
+        <qualifiedname>m0st4fa::fsm::IndexType</qualifiedname>
+        <briefdescription>
+<para>Index into some collection. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="125" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacem0st4fa_1_1fsm_1a4e9d8b9b5da9a0cabd309b6c89074ede" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename TableT</type>
+            <defval>FSMTable</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classm0st4fa_1_1fsm_1_1_transition_function" kindref="compound">TransitionFunction</ref>&lt; TableT &gt;</type>
+        <definition>using m0st4fa::fsm::TransFn = typedef TransitionFunction&lt;TableT&gt;</definition>
+        <argsstring></argsstring>
+        <name>TransFn</name>
+        <qualifiedname>m0st4fa::fsm::TransFn</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="397" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="397" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacem0st4fa_1_1fsm_1adabc4aa106d9c3af0c2f9f37f7d94cae" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename <ref refid="class_trans_func_t" kindref="compound">TransFuncT</ref></type>
+          </param>
+          <param>
+            <type>typename InputT</type>
+            <defval>std::string</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton" kindref="compound">NonDeterFiniteAutomaton</ref>&lt; <ref refid="class_trans_func_t" kindref="compound">TransFuncT</ref>, InputT &gt;</type>
+        <definition>using m0st4fa::fsm::NFA = typedef NonDeterFiniteAutomaton&lt;TransFuncT, InputT&gt;</definition>
+        <argsstring></argsstring>
+        <name>NFA</name>
+        <qualifiedname>m0st4fa::fsm::NFA</qualifiedname>
+        <briefdescription>
+<para>An alias type for <ref refid="classm0st4fa_1_1fsm_1_1_non_deter_finite_automaton" kindref="compound">NonDeterFiniteAutomaton</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" line="80" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/NFA.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespacem0st4fa_1_1fsm_1aefb70e7de357a6d1fbb8f603f12f30c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>StateSetConcept</type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; m0st4fa::fsm::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, const T &amp;set)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>m0st4fa::fsm::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>set</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="134" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="134" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacem0st4fa_1_1fsm_1a049a43a65e520ebdd78baf2c61afd2f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; m0st4fa::fsm::operator&lt;&lt;</definition>
+        <argsstring>(const std::ostream &amp;, const FSMResult &amp;)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>m0st4fa::fsm::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>const std::ostream &amp;</type>
+          <defname>os</defname>
+        </param>
+        <param>
+          <type>const <ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_result" kindref="compound">FSMResult</ref> &amp;</type>
+          <defname>result</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="400" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/src/FiniteStateMachine.cpp" bodystart="4" bodyend="27" declfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" declline="400" declcolumn="1"/>
+        <references refid="structm0st4fa_1_1fsm_1_1_f_s_m_result_1a2d5ad097cea8fc385dc07e1276942075" compoundref="_finite_state_machine_8h" startline="563">m0st4fa::fsm::FSMResult::accepted</references>
+        <references refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type_1aabf7cc7baa5c6e1a289fa4e635466cac" compoundref="_finite_state_machine_8h" startline="92" endline="94">m0st4fa::fsm::FSMStateSetType::begin</references>
+        <references refid="structm0st4fa_1_1fsm_1_1_indicies_1a66006d44d1326899a7e14bfe36498ffd" compoundref="_finite_state_machine_8h" startline="524">m0st4fa::fsm::Indicies::end</references>
+        <references refid="structm0st4fa_1_1fsm_1_1_f_s_m_result_1a9db79a6b95ea47d708e9354c03249762" compoundref="_finite_state_machine_8h" startline="567">m0st4fa::fsm::FSMResult::finalState</references>
+        <references refid="structm0st4fa_1_1fsm_1_1_f_s_m_result_1a85f305cf097f34b6714ea8fe081623db" compoundref="_finite_state_machine_8h" startline="571">m0st4fa::fsm::FSMResult::indicies</references>
+        <references refid="structm0st4fa_1_1fsm_1_1_f_s_m_result_1aa10fe4132da299e6ebe6eada766b9619" compoundref="_finite_state_machine_8h" startline="575">m0st4fa::fsm::FSMResult::input</references>
+        <references refid="structm0st4fa_1_1fsm_1_1_indicies_1a244dd51885862adac586860d18f2a9fa" compoundref="_finite_state_machine_8h" startline="520">m0st4fa::fsm::Indicies::start</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/DFA.h" line="9" column="1"/>
+  </compounddef>
+</doxygen>

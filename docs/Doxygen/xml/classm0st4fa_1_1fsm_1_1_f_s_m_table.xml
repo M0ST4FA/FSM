@@ -1,0 +1,373 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.7" xml:lang="en-US">
+  <compounddef id="classm0st4fa_1_1fsm_1_1_f_s_m_table" kind="class" language="C++" prot="public">
+    <compoundname>m0st4fa::fsm::FSMTable</compoundname>
+    <includes refid="_finite_state_machine_8h" local="no">FiniteStateMachine.h</includes>
+      <sectiondef kind="protected-type">
+      <memberdef kind="typedef" id="classm0st4fa_1_1fsm_1_1_f_s_m_table_1ae9bfdd99c86b8df168548e8e9c7ef69b" prot="protected" static="no">
+        <type>std::vector&lt; <ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type" kindref="compound">FSMStateSetType</ref> &gt;</type>
+        <definition>using m0st4fa::fsm::FSMTable::StateSetVecType =  std::vector&lt;FSMStateSetType&gt;</definition>
+        <argsstring></argsstring>
+        <name>StateSetVecType</name>
+        <qualifiedname>m0st4fa::fsm::FSMTable::StateSetVecType</qualifiedname>
+        <briefdescription>
+<para>The type of a vector of <ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type" kindref="compound">FSMStateSetType</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="remark"><para>Used here as the type of a table entry. It stores the set of states mapped to a given state. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="240" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="240" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classm0st4fa_1_1fsm_1_1_f_s_m_table_1aa84482bc61cd333d73910d11ed09833d" prot="protected" static="no">
+        <type>std::vector&lt; <ref refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1ae9bfdd99c86b8df168548e8e9c7ef69b" kindref="member">StateSetVecType</ref> &gt;</type>
+        <definition>using m0st4fa::fsm::FSMTable::VecType =  std::vector&lt;StateSetVecType&gt;</definition>
+        <argsstring></argsstring>
+        <name>VecType</name>
+        <qualifiedname>m0st4fa::fsm::FSMTable::VecType</qualifiedname>
+        <briefdescription>
+<para>The internal type of the table (the table is an abstraction over this type). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>I&apos;ve chosen the internal type of the table to be a std::vector instead of a std::map or something else, because I wanted performance, given that the typical range of states will not be large. For this reason, it is advisable to have a set of states that falls within a tight range, as this will influence the size of the table used by the machine. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="246" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="246" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classm0st4fa_1_1fsm_1_1_f_s_m_table_1a3afaa1400079ec91b37e4960a43d6277" prot="protected" static="no">
+        <type>VecType::iterator</type>
+        <definition>using m0st4fa::fsm::FSMTable::ItType =  VecType::iterator</definition>
+        <argsstring></argsstring>
+        <name>ItType</name>
+        <qualifiedname>m0st4fa::fsm::FSMTable::ItType</qualifiedname>
+        <briefdescription>
+<para>The type of an non-constant iterator. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="249" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="249" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classm0st4fa_1_1fsm_1_1_f_s_m_table_1af2f03acb111ee609e564d570de20924e" prot="protected" static="no">
+        <type>VecType::const_iterator</type>
+        <definition>using m0st4fa::fsm::FSMTable::ConstItType =  VecType::const_iterator</definition>
+        <argsstring></argsstring>
+        <name>ConstItType</name>
+        <qualifiedname>m0st4fa::fsm::FSMTable::ConstItType</qualifiedname>
+        <briefdescription>
+<para>The type of a constant iterator. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="251" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="251" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classm0st4fa_1_1fsm_1_1_f_s_m_table_1acbcd21b2e498df96e3d8fd5343028e4d" prot="private" static="no" mutable="yes">
+        <type><ref refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1aa84482bc61cd333d73910d11ed09833d" kindref="member">VecType</ref></type>
+        <definition>VecType m0st4fa::fsm::FSMTable::m_Table</definition>
+        <argsstring></argsstring>
+        <name>m_Table</name>
+        <qualifiedname>m0st4fa::fsm::FSMTable::m_Table</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="254" column="17" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="254" bodyend="-1"/>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1a46eb51b992c62d2381b1572f7ff2bc08" compoundref="_finite_state_machine_8h" startline="313" endline="318">at</referencedby>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1a3422a5e824a8846ead118ccf5c0b480d" compoundref="_finite_state_machine_8h" startline="321" endline="323">begin</referencedby>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1aa4f2c335065b9f3f7a90551b04cef593" compoundref="_finite_state_machine_8h" startline="325" endline="327">begin</referencedby>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1a2039e60157041a49b7c3e940302afed9" compoundref="_finite_state_machine_8h" startline="330" endline="332">end</referencedby>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1af61b479b44e3bc7ce1b4e9e5bfecaf7d" compoundref="_finite_state_machine_8h" startline="334" endline="336">end</referencedby>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1aa981f90a53f2581c8c22dd014afdd890" compoundref="_finite_state_machine_8h" startline="285" endline="296">operator()</referencedby>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1a135992cf3ca358040702ff9cb96636c5" compoundref="_finite_state_machine_8h" startline="265" endline="276">operator()</referencedby>
+        <referencedby refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1a7eb9660e0d7d0f5974a3bfe63ec7ce1f" compoundref="_finite_state_machine_8h" startline="303" endline="308">operator[]</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_f_s_m_table_1a135992cf3ca358040702ff9cb96636c5" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename InputT</type>
+            <defval>char</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type" kindref="compound">FSMStateSetType</ref> &amp;</type>
+        <definition>FSMStateSetType &amp; m0st4fa::fsm::FSMTable::operator()</definition>
+        <argsstring>(const FSMStateType &amp;state, const InputT input) noexcept(true)</argsstring>
+        <name>operator()</name>
+        <qualifiedname>m0st4fa::fsm::FSMTable::operator()</qualifiedname>
+        <param>
+          <type>const <ref refid="namespacem0st4fa_1_1fsm_1adea900ebd34b3b5d62931d51d398268d" kindref="member">FSMStateType</ref> &amp;</type>
+          <declname>state</declname>
+        </param>
+        <param>
+          <type>const InputT</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+<para>Accesses the table entry indexed by <computeroutput>state</computeroutput> and <computeroutput>input</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The state whose corresponding entry will be accessed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>input</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The input (typically character) used to access the entry corresponding to a given state. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the table entry indexed by <computeroutput>state</computeroutput> and <computeroutput>input</computeroutput>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="265" column="17" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="265" bodyend="276"/>
+        <references refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1acbcd21b2e498df96e3d8fd5343028e4d" compoundref="_finite_state_machine_8h" startline="254">m_Table</references>
+      </memberdef>
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_f_s_m_table_1aa981f90a53f2581c8c22dd014afdd890" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename InputT</type>
+            <defval>char</defval>
+          </param>
+        </templateparamlist>
+        <type>const <ref refid="structm0st4fa_1_1fsm_1_1_f_s_m_state_set_type" kindref="compound">FSMStateSetType</ref> &amp;</type>
+        <definition>const FSMStateSetType &amp; m0st4fa::fsm::FSMTable::operator()</definition>
+        <argsstring>(const FSMStateType &amp;state, const InputT input) const noexcept(true)</argsstring>
+        <name>operator()</name>
+        <qualifiedname>m0st4fa::fsm::FSMTable::operator()</qualifiedname>
+        <param>
+          <type>const <ref refid="namespacem0st4fa_1_1fsm_1adea900ebd34b3b5d62931d51d398268d" kindref="member">FSMStateType</ref> &amp;</type>
+          <declname>state</declname>
+        </param>
+        <param>
+          <type>const InputT</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+<para>Accesses the table entry indexed by <computeroutput>state</computeroutput> and <computeroutput>input</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The state whose corresponding entry will be accessed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>input</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The input (typically character) used to access the entry corresponding to a given state. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A constant reference to the table entry indexed by <computeroutput>state</computeroutput> and <computeroutput>input</computeroutput>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="285" column="23" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="285" bodyend="296"/>
+        <references refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1acbcd21b2e498df96e3d8fd5343028e4d" compoundref="_finite_state_machine_8h" startline="254">m_Table</references>
+      </memberdef>
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_f_s_m_table_1a7eb9660e0d7d0f5974a3bfe63ec7ce1f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1ae9bfdd99c86b8df168548e8e9c7ef69b" kindref="member">StateSetVecType</ref> &amp;</type>
+        <definition>const StateSetVecType &amp; m0st4fa::fsm::FSMTable::operator[]</definition>
+        <argsstring>(const FSMStateType &amp;state) const</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>m0st4fa::fsm::FSMTable::operator[]</qualifiedname>
+        <param>
+          <type>const <ref refid="namespacem0st4fa_1_1fsm_1adea900ebd34b3b5d62931d51d398268d" kindref="member">FSMStateType</ref> &amp;</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+<para>Accesses the set of states corresponding to <computeroutput>state</computeroutput> (on all of its characters). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The state used to index the table. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <emphasis>vector</emphasis> of <emphasis>sets of states</emphasis>. <computeroutput>state</computeroutput> is mapped to each set of states in this vector via some input character (you can get the set of states corresponding to a given input (assuming it exists) by indexing the vector). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="303" column="23" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="303" bodyend="308"/>
+        <references refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1acbcd21b2e498df96e3d8fd5343028e4d" compoundref="_finite_state_machine_8h" startline="254">m_Table</references>
+      </memberdef>
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_f_s_m_table_1a46eb51b992c62d2381b1572f7ff2bc08" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1ae9bfdd99c86b8df168548e8e9c7ef69b" kindref="member">StateSetVecType</ref> &amp;</type>
+        <definition>const StateSetVecType &amp; m0st4fa::fsm::FSMTable::at</definition>
+        <argsstring>(const FSMStateType &amp;state) const</argsstring>
+        <name>at</name>
+        <qualifiedname>m0st4fa::fsm::FSMTable::at</qualifiedname>
+        <param>
+          <type>const <ref refid="namespacem0st4fa_1_1fsm_1adea900ebd34b3b5d62931d51d398268d" kindref="member">FSMStateType</ref> &amp;</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+<para>Same as <ref refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1a7eb9660e0d7d0f5974a3bfe63ec7ce1f" kindref="member">operator[](const FSMStateType&amp; state) const</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="313" column="23" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="313" bodyend="318"/>
+        <references refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1acbcd21b2e498df96e3d8fd5343028e4d" compoundref="_finite_state_machine_8h" startline="254">m_Table</references>
+      </memberdef>
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_f_s_m_table_1a3422a5e824a8846ead118ccf5c0b480d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1a3afaa1400079ec91b37e4960a43d6277" kindref="member">ItType</ref></type>
+        <definition>ItType m0st4fa::fsm::FSMTable::begin</definition>
+        <argsstring>()</argsstring>
+        <name>begin</name>
+        <qualifiedname>m0st4fa::fsm::FSMTable::begin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Iterator to the beginning. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="321" column="8" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="321" bodyend="323"/>
+        <references refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1acbcd21b2e498df96e3d8fd5343028e4d" compoundref="_finite_state_machine_8h" startline="254">m_Table</references>
+      </memberdef>
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_f_s_m_table_1aa4f2c335065b9f3f7a90551b04cef593" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1af2f03acb111ee609e564d570de20924e" kindref="member">ConstItType</ref></type>
+        <definition>ConstItType m0st4fa::fsm::FSMTable::begin</definition>
+        <argsstring>() const</argsstring>
+        <name>begin</name>
+        <qualifiedname>m0st4fa::fsm::FSMTable::begin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Constant iterator to the beginning. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="325" column="13" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="325" bodyend="327"/>
+        <references refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1acbcd21b2e498df96e3d8fd5343028e4d" compoundref="_finite_state_machine_8h" startline="254">m_Table</references>
+      </memberdef>
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_f_s_m_table_1a2039e60157041a49b7c3e940302afed9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1a3afaa1400079ec91b37e4960a43d6277" kindref="member">ItType</ref></type>
+        <definition>ItType m0st4fa::fsm::FSMTable::end</definition>
+        <argsstring>()</argsstring>
+        <name>end</name>
+        <qualifiedname>m0st4fa::fsm::FSMTable::end</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Iterator to the end. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="330" column="8" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="330" bodyend="332"/>
+        <references refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1acbcd21b2e498df96e3d8fd5343028e4d" compoundref="_finite_state_machine_8h" startline="254">m_Table</references>
+      </memberdef>
+      <memberdef kind="function" id="classm0st4fa_1_1fsm_1_1_f_s_m_table_1af61b479b44e3bc7ce1b4e9e5bfecaf7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1af2f03acb111ee609e564d570de20924e" kindref="member">ConstItType</ref></type>
+        <definition>ConstItType m0st4fa::fsm::FSMTable::end</definition>
+        <argsstring>() const</argsstring>
+        <name>end</name>
+        <qualifiedname>m0st4fa::fsm::FSMTable::end</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Constant iterator the end. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="334" column="13" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="334" bodyend="336"/>
+        <references refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1acbcd21b2e498df96e3d8fd5343028e4d" compoundref="_finite_state_machine_8h" startline="254">m_Table</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A transition table used to decide on which states comes next when simulating. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4">
+        <label>T</label>
+      </node>
+      <node id="1">
+        <label>m0st4fa::fsm::FSMTable</label>
+        <link refid="classm0st4fa_1_1fsm_1_1_f_s_m_table"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>-m_Table</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::vector&lt; T &gt;</label>
+        <childnode refid="4" relation="usage">
+          <edgelabel>+elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::vector&lt; StateSetVecType &gt;</label>
+        <childnode refid="3" relation="usage">
+          <edgelabel>+elements</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="template-instance">
+          <edgelabel>&lt; StateSetVecType &gt;</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" line="233" column="1" bodyfile="C:/Users/mosta/Desktop/Projects/Programming/SDKs/FSM/include/fsm/FiniteStateMachine.h" bodystart="233" bodyend="338"/>
+    <listofallmembers>
+      <member refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1a46eb51b992c62d2381b1572f7ff2bc08" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::FSMTable</scope><name>at</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1a3422a5e824a8846ead118ccf5c0b480d" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::FSMTable</scope><name>begin</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1aa4f2c335065b9f3f7a90551b04cef593" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::FSMTable</scope><name>begin</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1af2f03acb111ee609e564d570de20924e" prot="protected" virt="non-virtual"><scope>m0st4fa::fsm::FSMTable</scope><name>ConstItType</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1a2039e60157041a49b7c3e940302afed9" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::FSMTable</scope><name>end</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1af61b479b44e3bc7ce1b4e9e5bfecaf7d" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::FSMTable</scope><name>end</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1a3afaa1400079ec91b37e4960a43d6277" prot="protected" virt="non-virtual"><scope>m0st4fa::fsm::FSMTable</scope><name>ItType</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1acbcd21b2e498df96e3d8fd5343028e4d" prot="private" virt="non-virtual"><scope>m0st4fa::fsm::FSMTable</scope><name>m_Table</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1a135992cf3ca358040702ff9cb96636c5" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::FSMTable</scope><name>operator()</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1aa981f90a53f2581c8c22dd014afdd890" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::FSMTable</scope><name>operator()</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1a7eb9660e0d7d0f5974a3bfe63ec7ce1f" prot="public" virt="non-virtual"><scope>m0st4fa::fsm::FSMTable</scope><name>operator[]</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1ae9bfdd99c86b8df168548e8e9c7ef69b" prot="protected" virt="non-virtual"><scope>m0st4fa::fsm::FSMTable</scope><name>StateSetVecType</name></member>
+      <member refid="classm0st4fa_1_1fsm_1_1_f_s_m_table_1aa84482bc61cd333d73910d11ed09833d" prot="protected" virt="non-virtual"><scope>m0st4fa::fsm::FSMTable</scope><name>VecType</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
