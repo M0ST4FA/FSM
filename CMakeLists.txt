@@ -16,8 +16,8 @@ project(fsm)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
-set(PROJECT_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/include/")
-set(UTILITY_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/utility/include/")
+set(fsm_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include/")
+set(utility_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/utility/include/")
 
 # SETUPT OPTIONS
 option(BUILD_TESTING 
@@ -47,8 +47,8 @@ add_library(fsm
 "include/fsm/NFA.h"
 )
 target_include_directories(fsm PUBLIC 
-"${UTILITY_INCLUDE_DIR}" 
-"${PROJECT_INCLUDE_DIR}"
+"${utility_INCLUDE_DIR}" 
+"${fsm_INCLUDE_DIR}"
 )
 target_link_libraries(fsm PUBLIC utility)
 
