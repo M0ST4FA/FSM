@@ -1,3 +1,4 @@
 packages*
 *.ps1
 READ.md
+docs/Sphinx/conf.py

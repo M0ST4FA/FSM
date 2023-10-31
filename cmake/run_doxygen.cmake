@@ -6,7 +6,7 @@ find_package(Doxygen
 if (${DOXYGEN_FOUND})
 	
 	# This directory is relative to the binary directory
-	set( DOXYGEN_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/docs/" )
+	set( DOXYGEN_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/docs/${PROJECT_NAME}/" )
 	set( DOXYGEN_COLLABORATION_GRAPH YES )
 	set( DOXYGEN_EXTRACT_ALL YES )
 	set( DOXYGEN_CLASS_DIAGRAMS YES )
@@ -37,21 +37,21 @@ if (${DOXYGEN_FOUND})
 	"*/external/*"
 	)
 
-	doxygen_add_docs(docs ${PROJECT_SOURCE_DIR})
+	doxygen_add_docs(docs_${PROJECT_NAME} ${CMAKE_SOURCE_DIR})
 	execute_process(
 	COMMAND	"./${DOXYGEN_EXECUTABLE}" 
-		"${DOXYGEN_OUTPUT_DIRECTORY}/Doxyfile.docs"
+		"${DOXYGEN_OUTPUT_DIRECTORY}/Doxyfile.docs_${PROJECT_NAME}"
 	)
 
 	configure_file(
-		"./Sphinx/conf.py.in" 
-		"${CMAKE_SOURCE_DIR}/docs/Sphinx/conf.py"
+		"${PROJECT_SOURCE_DIR}/docs/Sphinx/conf.py.in"
+		"${PROJECT_SOURCE_DIR}/docs/Sphinx/conf.py"
 	)
 
-	set(DOXYGEN_OUT "${PROJECT_BINARY_DIR}/docs/doxyfile.docs")
-	add_custom_target(Doxygen ALL
-		COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
-		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-		COMMENT "Generating API documentation with Doxygen"
-		)
+	set(DOXYGEN_CONFIGURATION_FILE "${PROJECT_BINARY_DIR}/docs/Doxyfile.docs_${PROJECT_NAME}")
+	add_custom_target(Doxygen_${PROJECT_NAME} ALL
+	COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_CONFIGURATION_FILE}
+	WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
+	COMMENT "Generating API documentation with Doxygen"
+	)
 endif()

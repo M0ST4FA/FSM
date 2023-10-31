@@ -1,7 +1,7 @@
 # CMakeList.txt : CMake project for myacc, include source and define
 # project specific logic here.
 #
-cmake_minimum_required (VERSION 3.8)
+cmake_minimum_required (VERSION 3.26)
 
 # Enable Hot Reload for MSVC compilers if supported.
 if (POLICY CMP0141)
@@ -16,8 +16,7 @@ project(fsm)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
-set(fsm_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include/")
-set(utility_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/utility/include/")
+set(${PROJECT_NAME}_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/include/")
 
 # SETUPT OPTIONS
 option(BUILD_TESTING 
@@ -39,18 +38,18 @@ if(${BUILD_TESTING})
 endif()
 
 # ADD THE LIBRARY
-add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/external/utility/")
-add_library(fsm 
-"${CMAKE_CURRENT_SOURCE_DIR}/src/FiniteStateMachine.cpp"
-"include/fsm/FiniteStateMachine.h"
-"include/fsm/DFA.h"
-"include/fsm/NFA.h"
+add_subdirectory("${PROJECT_SOURCE_DIR}/external/utility/")
+add_library(${PROJECT_NAME} 
+"${PROJECT_SOURCE_DIR}/src/FiniteStateMachine.cpp"
+"${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}/FiniteStateMachine.h"
+"${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}/DFA.h"
+"${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}/NFA.h"
 )
-target_include_directories(fsm PUBLIC 
-"${utility_INCLUDE_DIR}" 
-"${fsm_INCLUDE_DIR}"
+target_include_directories(${PROJECT_NAME} PUBLIC 
+"${${PROJECT_NAME}_INCLUDE_DIR}"
 )
-target_link_libraries(fsm PUBLIC utility)
+
+target_link_libraries(${PROJECT_NAME} PUBLIC utility)
 
 # ADD THE EXAMPLES
 if(${BUILD_EXAMPLES})

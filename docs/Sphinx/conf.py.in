@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'FSM'
+project = '@PROJECT_NAME@'
 copyright = '2023, M0sT4fa'
 author = 'M0sT4fa'
 
@@ -15,8 +15,8 @@ author = 'M0sT4fa'
 
 extensions = ['breathe', 'sphinx.ext.graphviz', 'sphinx.ext.autosectionlabel']
 
-breathe_projects = {"FSM": "@DOXYGEN_OUTPUT_DIRECTORY@xml"}
-breathe_default_project = 'FSM'
+breathe_projects = {"@PROJECT_NAME@": "@DOXYGEN_OUTPUT_DIRECTORY@xml"}
+breathe_default_project = '@PROJECT_NAME@'
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 autosectionlabel_prefix_document = True
