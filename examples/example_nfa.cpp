@@ -1,4 +1,4 @@
-#include "NFA.h"
+#include "fsm/NFA.h"
 
 extern int example_nfa() {
 
@@ -39,7 +39,7 @@ extern int example_nfa() {
 	transFunction(2, '_') = { 2 };
 
 	// 2. construct the NFA
-	NonDeterFiniteAutomatan<TransFn<>> automaton{ {2}, transFunction };
+	NFA<TransFn<>> automaton{ {2}, transFunction };
 	// here, the set of final states is {2} and `transFunction` is our transition function.
 
 	// 3. now, we can simulate the automaton against any "potential identifier" we have and It will return us whether it is an "identifier" as well as other useful information.

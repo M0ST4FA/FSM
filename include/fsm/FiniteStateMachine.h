@@ -258,7 +258,7 @@ namespace m0st4fa::fsm {
 		/**
 		 * @brief Accesses the table entry indexed by `state` and `input`.
 		 * @param[in] state The state whose corresponding entry will be accessed.
-		 * @param input The input (typically character) used to access the entry corresponding to a given state.
+		 * @param[in] input The input (typically character) used to access the entry corresponding to a given state.
 		 * @return A reference to the table entry indexed by `state` and `input`.
 		 */
 		template<typename InputT = char>
@@ -278,7 +278,7 @@ namespace m0st4fa::fsm {
 		/**
 		 * @brief Accesses the table entry indexed by `state` and `input`.
 		 * @param[in] state The state whose corresponding entry will be accessed.
-		 * @param input The input (typically character) used to access the entry corresponding to a given state.
+		 * @param[in] input The input (typically character) used to access the entry corresponding to a given state.
 		 * @return A constant reference to the table entry indexed by `state` and `input`.
 		 */
 		template<typename InputT = char>
@@ -315,6 +315,40 @@ namespace m0st4fa::fsm {
 				m_Table.resize(state + 1);
 
 			return m_Table.at(state);
+		}
+
+		/**
+		 * @brief Adds an entire string of input characters to the state machine, at once.
+		 * @details This function inserts the characters of the `input` string, one by one, starting from the `initState`. Each character is mapped to the next. The state that each one gets assigned to gets incremented by one for each character.
+		 * @param[in] initState The state that insertion will begin from. The other states that will be used to insert the following characters will go incrementally higher starting from this state.
+		 * @param[in] input The input string whose characters will be inserted into the table.
+		 * @return The state to which the last character of the input is mapped.
+		 * @bug Let's see.
+		 * @attention Do this and don't do that.
+		 */
+		template<typename InputT>
+		FSMStateType set(const FSMStateType& initState, const std::basic_string<InputT>& input) {
+
+			// if the input is empty
+			if (input.empty())
+				return initState;
+
+			FSMStateType nextState = initState + 1;
+
+			this->operator()(initState, input.at(0)) = nextState;
+
+			// if the input has one element only
+			if (input.size() < 1)
+				return nextState;
+
+			// if the input has more than one element
+			for (IndexType i = 1; i < input.size(); i++)
+			{
+				InputT c = input.at(i);
+				this->operator()(nextState, c) = ++nextState;
+			}
+
+			return nextState - 1; // subtract one to compensate for the last one added in the loop.
 		}
 
 		//! @return Iterator to the beginning.
@@ -376,7 +410,7 @@ namespace m0st4fa::fsm {
 		 * @brief Accesses the table entries indexed by every state in `stateSet` set and `input`.
 		 * @details You can think of this as a loop over every state in `stateSet`. Entries are accessed in each iteration using the state from `stateSet` corresponding to that iteration and `input`. The entires are then collected in a FSMStateSetType object and returned.
 		 * @param[in] stateSet The set of states whose corresponding entires will be accessed.
-		 * @param input The input used to access the entry corresponding to a given state.
+		 * @param[in] input The input used to access the entry corresponding to a given state.
 		 * @return A collection of table entries corresponding to the table entries indexed by every state in `stateSet` set and `input`.
 		 */
 		template <typename InputT>

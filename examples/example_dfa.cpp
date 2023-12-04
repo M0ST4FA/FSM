@@ -1,4 +1,4 @@
-#include "DFA.h"
+#include "fsm/DFA.h"
 
 extern int example_dfa() {
 
@@ -65,7 +65,7 @@ extern int example_dfa() {
 
 
 	// 2. construct the DFA
-	DeterFiniteAutomatan<TransFn<>> automaton{ {2}, transFunction };
+	DFA<TransFn<>> automaton{ {2}, transFunction };
 	// here, the set of final states is {2} and `transFunction` is our transition function.
 
 	// 3. now, we can simulate the automaton against any "potential identifier" we have and It will return us whether it is an "identifier" as well as other useful information.
