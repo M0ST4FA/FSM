@@ -9,8 +9,11 @@
 #include <source_location>
 #include <functional>
 #include <concepts>
+#include <algorithm>
 
 #include "utility/Logger.h"
+#include "tabulate/table.hpp"
+#include "fmt/ranges.h"
 
 // EXCEPTION TYPES
 namespace m0st4fa::fsm {
@@ -227,149 +230,8 @@ namespace m0st4fa::fsm {
 // CLASSES & STRUCTURES
 namespace m0st4fa::fsm {
 
-	/**
-	 * @brief A transition table used to decide on which states comes next when simulating.
-	 */
-	class FSMTable {
-		
-	protected:
-		/**
-		 * @brief The type of a vector of FSMStateSetType.
-		 * @remark Used here as the type of a table entry. It stores the set of states mapped to a given state.
-		 */
-		using StateSetVecType = std::vector<FSMStateSetType>;
-
-		/**
-		 * @brief The internal type of the table (the table is an abstraction over this type).
-		 * @note I've chosen the internal type of the table to be a std::vector instead of a std::map or something else, because I wanted performance, given that the typical range of states will not be large. For this reason, it is advisable to have a set of states that falls within a tight range, as this will influence the size of the table used by the machine.
-		 */
-		using VecType = std::vector<StateSetVecType>;
-
-		//! @brief The type of an non-constant iterator.
-		using ItType = VecType::iterator;
-		//! @brief The type of a constant iterator.
-		using ConstItType = VecType::const_iterator;
-
-	private:
-		mutable VecType m_Table;
-		
-	public:
-
-		/**
-		 * @brief Accesses the table entry indexed by `state` and `input`.
-		 * @param[in] state The state whose corresponding entry will be accessed.
-		 * @param[in] input The input (typically character) used to access the entry corresponding to a given state.
-		 * @return A reference to the table entry indexed by `state` and `input`.
-		 */
-		template<typename InputT = char>
-		FSMStateSetType& operator()(const FSMStateType& state, const InputT input) noexcept(true) {
-			
-			if (m_Table.size() <= state)
-				m_Table.resize(state + 1);
-			
-			std::vector<FSMStateSetType>& stateMap = m_Table.at(state);
-
-			if (stateMap.size() <= input)
-				stateMap.resize(input + 1);
-
-			return stateMap.at(input);
-		}
-
-		/**
-		 * @brief Accesses the table entry indexed by `state` and `input`.
-		 * @param[in] state The state whose corresponding entry will be accessed.
-		 * @param[in] input The input (typically character) used to access the entry corresponding to a given state.
-		 * @return A constant reference to the table entry indexed by `state` and `input`.
-		 */
-		template<typename InputT = char>
-		const FSMStateSetType& operator()(const FSMStateType& state, const InputT input) const noexcept(true) {
-			if (m_Table.size() <= state)
-				m_Table.resize(state + 1);
-
-			std::vector<FSMStateSetType>& stateMap = m_Table.at(state);
-
-			if (stateMap.size() <= input)
-				stateMap.resize(input + 1);
-
-			// Impossible to throw an exception, as sizes of both dimensions have been already checked.
-			return stateMap.at(input);
-		}
-
-		/**
-		 * @brief Accesses the set of states corresponding to `state` (on all of its characters).
-		 * @param[in] state The state used to index the table.
-		 * @return A *vector* of *sets of states*. `state` is mapped to each set of states in this vector via some input character (you can get the set of states corresponding to a given input (assuming it exists) by indexing the vector). 
-		 */
-		const StateSetVecType& operator[](const FSMStateType& state) const {
-			if (m_Table.size() <= state)
-				m_Table.resize(state + 1);
-
-			return m_Table.at(state);
-		}
-
-		/**
-		 * @brief Same as operator[](const FSMStateType& state) const.
-		 */
-		const StateSetVecType& at(const FSMStateType& state) const {
-			if (m_Table.size() <= state)
-				m_Table.resize(state + 1);
-
-			return m_Table.at(state);
-		}
-
-		/**
-		 * @brief Adds an entire string of input characters to the state machine, at once.
-		 * @details This function inserts the characters of the `input` string, one by one, starting from the `initState`. Each character is mapped to the next. The state that each one gets assigned to gets incremented by one for each character.
-		 * @param[in] initState The state that insertion will begin from. The other states that will be used to insert the following characters will go incrementally higher starting from this state.
-		 * @param[in] input The input string whose characters will be inserted into the table.
-		 * @return The state to which the last character of the input is mapped.
-		 * @bug Let's see.
-		 * @attention Do this and don't do that.
-		 */
-		template<typename InputT>
-		FSMStateType set(const FSMStateType& initState, const std::basic_string<InputT>& input) {
-
-			// if the input is empty
-			if (input.empty())
-				return initState;
-
-			FSMStateType nextState = initState + 1;
-
-			this->operator()(initState, input.at(0)) = nextState;
-
-			// if the input has one element only
-			if (input.size() < 1)
-				return nextState;
-
-			// if the input has more than one element
-			for (IndexType i = 1; i < input.size(); i++)
-			{
-				InputT c = input.at(i);
-				this->operator()(nextState, c) = ++nextState;
-			}
-
-			return nextState - 1; // subtract one to compensate for the last one added in the loop.
-		}
-
-		//! @return Iterator to the beginning.
-		ItType begin() {
-			return m_Table.begin();
-		}
-		//! @return Constant iterator to the beginning.
-		ConstItType begin() const {
-			return m_Table.begin();
-		}
-
-		//! @return Iterator to the end.
-		ItType end() {
-			return m_Table.end();
-		}
-		//! @return Constant iterator the end.
-		ConstItType end() const {
-			return m_Table.end();
-		}
-
-	};
+	// Forward declaration of `FSMTable`
+	class FSMTable;
 
 	/**
 	 * @brief A transition function used to decide on which states comes next when simulating
@@ -440,9 +302,6 @@ namespace m0st4fa::fsm {
 	template <typename TransFuncT, typename InputT = std::string_view>
 	class FiniteStateMachine {
 
-		// friends
-		friend struct FSMResult;
-		
 		// private instance data members
 		FSMStateSetType m_FinalStates{};
 		FSM_TYPE m_MachineType;
@@ -487,11 +346,30 @@ namespace m0st4fa::fsm {
 			return finalStates;
 		}
 
-		// static
+		// STATIC
+
 		//! @brief The start state that will be used by the state machine.
 		static constexpr FSMStateType START_STATE = 1;
 
+		//! @brief The dead state that will be used by the state machine.
+		static constexpr FSMStateType DEAD_STATE = 0;
+
 	public:
+
+		/**
+		* @brief Gets the start state of all automata.
+		*/
+		static constexpr FSMStateType getStartState() {
+			return FiniteStateMachine<TransFuncT, InputT>::START_STATE;
+		}
+
+		/**
+		* @brief Gets the dead state of all automata.
+		*/
+		static constexpr FSMStateType getDeadState()  {
+			return FiniteStateMachine<TransFuncT, InputT>::DEAD_STATE;
+		}
+
 		//! @brief Default constructor.
 		FiniteStateMachine() = default;
 
@@ -508,13 +386,13 @@ namespace m0st4fa::fsm {
 			
 			if (fStates.empty()) {
 				const std::string message = "FSM: The set of final states cannot be empty.";
-				m_Logger.log(LoggerInfo::ERROR, message);
+				m_Logger.log(LoggerInfo::LL_ERROR, message);
 				throw InvalidStateMachineArgumentsException{ message };
 			};
 
 			if (machineType == FSM_TYPE::MT_MACHINE_TYPE_COUNT) {
 				const std::string message = R"(FSM: The machine type is invalid.)";
-				m_Logger.log(LoggerInfo::ERROR, message);
+				m_Logger.log(LoggerInfo::LL_ERROR, message);
 				throw InvalidStateMachineArgumentsException{ message };
 			};
 		
@@ -542,6 +420,206 @@ namespace m0st4fa::fsm {
 
 		//! @brief Gets the type of the state machine. For a DFA, the type is always `FSM_TYPE::MT_DFA`; for an NFA it varies.
 		FSM_TYPE getMachineType() const { return m_MachineType; };
+	};
+
+	class FSMTable {
+
+	protected:
+		/**
+		 * @brief The type of a vector of FSMStateSetType.
+		 * @remark Used here as the type of a table entry. It stores the set of states mapped to a given state.
+		 */
+		using StateSetVecType = std::vector<FSMStateSetType>;
+
+		/**
+		 * @brief The internal type of the table (the table is an abstraction over this type).
+		 * @note I've chosen the internal type of the table to be a std::vector instead of a std::map or something else, because I wanted performance, given that the typical range of states will not be large. For this reason, it is advisable to have a set of states that falls within a tight range, as this will influence the size of the table used by the machine.
+		 */
+		using VecType = std::vector<StateSetVecType>;
+
+		//! @brief The type of an non-constant iterator.
+		using ItType = VecType::iterator;
+		//! @brief The type of a constant iterator.
+		using ConstItType = VecType::const_iterator;
+
+		Logger logger;
+
+	private:
+		mutable VecType m_Table;
+
+		std::vector<size_t> get_column_sizes() const {
+			std::vector<size_t> columnSizes{};
+			for (const auto& row : this->m_Table) {
+				columnSizes.push_back(row.size());
+			}
+
+			return columnSizes;
+		}
+
+		static std::set<size_t> get_non_empty_columns(const VecType& tb) {
+
+			std::set<size_t> indeciesOfNonEmptyColumns{};
+
+			// loop through each row
+			for (const auto& row : tb) {
+
+				// loop through each column
+				for (size_t i = 0; const auto & col : row) {
+
+					auto atLeastOneNonDeadState = [&col]() {
+						return std::none_of(col.begin(), col.end(), [](const auto& state) {
+							return state == FiniteStateMachine<fsm::TransFn<fsm::FSMTable>>::getDeadState();
+							});
+						};
+
+					if (col.empty()) {
+						i++;
+						continue;
+					}
+
+					// if column is empty
+					if (atLeastOneNonDeadState())
+						indeciesOfNonEmptyColumns.insert(i);
+
+					i++;
+				}
+			}
+
+			return indeciesOfNonEmptyColumns;
+		}
+
+		void filter_columns(const size_t maxColSize, const std::vector<bool>& colStatus, tabulate::Table& table) const {
+
+			using namespace tabulate;
+
+			Table::Row_t headerRow{};
+			// Fill the first row (the header row)
+			for (size_t col = 0; col < colStatus.size(); col++) {
+				bool status = colStatus.at(col);
+
+				// if the columns is empty
+				if (status == false)
+					continue;
+
+				// the columns is filled
+				headerRow.push_back(std::string{char(col)});
+			}
+
+			table.add_row(headerRow);
+			table.row(0).format().font_style({ tabulate::FontStyle::bold }).font_color(Color::cyan);
+
+			// Fill the rest of rows
+			for (const auto& row : this->m_Table) {
+
+				if (row.size() == 0)
+					continue;
+
+				Table::Row_t newRow{};
+				for (size_t col = 0; col < maxColSize; col++)
+					if (colStatus.at(col))
+						newRow.push_back(fmt::format("{}", row.at(col)));
+
+				table.add_row(newRow);
+			}
+
+		}
+
+	public:
+
+		operator std::string() const {
+			return utility::toString<FSMStateSetType>(this->m_Table, &get_non_empty_columns);
+		}
+
+		/**
+		 * @brief Accesses the table entry indexed by `state` and `input`.
+		 * @param[in] state The state whose corresponding entry will be accessed.
+		 * @param[in] input The input (typically character) used to access the entry corresponding to a given state.
+		 * @return A reference to the table entry indexed by `state` and `input`.
+		 */
+		template<typename InputT = char>
+		FSMStateSetType& operator()(const FSMStateType& state, const InputT input) noexcept(true) {
+
+			if (m_Table.size() <= state)
+				m_Table.resize(state + 1);
+
+			std::vector<FSMStateSetType>& stateMap = m_Table.at(state);
+
+			if (stateMap.size() <= input)
+				stateMap.resize(input + 1);
+
+			return stateMap.at(input);
+		}
+
+		/**
+		 * @brief Accesses the table entry indexed by `state` and `input`.
+		 * @param[in] state The state whose corresponding entry will be accessed.
+		 * @param[in] input The input (typically character) used to access the entry corresponding to a given state.
+		 * @return A constant reference to the table entry indexed by `state` and `input`.
+		 */
+		template<typename InputT = char>
+		const FSMStateSetType& operator()(const FSMStateType& state, const InputT input) const noexcept(true) {
+			if (m_Table.size() <= state)
+				m_Table.resize(state + 1);
+
+			std::vector<FSMStateSetType>& stateMap = m_Table.at(state);
+
+			if (stateMap.size() <= input)
+				stateMap.resize(input + 1);
+
+			// Impossible to throw an exception, as sizes of both dimensions have been already checked.
+			return stateMap.at(input);
+		}
+
+		/**
+		 * @brief Accesses the set of states corresponding to `state` (on all of its characters).
+		 * @param[in] state The state used to index the table.
+		 * @return A *vector* of *sets of states*. `state` is mapped to each set of states in this vector via some input character (you can get the set of states corresponding to a given input (assuming it exists) by indexing the vector).
+		 */
+		const StateSetVecType& operator[](const FSMStateType& state) const {
+			if (m_Table.size() <= state)
+				m_Table.resize(state + 1);
+
+			return m_Table.at(state);
+		}
+
+		/**
+		 * @brief Gets the size of the table (the number of rows in the table).
+		 */
+		size_t size() const {
+			return this->m_Table.size();
+		}
+
+		/**
+		 * @brief Same as operator[](const FSMStateType& state) const.
+		 */
+		const StateSetVecType& at(const FSMStateType& state) const {
+			if (m_Table.size() <= state)
+				m_Table.resize(state + 1);
+
+			return m_Table.at(state);
+		}
+
+		template<typename InputT>
+		FSMStateType set(const FSMStateType&, const std::basic_string<InputT>&);
+
+		//! @return Iterator to the beginning.
+		ItType begin() {
+			return m_Table.begin();
+		}
+		//! @return Constant iterator to the beginning.
+		ConstItType begin() const {
+			return m_Table.begin();
+		}
+
+		//! @return Iterator to the end.
+		ItType end() {
+			return m_Table.end();
+		}
+		//! @return Constant iterator the end.
+		ConstItType end() const {
+			return m_Table.end();
+		}
+
 	};
 
 	/**
@@ -598,7 +676,7 @@ namespace m0st4fa::fsm {
 		/**
 		 * @brief The final states used for this simulation.
 		 */
-		FSMStateSetType finalState = { FiniteStateMachine<FSMStateType>::START_STATE };
+		FSMStateSetType finalState = { FiniteStateMachine<FSMStateType>::getStartState()};
 		/**
 		 * @brief The indicies of the accepting string, if any. If no string accepts, both indicies will be 0.
 		 */
@@ -668,3 +746,42 @@ namespace m0st4fa::fsm {
 
 };
 
+// DEFINITIONS
+namespace m0st4fa::fsm {
+
+	/**
+	* @brief Adds an entire string of input characters to the state machine, at once.
+	* @details This function inserts the characters of the `input` string, one by one, starting from the `initState`. Each character is mapped to the next. The state that each one gets assigned to gets incremented by one for each character.
+	* @param[in] initState The state that insertion will begin from. The other states that will be used to insert the following characters will go incrementally higher starting from this state.
+	* @param[in] input The input string whose characters will be inserted into the table.
+	* @return The state to which the last character of the input is mapped.
+	* @bug Let's see.
+	* @attention Do this and don't do that.
+	*/
+	template<typename InputT>
+	FSMStateType FSMTable::set(const FSMStateType& initState, const std::basic_string<InputT>& input) { 
+
+		// if the input is empty
+		if (input.empty())
+			return initState;
+
+		FSMStateType nextState = initState + 1;
+
+		this->operator()(initState, input.at(0)) = nextState;
+
+		// if the input has one element only
+		if (input.size() < 1)
+			return nextState;
+
+		// if the input has more than one element
+		for (IndexType i = 1; i < input.size(); i++)
+		{
+			InputT c = input.at(i);
+			this->operator()(nextState, c) = nextState + 1;
+			nextState++;
+		}
+
+		return nextState; // subtract one to compensate for the last one added in the loop.
+	};
+
+}

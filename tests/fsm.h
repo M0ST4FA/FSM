@@ -152,4 +152,30 @@ TYPED_TEST_P(FSMTests, simulate2) {
 
 }
 
-REGISTER_TYPED_TEST_SUITE_P(FSMTests, simulate, simulate2);
+TYPED_TEST_P(FSMTests, set) {
+	
+	using enum m0st4fa::fsm::FSM_MODE;
+	using m0st4fa::fsm::FSMStateType;
+
+	// Data structures
+	typename TestFixture::TableType table{};
+	FSMStateType finalState = table.set(1, (std::string)"babaa");
+	typename TestFixture::TranFn tranFn{ table };
+	TypeParam testFSM{ std::set<FSMStateType>{ finalState }, tranFn };
+
+	// STRINGS
+	std::string_view str = "babaa";
+	std::string_view str2 = "ababaa";
+
+	// POSITIVE TESTS
+	{
+		SCOPED_TRACE("POSITIVE TESTS");
+		
+		this->testFSMResultPositive(testFSM.simulate(str, MM_WHOLE_STRING), true, { 0, 5 });
+		this->testFSMResultPositive(testFSM.simulate(str2, MM_WHOLE_STRING), false, { 0, 0 });
+
+	}
+
+}
+
+REGISTER_TYPED_TEST_SUITE_P(FSMTests, simulate, simulate2, set);

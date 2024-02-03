@@ -16,12 +16,6 @@ namespace m0st4fa::fsm {
 		using Base = FiniteStateMachine<TransFuncT, InputT>;
 		using SubstringType = Substring<FSMStateType>;
 
-		// static variables
-		/**
-		 * @brief The dead state used by the DFA simulation methods.
-		 */
-		constexpr static FSMStateType DEAD_STATE = 0;
-
 		// private methods
 		FSMResult _simulate_whole_string(const InputT&) const;
 		FSMResult _simulate_longest_prefix(const InputT&) const;
@@ -31,6 +25,7 @@ namespace m0st4fa::fsm {
 		bool _check_accepted_substring(const InputT&, std::vector<FSMStateType>&, const size_t, size_t&) const;
 
 	public:
+		
 		/**
 		 * @brief Default constructor.
 		 */
@@ -54,6 +49,7 @@ namespace m0st4fa::fsm {
 
 		FSMResult simulate(const InputT&, const FSM_MODE) const;
 
+		
 	};
 
 	/**
@@ -85,11 +81,11 @@ namespace m0st4fa::fsm {
 		for (auto c : input) {
 			currState = (FSMStateType)this->m_TransitionFunc(currState, c);
 
-			if (currState == DEAD_STATE)
+			if (currState == Base::DEAD_STATE)
 				break;
 		}
 
-		bool accepted =this->_is_state_final(currState);
+		bool accepted = this->_is_state_final(currState);
 
 		return FSMResult(accepted, accepted ? FSMStateSetType{currState} : FSMStateSetType{startState}, { 0, accepted ? input.size() : 0 }, input);
 	}
@@ -124,7 +120,7 @@ namespace m0st4fa::fsm {
 			currState = (FSMStateType)this->m_TransitionFunc(currState, c);
 
 			// break out if it is dead
-			if (currState == DEAD_STATE) {
+			if (currState == Base::DEAD_STATE) {
 				if (charIndex != 0)
 					charIndex--;
 
@@ -277,7 +273,7 @@ namespace m0st4fa::fsm {
 			currState = FSMStateType(this->m_TransitionFunc(currState, c));
 
 			// break out if it is dead
-			if (currState == DEAD_STATE) {
+			if (currState == Base::DEAD_STATE) {
 				charIndex--; // do not keep count of the last character
 				break;
 			}

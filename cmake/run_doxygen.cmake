@@ -4,7 +4,8 @@ find_package(Doxygen
 			OPTIONAL_COMPONENTS mscgen dia)
 
 if (${DOXYGEN_FOUND})
-	
+	# We begin by declaring variables that will be used by the `doxygen_add_docs` command to define properties of the same name in the configuration file.
+
 	# This directory is relative to the binary directory
 	set( DOXYGEN_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/docs/" )
 	set( DOXYGEN_COLLABORATION_GRAPH YES )
@@ -29,26 +30,24 @@ if (${DOXYGEN_FOUND})
 	set( DOXYGEN_DOT_TRANSPARENT YES )
 	set( DOXYGEN_GENERATE_XML YES)
 	set( DOXYGEN_EXCLUDE_PATTERNS 
-	"*/docs/*" 
-	"*/tests/*" 
-	"*/utility/*"
+	"*/docs/*"
+	"*/tests/*"
 	"*/out/*"
 	"*/examples/*"
 	"*/external/*"
 	)
 
-	doxygen_add_docs(docs_${PROJECT_NAME} ${CMAKE_SOURCE_DIR})
-	execute_process(
-	COMMAND	"./${DOXYGEN_EXECUTABLE}" 
-		"${DOXYGEN_OUTPUT_DIRECTORY}/Doxyfile.docs_${PROJECT_NAME}"
-	)
+	# This creates a target to run Doxygen on this project. The name of the target is the first argument.
+	# In addition, this also sets the extension of the configuration file. The second argument is the root of the search for doxygen.
+	doxygen_add_docs(${PROJECT_NAME}.docs ${CMAKE_SOURCE_DIR})
+
+	set(DOXYGEN_CONFIGURATION_FILE "${DOXYGEN_OUTPUT_DIRECTORY}/Doxyfile.${PROJECT_NAME}.docs")
 
 	configure_file(
-		"${PROJECT_SOURCE_DIR}/docs/Sphinx/conf.py.in"
-		"${PROJECT_SOURCE_DIR}/docs/Sphinx/conf.py"
+		"${PROJECT_SOURCE_DIR}/docs/Sphinx/source/conf.py.in"
+		"${PROJECT_SOURCE_DIR}/docs/Sphinx/source/conf.py"
 	)
 
-	set(DOXYGEN_CONFIGURATION_FILE "${PROJECT_BINARY_DIR}/docs/Doxyfile.docs_${PROJECT_NAME}")
 	add_custom_target(Doxygen_${PROJECT_NAME} ALL
 	COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_CONFIGURATION_FILE}
 	WORKING_DIRECTORY ${PROJECT_BINARY_DIR}

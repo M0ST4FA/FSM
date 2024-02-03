@@ -30,6 +30,7 @@ protected:
 		fun(2, 'b') = 3;
 		fun(3, 'b') = 4;
 		fun(4, 'b') = 4;
+
 	}
 
 	template<typename T>

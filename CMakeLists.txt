@@ -9,7 +9,12 @@ if (POLICY CMP0141)
   set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
 endif()
 
-project(fsm)
+# DECLARE THE PROJECT
+project(fsm
+VERSION 4.1.0
+DESCRIPTION "A library for state machine simulation, written in C++."
+LANGUAGES CXX C
+)
 
 # SETUP VARIABLES
 
@@ -37,8 +42,10 @@ if(${BUILD_TESTING})
 	include("cmake/install_gtest.cmake")
 endif()
 
-# ADD THE LIBRARY
+# ADD EXTERNAL LIBRARIES
 add_subdirectory("${PROJECT_SOURCE_DIR}/external/utility/")
+
+# ADD THE LIBRARY
 add_library(${PROJECT_NAME} 
 "${PROJECT_SOURCE_DIR}/src/FiniteStateMachine.cpp"
 "${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}/FiniteStateMachine.h"
@@ -49,7 +56,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 "${${PROJECT_NAME}_INCLUDE_DIR}"
 )
 
-target_link_libraries(${PROJECT_NAME} PUBLIC utility)
+target_link_libraries(${PROJECT_NAME} PUBLIC utility tabulate::tabulate fmt::fmt)
 
 # ADD THE EXAMPLES
 if(${BUILD_EXAMPLES})

@@ -19,12 +19,6 @@ namespace m0st4fa::fsm {
 		using Base = FiniteStateMachine<TransFuncT, InputT>;
 		using SubstringType = Substring<FSMStateSetType>;
 
-		// static variables
-		/**
-		 * @brief The dead state used by the NFA simulation methods.
-		 */
-		constexpr static FSMStateType DEAD_STATE = 0;
-
 		// PRIVATE METHODS
 
 		// MAIN
@@ -62,7 +56,7 @@ namespace m0st4fa::fsm {
 			// if the correct machine type is not passed
 			if (!(machineType == FSM_TYPE::MT_EPSILON_NFA || machineType == FSM_TYPE::MT_NON_EPSILON_NFA)) {
 				const std::string message = R"(NonDeterFiniteAutomaton: machineType must be either "MT_EPSILON_NFA" or "MT_NON_EPSILON_NFA")";
-				this->m_Logger.log(LoggerInfo::FATAL_ERROR, message);
+				this->m_Logger.log(LoggerInfo::LL_FATAL_ERROR, message);
 				throw InvalidStateMachineArgumentsException(message);
 			};
 
@@ -415,7 +409,7 @@ namespace m0st4fa::fsm {
 		case FSM_MODE::MM_LONGEST_SUBSTRING:
 			return this->_simulate_longest_substring(input);
 		default:
-			this->m_Logger.log(LoggerInfo::ERROR, "Unreachable: simulate() cannot reach this point. The provided mode is probably erroneous.");
+			this->m_Logger.log(LoggerInfo::LL_ERROR, "Unreachable: simulate() cannot reach this point. The provided mode is probably erroneous.");
 			throw UnrecognizedSimModeException();
 		}
 
